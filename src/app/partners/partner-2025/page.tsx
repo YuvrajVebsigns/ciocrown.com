@@ -59,8 +59,8 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 
 const premiumPartners = [
-  { name: 'Anunta', logo: '/assets/partners/2025/anunta.png' },
-  { name: 'Freshworks', logo: '/assets/partners/2025/freshworks.png' },
+  { name: 'Anunta', logo: '/assets/partner2026/partner_logo_2.png' },
+  { name: 'Freshworks', logo: '/assets/partner2026/freshworks.webp' },
   { name: 'Ingram', logo: '/assets/partners/2025/ingram.png' },
   { name: 'Juniper', logo: '/assets/partners/2025/juniper.png' },
   { name: 'Neurealm', logo: '/assets/partners/2025/neurealm.png' },
