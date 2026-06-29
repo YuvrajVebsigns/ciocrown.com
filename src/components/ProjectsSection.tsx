@@ -87,7 +87,17 @@ export default function ProjectsSection() {
         </div>
 
         <div className="project-top-bar">
-          <h6 className="project-subtitle">⬢ Custom Events</h6>
+          <div className="project-label">
+            {' '}
+            <Image
+              src="/assets/icon.png"
+              alt=""
+              width={18}
+              height={18}
+              className="project-label-icon"
+            />{' '}
+            <span className="project-label-text"> CUSTOM EVENTS </span>{' '}
+          </div>
 
           <Link href="/events" className="talk-btn">
             <span>More Events</span>

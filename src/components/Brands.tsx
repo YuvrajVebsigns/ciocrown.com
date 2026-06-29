@@ -464,7 +464,7 @@ export default function Brands() {
         <div className="dialogue-header" ref={headerRef}>
           <div>
             <span className="dialogue-subtitle">
-              <span className="dialogue-subtitle-mark">⬢</span>
+              <Image src="/assets/icon.png" alt="" width={18} height={18} className="" />
               <span className="dialogue-subtitle-text">PARTNERS 2025</span>
             </span>
 

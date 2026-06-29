@@ -12955,3 +12955,227 @@ s .dialogues-badge-mark {
     grid-template-columns: 1fr;
   }
 }
+
+.aboutus-label {
+  width: fit-content;
+  margin: 0 auto 14px;
+  padding: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  position: relative;
+  inset: auto;
+  transform: none;
+
+  line-height: 1;
+  text-align: center;
+}
+
+.aboutus-label-icon {
+  position: static !important;
+  inset: auto !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px;
+  margin: 0 !important;
+
+  display: block;
+  flex: 0 0 18px;
+
+  object-fit: contain;
+  transform: none !important;
+}
+
+.aboutus-label-text {
+  margin: 0;
+  padding: 0;
+
+  display: inline-block;
+
+  color: #111827;
+  background: transparent;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .aboutus-label {
+    gap: 7px;
+    margin-bottom: 10px;
+  }
+
+  .aboutus-label-icon {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px;
+    flex-basis: 16px;
+  }
+
+  .aboutus-label-text {
+    font-size: 14px;
+  }
+}
+
+.project-heading-row {
+  width: 100%;
+  margin: 0 0 40px;
+  padding: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+}
+.project-heading-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+} /* Icon + CUSTOM EVENTS */
+.project-label {
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 9px;
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+  line-height: 1;
+}
+.project-label-icon {
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px;
+  margin: 0 !important;
+  padding: 0;
+  display: block;
+  flex: 0 0 18px;
+  object-fit: contain;
+}
+.project-label-text {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  color: #a50000;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+} /* Main heading */
+.project-main-heading {
+  margin: 0;
+  padding: 0;
+  color: #181818;
+  font-size: clamp(38px, 4vw, 62px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+.project-main-heading span {
+  color: #a50000;
+} /* More Events button */
+.project-more-button {
+  flex-shrink: 0;
+  min-height: 58px;
+  padding: 7px 8px 7px 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: #ffffff;
+  background: #a50000;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease;
+}
+.project-more-button:hover {
+  background: #820000;
+  transform: translateY(-2px);
+}
+.project-more-button-icon {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #a50000;
+  background: #ffffff;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+} /* ===================================================== TABLET ===================================================== */
+@media (max-width: 900px) {
+  .project-heading-row {
+    align-items: center;
+  }
+  .project-main-heading {
+    font-size: clamp(36px, 6vw, 50px);
+  }
+} /* ===================================================== MOBILE ===================================================== */
+@media (max-width: 640px) {
+  .project-heading-row {
+    margin-bottom: 28px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+  }
+  .project-heading-content {
+    width: 100%;
+    gap: 10px;
+  }
+  .project-label {
+    gap: 7px;
+  }
+  .project-label-icon {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px;
+    flex-basis: 16px;
+  }
+  .project-label-text {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+  }
+  .project-main-heading {
+    font-size: clamp(34px, 10vw, 44px);
+    line-height: 1.1;
+  }
+  .project-more-button {
+    min-height: 52px;
+    padding: 6px 7px 6px 20px;
+    gap: 12px;
+    font-size: 14px;
+  }
+  .project-more-button-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+}
