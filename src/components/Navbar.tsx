@@ -867,7 +867,7 @@ export default function Navbar() {
       className={`navbar ${isHidden ? 'navbar-hide' : ''} ${mobileOpen ? 'mobile-open' : ''}`}
     >
       <div className="navbar-container">
-        <Link href="/" className="navbar-logo" onClick={closeAllMenus}>
+        <Link href="/" className="footer-logo">
           <Image
             src="/assets/logo/logo2-removebg.png"
             alt="Core Media"
