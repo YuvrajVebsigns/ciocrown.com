@@ -208,7 +208,7 @@ export default function KeyClient() {
           </div>
 
           <h2 className="clients-title">
-            13 Successful Years Of <span>CIO Crown</span>
+            Celebrating 15 Years of <span>CIO CROWN</span>
           </h2>
 
           <p className="crown-subtitle">
@@ -232,7 +232,7 @@ export default function KeyClient() {
               </div>
 
               <div className="crown-content">
-                <span className="crown-tag">Recent Achievement</span>
+                {/* <span className="crown-tag">Recent Achievement</span> */}
 
                 <h3>CIO CROWN {item.year}</h3>
 

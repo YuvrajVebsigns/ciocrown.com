@@ -468,9 +468,9 @@ export default function Brands() {
               <span className="dialogue-subtitle-text">PARTNERS 2025</span>
             </span>
 
-            <h2 className="dialogue-title">
+            {/* <h2 className="dialogue-title">
               Our <span>Partners</span>
-            </h2>
+            </h2> */}
           </div>
 
           <div className="dialogue-arrows">
@@ -508,7 +508,7 @@ export default function Brands() {
                 </div>
 
                 <div className="partner-content">
-                  <span className="partner-year">Partners 2025</span>
+                  {/* <span className="partner-year">Partners 2025</span> */}
                   <h3 className="partner-name">{partner.name}</h3>
                   <p className="partner-role">{partner.role}</p>
                 </div>

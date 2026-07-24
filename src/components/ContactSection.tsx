@@ -78,7 +78,7 @@
 //         <div className="contact-map-area">
 //           <div className="contact-map">
 //             <Image
-//               src="/assets/map.svg"
+//               src="/assets/map5.png"
 //               alt="Global Map"
 //               width={700}
 //               height={500}
@@ -271,7 +271,6 @@ export default function ContactSection() {
       setIsSubmitting(false);
     }
   }
-
   return (
     <section className="contact-section" id="contact-section">
       <div className="contact-container">
@@ -289,8 +288,13 @@ export default function ContactSection() {
 
             {/* Dots */}
             <span className="map-dot dot-1"></span>
+            <span className="map-label label-1">India</span>
+
             <span className="map-dot dot-2"></span>
+            <span className="map-label label-2">Dubai</span>
+
             <span className="map-dot dot-3"></span>
+            <span className="map-label label-3">Singapur</span>
           </div>
         </div>
 
@@ -314,7 +318,7 @@ export default function ContactSection() {
           <div className="contact-badge">⬢ GET IN TOUCH</div>
 
           {/* Title */}
-          <h2 className="contact-title">Let’s Start a Conversation</h2>
+          {/* <h2 className="contact-title">Let’s Start a Conversation</h2> */}
 
           {/* Form */}
           <form className="contact-form" onSubmit={handleSubmit}>
@@ -387,7 +391,7 @@ export default function ContactSection() {
 
             {/* BUTTON */}
             <button type="submit" className="contact-btn" disabled={isSubmitting}>
-              <span>{isSubmitting ? 'Sending...' : 'Submit Message'}</span>
+              <span>{isSubmitting ? 'Sending...' : 'Submit '}</span>
 
               <span className="contact-btn-icon">
                 <ArrowUpRight size={18} />

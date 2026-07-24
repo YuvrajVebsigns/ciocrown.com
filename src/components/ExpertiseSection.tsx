@@ -59,11 +59,11 @@ export default function AboutUsSection() {
             <span className="aboutus-label-text">THEME 2025</span>
           </div>
 
-          <h2 className="aboutus-title theme-title">
+          <h4 className="aboutus-title theme-title">
             Orchestrating the Intelligent Enterprise
             <br />
             <span>Moving the Growth Needle</span>
-          </h2>
+          </h4>
         </div>
 
         <div className="theme-content-card">

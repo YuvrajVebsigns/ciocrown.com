@@ -18,20 +18,21 @@ export default function Footer() {
                 <Image
                   src="/assets/logo/logo2-removebg.png"
                   alt="Core Media"
-                  width={180}
-                  height={70}
+                  width={420}
+                  height={240}
+                  className="footer-logo-img"
                   priority
                 />
               </Link>
 
-              <p className="footer-description">
+              {/* <p className="footer-description">
                 Developing personalized customer journeys to increase customer satisfaction,
                 engagement, and long-term loyalty for business growth.
-              </p>
+              </p> */}
             </div>
 
             {/* COLUMN 2 */}
-            <div className="footer-widget">
+            {/* <div className="footer-widget">
               <h4 className="footer-title">Services</h4>
 
               <ul className="footer-links">
@@ -43,7 +44,7 @@ export default function Footer() {
                   <Link href="/nominate">Nominate</Link>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             {/* COLUMN 3 */}
             <div className="footer-widget">
@@ -51,7 +52,7 @@ export default function Footer() {
 
               <ul className="footer-links">
                 <li>
-                  <Link href="/blog">Blog</Link>
+                  <Link href="/blog">Blogs</Link>
                 </li>
 
                 <li>
@@ -72,7 +73,7 @@ export default function Footer() {
                 </button>
               </form>
               <br />
-              <h4>Our Office</h4>
+              <h3>Office Address</h3>
               <p className="footer-description">
                 Units Nos. 3037 – A1 Wing, 3rd Floor, Oberoi Garden Estate, Near Chandivali Studio,
                 Andheri (East), Mumbai – 400072, INDIA
@@ -103,7 +104,7 @@ export default function Footer() {
                 <Phone size={15} />
               </span>
 
-              <span className="footer-contact-text">+91 7506035537</span>
+              <span className="footer-contact-text">+91 22 4608 0974</span>
             </a>
 
             <a href="mailto:info@coremedia.com" className="footer-contact-item">
@@ -135,7 +136,7 @@ export default function Footer() {
           </div>
 
           {/* COPYRIGHT */}
-          <div className="footer-copy">© 2026 Core Media. All Rights Reserved.</div>
+          <div className="footer-copy">Copyright © 2026 CORE Media. All Rights Reserved.</div>
         </div>
       </div>
     </footer>

@@ -40,7 +40,7 @@ export default function CIOPowerListProcess() {
             Delegates Profile
           </span>
 
-          <h2 className="delegates-main-title">
+          {/* <h2 className="delegates-main-title">
             India’s Most Influential
             <span>CIOs & Technology Leaders</span>
           </h2>
@@ -48,7 +48,7 @@ export default function CIOPowerListProcess() {
           <p className="delegates-description">
             CIO Crown 2025 will see participation from over 200+ CIOs, senior business and
             technology leaders from across India.
-          </p>
+          </p> */}
         </div>
 
         <div className="delegates-layout">
@@ -56,10 +56,9 @@ export default function CIOPowerListProcess() {
             <span className="delegates-count">200+</span>
             <h3>CIOs & Senior Leaders</h3>
             <p>
-              CIO Crown 2025 will see participation from over 200+ CIOs, Senior business and
-              technology leaders from across India. These leaders will come together to explore
-              solutions for today’s biggest technological challenges, foster deep collaboration and
-              generate new ideas for dealing with the current business environment.
+              CIO CROWN convenes 200+ CIOs and senior business and technology leaders from across
+              India for strategic conversations, peer networking, and insights into the technologies
+              shaping enterprise transformation.
             </p>
           </div>
 
@@ -67,21 +66,18 @@ export default function CIOPowerListProcess() {
             <span className="delegates-count">Pan-India</span>
             <h3>Key Industry Verticals</h3>
             <p>
-              These CIOs & ICT Business Leaders will be from all key industry verticals from across
-              India ranging from Automotive, Banking, Financial Services, Insurance, IT/ITES,
-              Logistics, Manufacturing, Media & Entertainment, Pharma/Healthcare, Retail/FMCG to
-              Telecom.
+              An exclusive gathering of CIOs and ICT Business Leaders from India&apos;s leading
+              industries, including BFSI, IT/ITES, Manufacturing, Retail, Healthcare, Telecom,
+              Automotive, Logistics, and Media.
             </p>
           </div>
 
           <div className="delegates-card delegates-card-large delegate-animate">
             <span className="delegates-count">Leadership Forum</span>
-            <h3>Designed for Deeper Business Conversations</h3>
+            <h3>Forum for Strategic Collaboration</h3>
             <p>
-              These executives invest their time only in forums that help them get the right mix and
-              deeper understanding of new technologies and leadership issues. Therefore, CIO Crown
-              is high on their list as it is designed to help them in an environment built for
-              discussions, updates and for advancing business conversations.
+              A trusted platform for technology leaders to explore emerging trends, exchange
+              perspectives, and shape impactful business conversations.
             </p>
           </div>
         </div>

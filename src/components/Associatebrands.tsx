@@ -100,8 +100,8 @@ export default function AssociateBrandsPage() {
         <div className="event-schedule-container">
           <div className="event-schedule-heading">
             <span>Event Schedule</span>
-            <h2>Save The Date</h2>
-            <p>8 October 2026</p>
+            {/* <h2>Save The Date</h2> */}
+            <p>October 8 & 9, 2026</p>
           </div>
 
           <div className="event-countdown-card">
