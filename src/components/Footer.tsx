@@ -107,30 +107,41 @@ export default function Footer() {
               <span className="footer-contact-text">+91 22 4608 0974</span>
             </a>
 
-            <a href="mailto:info@coremedia.com" className="footer-contact-item">
-              <span className="footer-contact-icon">
+            <div className="footer-contact-item">
+              {/* <span className="footer-contact-icon">
                 <Mail size={15} />
-              </span>
+              </span> */}
 
-              <span className="footer-contact-text">contact@core-mediagroup.com</span>
-            </a>
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@core-mediagroup.com&su=Enquiry"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-contact-item"
+              >
+                <span className="footer-contact-icon">
+                  <Mail size={15} />
+                </span>
+
+                <span className="footer-contact-text">contact@core-mediagroup.com</span>
+              </a>
+            </div>
           </div>
 
           {/* SOCIAL */}
           <div className="footer-socials">
-            <a href="https://www.facebook.com/" aria-label="Facebook">
+            <a href="https://www.facebook.com/coremediaindia/" aria-label="Facebook">
               <FaFacebookF />
             </a>
 
-            <a href="https://www.instagram.com/" aria-label="Instagram">
+            <a href="https://www.instagram.com/core_media_/" aria-label="Instagram">
               <FaInstagram />
             </a>
 
-            <a href="https://x.com/" aria-label="Twitter">
+            <a href="https://x.com/CIOChoice" aria-label="Twitter">
               <FaXTwitter />
             </a>
 
-            <a href="https://www.linkedin.com/" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/company/core-mediagroup/" aria-label="LinkedIn">
               <FaLinkedinIn />
             </a>
           </div>
