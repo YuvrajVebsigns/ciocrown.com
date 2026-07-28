@@ -290,7 +290,7 @@ body {
   margin: 0 auto;
   padding: 32px;
   border-radius: 28px;
-  background: #a40000;
+  background: #8e0101;
   border: 1px solid rgba(164, 0, 0, 0.08);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(14px);
@@ -387,7 +387,7 @@ body {
   padding: 5px 10px;
   border-radius: 999px;
   background: rgba(164, 0, 0, 0.08);
-  color: #a40000;
+  color: #8e0101;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -425,7 +425,7 @@ body {
 
 .winner-section-kicker {
   margin: 0;
-  color: #a40000;
+  color: #8e0101;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -508,8 +508,8 @@ body {
 
 .winner-profile-category {
   margin-bottom: 6px;
-  color: #a40000;
-  font-weight: 700;
+  color: #8e0101;
+  font-weight: 540;
 }
 
 .winner-profile-company {
@@ -532,7 +532,7 @@ body {
 
 .winners-detail-item dt {
   margin-bottom: 8px;
-  color: #a40000;
+  color: #8e0101;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -599,7 +599,7 @@ body {
   margin-bottom: 14px;
   border-radius: 999px;
   background: rgba(164, 0, 0, 0.08);
-  color: #a40000;
+  color: #8e0101;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -632,6 +632,7 @@ body {
 
 .partner-card {
   padding: 22px;
+  height: 250px;
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(164, 0, 0, 0.08);
@@ -645,7 +646,7 @@ body {
   margin-bottom: 12px;
   border-radius: 999px;
   background: rgba(164, 0, 0, 0.08);
-  color: #a40000;
+  color: #8e0101;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -1003,7 +1004,7 @@ body {
 }
 
 .speakers2025-hero {
-  padding: 150px 20px 90px;
+  padding: 50px 20px 90px;
   text-align: center;
   background:
     linear-gradient(rgba(142, 1, 1, 0.9), rgba(142, 1, 1, 0.92)),
@@ -1028,9 +1029,9 @@ body {
   max-width: 980px;
   margin: 0 auto;
   color: #fff;
-  font-size: clamp(38px, 5vw, 70px);
+  font-size: clamp(38px, 5vw, 60px);
   line-height: 1.08;
-  font-weight: 900;
+  font-weight: 540;
 }
 
 .speakers2025-hero h1 span {
@@ -1077,8 +1078,8 @@ body {
 .speakers2025-heading h2 {
   margin: 0;
   color: #111;
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 900;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 540;
 }
 
 .speakers2025-grid {
@@ -1300,7 +1301,7 @@ body {
 .navbar-menu {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 38px;
 }
 
 .nav-dropdown {
@@ -1623,7 +1624,7 @@ body {
 ========================================================= */
 
 .contact-section {
-  background: #a40000;
+  background: #8e0101;
   padding: 90px 40px;
   /* margin-top: 100px; */
 }
@@ -1638,7 +1639,7 @@ body {
 }
 
 .contact-map-area {
-  background: #a40000;
+  background: #8e0101;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1975,7 +1976,7 @@ body {
 .hero-section {
   width: 97%;
   max-width: 1500px;
-  margin: 70px auto 0;
+  margin: 7px auto 0;
   overflow: hidden;
   border-radius: 18px;
 }
@@ -2031,7 +2032,7 @@ body {
 @media (max-width: 992px) {
   .hero-section {
     width: calc(100% - 24px);
-    margin: 95px auto 0;
+    margin: 9px auto 0;
     border-radius: 12px;
   }
 
@@ -2055,7 +2056,7 @@ body {
 @media (max-width: 768px) {
   .hero-section {
     width: calc(100% - 20px);
-    margin: 92px auto 0;
+    margin: 9px auto 0;
     border-radius: 10px;
   }
 
@@ -2120,7 +2121,7 @@ body {
   z-index: 1;
   width: 100%;
   max-width: 430px;
-  margin: 0 auto;
+  margin: 0 40px;
   padding: 0 22px 28px 0;
   isolation: isolate;
 }
@@ -2221,7 +2222,7 @@ body {
   z-index: 2;
   width: 100%;
   max-width: 710px;
-  margin-left: 0;
+  margin-left: 80px;
 }
 
 .founder-eyebrow {
@@ -3077,7 +3078,7 @@ body {
 }
 
 .clients-label-icon {
-  color: #a40000;
+  color: #8e0101;
   font-size: 14px;
 }
 
@@ -3097,7 +3098,7 @@ body {
 }
 
 .clients-title span {
-  color: #a40000;
+  color: #8e0101;
 }
 
 /* =========================================================
@@ -4642,7 +4643,7 @@ body {
 }
 
 .cio-process-section-heading h2 span {
-  color: #a40000;
+  color: #8e0101;
 }
 
 .cio-process-section-heading p {
@@ -4694,7 +4695,7 @@ body {
 }
 
 .cio-process-content h2 span {
-  color: #a40000;
+  color: #8e0101;
 }
 
 .cio-process-content > p {
@@ -4777,7 +4778,7 @@ body {
 }
 
 .cio-process-source-item:hover {
-  background: #a40000;
+  background: #8e0101;
   transform: translateX(6px);
 }
 
@@ -4884,7 +4885,7 @@ body {
 
 .dialogue-section {
   padding: 100px 40px;
-  background: #f3ebeb;
+  background: #fdfbfb;
   overflow: hidden;
 }
 
@@ -4892,6 +4893,10 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+/* ===========================
+   HEADER
+=========================== */
 
 .dialogue-header {
   display: flex;
@@ -4904,37 +4909,17 @@ body {
 .dialogue-subtitle {
   display: inline-flex;
   align-items: center;
-  padding: 8px 16px;
   gap: 8px;
-  border: 1px dashed rgb(43, 41, 41);
+  padding: 8px 16px;
+  border: 1px dashed #b1a3a3;
   border-radius: 8px;
-  font-size: 15px;
-  font-weight: 750;
-  letter-spacing: 1px;
-  color: #211d1d;
   margin-bottom: 22px;
-}
-
-.dialogue-subtitle-mark {
-  color: #8e0101;
-  font-size: 14px;
 }
 
 .dialogue-subtitle-text {
   font-size: 13px;
+  font-weight: 700;
   letter-spacing: 0.15em;
-  color: #111;
-}
-
-.dialogue-title {
-  font-size: 56px;
-  line-height: 1;
-  font-weight: 500;
-  color: #111;
-}
-
-.dialogue-title span {
-  color: #8e0101;
 }
 
 .dialogue-arrows {
@@ -4949,131 +4934,150 @@ body {
   border: 1px solid #d8cfcf;
   background: #fff;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 0.3s;
 }
 
 .dialogue-arrow-btn:hover {
   background: #8e0101;
   color: #fff;
-  transform: translateY(-3px);
 }
+
+/* ===========================
+   SLIDER
+=========================== */
 
 .dialogue-slider {
   display: flex;
   gap: 24px;
+
   overflow-x: auto;
+  overflow-y: hidden;
+
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+
+  /* Remove large fixed height */
+  height: auto;
+
+  padding: 10px 0;
+
   scrollbar-width: none;
-  padding-bottom: 10px;
+  -ms-overflow-style: none;
 }
 
 .dialogue-slider::-webkit-scrollbar {
   display: none;
 }
 
+/* 3 Cards */
+
 .dialogue-card {
-  min-width: 320px;
-  max-width: 320px;
-  flex-shrink: 0;
+  flex: 0 0 calc((100% - 48px) / 3);
+  width: calc((100% - 48px) / 3);
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
+/* ===========================
+   CARD
+=========================== */
+
 .partner-card {
-  min-height: 300px;
-  padding: 26px;
-  border-radius: 26px;
+  height: 265px;
+
+  padding: 22px;
+  height: 250px;
+  border-radius: 22px;
   background: #fff;
   border: 1px solid #eadada;
-  position: relative;
-  overflow: hidden;
-  transition: 0.35s ease;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: 0.35s;
 }
 
 .partner-card::before {
   content: '';
   position: absolute;
-  width: 150px;
-  height: 150px;
-  right: -60px;
-  top: -60px;
-  background: rgba(142, 1, 1, 0.1);
+  right: -55px;
+  top: -55px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
+  background: rgba(142, 1, 1, 0.08);
 }
 
 .partner-card::after {
   content: '';
   position: absolute;
-  width: 90px;
-  height: 90px;
-  left: -35px;
-  bottom: -35px;
-  background: rgba(142, 1, 1, 0.07);
+  left: -30px;
+  bottom: -30px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
+  background: rgba(142, 1, 1, 0.05);
 }
 
 .partner-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 22px 50px rgba(142, 1, 1, 0.12);
-  border-color: rgba(142, 1, 1, 0.35);
+  box-shadow: 0 18px 45px rgba(142, 1, 1, 0.12);
 }
 
 .partner-logo-box {
-  height: 130px;
-  border-radius: 22px;
+  height: 115px;
+
+  padding: 18px;
+
+  border-radius: 18px;
   background: #faf6f6;
   border: 1px dashed #e1cccc;
+
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 22px;
+  align-items: center;
+
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .partner-logo {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
 .partner-content {
+  margin-top: 18px;
   position: relative;
-  z-index: 1;
-  margin-top: 24px;
-}
-
-.partner-year {
-  display: inline-flex;
-  padding: 7px 12px;
-  border-radius: 999px;
-  background: #8e0101;
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
+  z-index: 2;
 }
 
 .partner-name {
-  font-size: 28px;
-  line-height: 1.1;
-  font-weight: 750;
-  color: #111;
-  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 6px;
+  color: #222;
 }
 
 .partner-role {
-  font-size: 15px;
-  font-weight: 650;
+  font-size: 14px;
+  font-weight: 600;
   color: #8e0101;
-  margin: 0;
 }
+
+/* ===========================
+   DOTS
+=========================== */
 
 .dialogue-dots {
   display: flex;
@@ -5085,78 +5089,83 @@ body {
 .dialogue-dot {
   width: 10px;
   height: 10px;
-  border-radius: 50%;
-  background: #d3c8c8;
-  border: none;
+  border: 0;
+  border-radius: 999px;
+  background: #d8cfcf;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 0.3s;
 }
 
 .dialogue-dot.active {
   width: 28px;
-  border-radius: 999px;
   background: #8e0101;
 }
+
+/* ===========================
+   TABLET
+=========================== */
 
 @media (max-width: 992px) {
   .dialogue-section {
     padding: 80px 24px;
   }
 
-  .dialogue-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .dialogue-title {
-    font-size: 42px;
+  .dialogue-slider {
+    gap: 20px;
   }
 
   .dialogue-card {
-    min-width: 280px;
-    max-width: 280px;
+    flex: 0 0 calc((100% - 20px) / 2);
+    width: calc((100% - 20px) / 2);
+  }
+
+  .partner-card {
+    height: 250px;
+  }
+
+  .partner-logo-box {
+    height: 105px;
   }
 
   .partner-name {
-    font-size: 24px;
+    font-size: 18px;
   }
 }
+
+/* ===========================
+   MOBILE
+=========================== */
 
 @media (max-width: 768px) {
   .dialogue-section {
     padding: 70px 20px;
   }
 
-  .dialogue-title {
-    font-size: 34px;
-  }
-
-  .dialogue-arrows {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .dialogue-arrow-btn {
-    width: 48px;
-    height: 48px;
+  .dialogue-slider {
+    gap: 16px;
   }
 
   .dialogue-card {
-    min-width: 100%;
-    max-width: 100%;
+    flex: 0 0 100%;
+    width: 100%;
   }
 
   .partner-card {
-    min-height: 280px;
-    padding: 24px;
+    height: 240px;
+    padding: 20px;
   }
 
   .partner-logo-box {
-    height: 120px;
+    height: 95px;
+    padding: 16px;
   }
 
   .partner-name {
-    font-size: 26px;
+    font-size: 18px;
+  }
+
+  .partner-role {
+    font-size: 13px;
   }
 }
 
@@ -5752,7 +5761,7 @@ body {
 ========================================================= */
 
 .contact-section {
-  background: #a40000;
+  background: #8e0101;
   padding: 90px 40px;
 }
 
@@ -5766,7 +5775,7 @@ body {
 }
 
 .contact-map-area {
-  background: #a40000;
+  background: #8e0101;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8542,7 +8551,7 @@ body {
   width: 100%;
   height: 100%;
 
-  background-color: #a40000;
+  background-color: #8e0101;
 
   z-index: -1;
 
@@ -11265,7 +11274,7 @@ s .dialogues-badge-mark {
   padding: 6px 12px;
   border-radius: 999px;
   background: rgba(164, 0, 0, 0.1);
-  color: #a40000;
+  color: #8e0101;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -11304,7 +11313,7 @@ s .dialogues-badge-mark {
 .winner-section-kicker {
   margin-top: 10px;
   padding: 6px 14px;
-  color: #a40000;
+  color: #8e0101;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -11426,7 +11435,7 @@ s .dialogues-badge-mark {
 
 .winners-detail-item dt {
   margin-bottom: 8px;
-  color: #a40000;
+  color: #8e0101;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -11492,7 +11501,7 @@ s .dialogues-badge-mark {
   margin-bottom: 14px;
   border-radius: 999px;
   background: rgba(164, 0, 0, 0.08);
-  color: #a40000;
+  color: #8e0101;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -11526,6 +11535,7 @@ s .dialogues-badge-mark {
 .partner-card {
   padding: 22px;
   border-radius: 22px;
+  height: 250px;
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(164, 0, 0, 0.08);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
@@ -11538,7 +11548,7 @@ s .dialogues-badge-mark {
   margin-bottom: 12px;
   border-radius: 999px;
   background: rgba(164, 0, 0, 0.08);
-  color: #a40000;
+  color: #8e0101;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -11590,7 +11600,7 @@ s .dialogues-badge-mark {
   margin-bottom: 14px;
   border-radius: 999px;
   background: rgba(164, 0, 0, 0.08);
-  color: #a40000;
+  color: #8e0101;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -11652,7 +11662,7 @@ s .dialogues-badge-mark {
   padding: 5px 10px;
   border-radius: 999px;
   background: rgba(164, 0, 0, 0.08);
-  color: #a40000;
+  color: #8e0101;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -11686,7 +11696,7 @@ s .dialogues-badge-mark {
 
 .speakers-detail-item dt {
   margin-bottom: 8px;
-  color: #a40000;
+  color: #8e0101;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -11782,7 +11792,7 @@ s .dialogues-badge-mark {
 }
 
 .jury-hero {
-  padding: 150px 20px 80px;
+  padding: 50px 20px 80px;
   text-align: center;
   background:
     radial-gradient(circle at top right, rgba(142, 1, 1, 0.2), transparent 35%),
@@ -11804,9 +11814,9 @@ s .dialogues-badge-mark {
 
 .jury-title {
   margin: 0;
-  font-size: clamp(36px, 5vw, 68px);
+  font-size: clamp(36px, 5vw, 59px);
   line-height: 1.08;
-  font-weight: 900;
+  font-weight: 540;
   color: #fff;
 }
 
@@ -12547,7 +12557,7 @@ s .dialogues-badge-mark {
 }
 
 .partners-hero {
-  padding: 150px 20px 90px;
+  padding: 50px 20px 90px;
   text-align: center;
   background: linear-gradient(135deg, #8e0101, #d11f26);
   color: #fff;
@@ -12567,9 +12577,9 @@ s .dialogues-badge-mark {
 .partners-hero h1 {
   margin: 0 0 18px;
   color: #fff;
-  font-size: clamp(38px, 6vw, 72px);
+  font-size: clamp(38px, 6vw, 60px);
   line-height: 1.05;
-  font-weight: 900;
+  font-weight: 540;
 }
 
 .partners-hero p {
@@ -12601,8 +12611,8 @@ s .dialogues-badge-mark {
 .partners-heading h2 {
   margin: 10px 0 0;
   color: #111;
-  font-size: clamp(30px, 4vw, 48px);
-  font-weight: 900;
+  font-size: clamp(30px, 4vw, 40px);
+  font-weight: 540;
 }
 
 .associate-heading {

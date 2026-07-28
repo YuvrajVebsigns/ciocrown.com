@@ -537,6 +537,14 @@ export default function Navbar() {
             )}
           </div>
 
+          <Link
+            href="/venue"
+            className={`nav-link ${pathname === '/venue' ? 'active' : ''}`}
+            onClick={closeAllMenus}
+          >
+            Venue
+          </Link>
+
           <div
             className={`nav-dropdown ${juryOpen ? 'open' : ''}`}
             onMouseEnter={openJury}
@@ -576,14 +584,6 @@ export default function Navbar() {
               </div>
             )}
           </div>
-
-          <Link
-            href="/venue"
-            className={`nav-link ${pathname === '/venue' ? 'active' : ''}`}
-            onClick={closeAllMenus}
-          >
-            Venue
-          </Link>
 
           {/* <Link
             href="/register"

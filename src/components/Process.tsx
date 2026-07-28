@@ -35,10 +35,17 @@ export default function CIOPowerListProcess() {
     <section className="delegates-section" ref={sectionRef}>
       <div className="delegates-container">
         <div className="delegates-heading delegate-animate">
-          <span className="delegates-badge">
-            <Image src="/assets/icon.png" alt="Delegates Profile" width={18} height={18} />
-            Delegates Profile
-          </span>
+          <div className="clients-label">
+            <Image
+              src="/assets/icon.png"
+              alt="CIO Crown"
+              width={20}
+              height={20}
+              className="expertise-label-icon"
+            />
+
+            <span className="clients-label-text">DELEGATES PROFILE</span>
+          </div>
 
           {/* <h2 className="delegates-main-title">
             India’s Most Influential
