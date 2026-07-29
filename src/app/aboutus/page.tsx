@@ -9,14 +9,7 @@ export default function AboutUsPage() {
         <div className="social-media-container">
           <div className="social-media-row">
             <div className="social-media-content">
-              <h2>
-                About{' '}
-                <h2>
-                  {' '}
-                  <br />
-                </h2>
-                CIO-Crown
-              </h2>
+              <h2>About CIO-Crown</h2>
 
               <p className="social-media-highlight">
                 <strong>Theme 2025:</strong> Orchestrating the Intelligent Enterprise:

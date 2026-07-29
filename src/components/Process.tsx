@@ -70,7 +70,7 @@ export default function CIOPowerListProcess() {
           </div>
 
           <div className="delegates-card delegate-animate">
-            <span className="delegates-count">Pan-India</span>
+            <span className="delegates-count">Pan India</span>
             <h3>Key Industry Verticals</h3>
             <p>
               An exclusive gathering of CIOs and ICT Business Leaders from India&apos;s leading

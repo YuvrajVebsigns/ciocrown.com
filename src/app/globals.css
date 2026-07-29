@@ -2095,7 +2095,7 @@ body {
 .founder-message-section {
   position: relative;
   width: 100%;
-  padding: 110px 24px;
+  padding: 70px 24px;
   background:
     radial-gradient(circle at 8% 12%, rgba(142, 1, 1, 0.06), transparent 28%),
     radial-gradient(circle at 92% 88%, rgba(142, 1, 1, 0.05), transparent 24%), #ffffff;
@@ -2104,11 +2104,12 @@ body {
 }
 
 .founder-message-container {
-  width: min(1320px, 100%);
-  margin: 0 auto;
+  width: min(1280px, 100%);
+  margin-top: 10px;
+  margin-left: 120px;
   display: grid;
-  grid-template-columns: 430px 1fr;
-  column-gap: 130px; /* Increase/decrease this value */
+  grid-template-columns: 360px 1fr;
+  column-gap: 90px;
   align-items: center;
 }
 
@@ -2117,23 +2118,25 @@ body {
 ========================================================= */
 
 .founder-image-wrapper {
-  position: relative;
-  z-index: 1;
+  position: sticky;
+  top: 20px;
+  z-index: 10;
   width: 100%;
-  max-width: 430px;
-  margin: 0 40px;
-  padding: 0 22px 28px 0;
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 0 18px 22px 0;
   isolation: isolate;
+  align-self: flex-start;
 }
 
 .founder-image-wrapper::before {
   content: '';
   position: absolute;
-  top: 24px;
-  left: 24px;
+  top: 20px;
+  left: 20px;
   right: 0;
   bottom: 0;
-  border-radius: 28px;
+  border-radius: 24px;
   background: linear-gradient(145deg, #8e0101 0%, #550000 100%);
   z-index: -1;
 }
@@ -2141,11 +2144,11 @@ body {
 .founder-image-wrapper::after {
   content: '';
   position: absolute;
-  top: -18px;
-  left: -18px;
-  width: 90px;
-  height: 90px;
-  border: 14px solid rgba(142, 1, 1, 0.08);
+  top: -14px;
+  left: -14px;
+  width: 75px;
+  height: 75px;
+  border: 12px solid rgba(142, 1, 1, 0.08);
   border-radius: 50%;
   z-index: -2;
 }
@@ -2153,19 +2156,19 @@ body {
 .founder-image-frame {
   position: relative;
   width: 100%;
-  border-radius: 28px;
+  border-radius: 24px;
   overflow: hidden;
   background: #f6f6f6;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
 }
 
 .founder-image {
   display: block;
   width: 100%;
-  height: 520px;
+  height: 430px;
   object-fit: contain;
   object-position: center top;
-  background: #fff;
+  background: #ffffff;
   transition: transform 0.4s ease;
 }
 
@@ -2174,9 +2177,10 @@ body {
 }
 
 .founder-label {
-  font-size: 20px;
+  font-size: 24px;
   color: #8e0101;
 }
+
 /* =========================================================
    EXPERIENCE CARD
 ========================================================= */
@@ -2186,13 +2190,13 @@ body {
   right: -6px;
   bottom: 0;
   z-index: 3;
-  min-width: 175px;
-  padding: 20px 24px;
+  min-width: 150px;
+  padding: 16px 20px;
   border: 1px solid rgba(142, 1, 1, 0.12);
-  border-radius: 20px;
+  border-radius: 18px;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(10px);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
   animation: founderFloat 3.5s ease-in-out infinite;
 }
 
@@ -2200,7 +2204,7 @@ body {
   display: block;
   margin-bottom: 6px;
   color: #8e0101;
-  font-size: 42px;
+  font-size: 36px;
   line-height: 1;
   font-weight: 900;
 }
@@ -2208,7 +2212,7 @@ body {
 .founder-experience-card span {
   display: block;
   color: #444444;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.45;
   font-weight: 700;
 }
@@ -2221,6 +2225,7 @@ body {
   position: relative;
   z-index: 2;
   width: 100%;
+  margin-top: -30px;
   max-width: 710px;
   margin-left: 80px;
 }
@@ -2264,7 +2269,7 @@ body {
   max-width: 680px;
   margin: 0 0 30px;
   color: #555555;
-  font-size: 17px;
+  font-size: 19px;
   line-height: 1.85;
 }
 
@@ -2398,7 +2403,7 @@ body {
 .founder-author span {
   display: block;
   color: #777777;
-  font-size: 14px;
+  font-size: 17px;
   line-height: 1.5;
   font-weight: 600;
 }
@@ -2429,6 +2434,9 @@ body {
   box-shadow: 0 14px 34px rgba(142, 1, 1, 0.25);
 }
 
+.founder-btn:hover .founder-btn-icon {
+  transform: rotate(45deg);
+}
 /* =========================================================
    ANIMATION
 ========================================================= */
@@ -3468,7 +3476,7 @@ body {
   border-radius: 12px;
   width: 100%;
   max-width: 1400px;
-  margin: 0 auto;
+  margin: -90px auto;
   box-sizing: border-box;
 }
 
@@ -10862,8 +10870,8 @@ s .dialogues-badge-mark {
 .social-media-content h2 {
   font-size: clamp(34px, 5vw, 58px);
   color: #8e0101;
-  margin-bottom: 28px;
-  font-weight: 800;
+  margin-bottom: 18px;
+  font-weight: 540;
   position: relative;
 }
 
@@ -12234,7 +12242,7 @@ s .dialogues-badge-mark {
 .delegates-card {
   position: relative;
   display: flex;
-  min-height: 380px;
+  min-height: 80px;
   flex-direction: column;
   align-items: flex-start;
   padding: 42px;
@@ -12299,10 +12307,9 @@ s .dialogues-badge-mark {
   position: relative;
   z-index: 2;
 }
-
 .delegates-card-large {
   grid-column: 1 / -1;
-  min-height: 300px;
+  min-height: 240px;
   padding-right: min(12vw, 160px);
   background: linear-gradient(110deg, #8e0101 0%, #660101 58%, #430000 100%);
   border-color: transparent;
@@ -12781,14 +12788,15 @@ s .dialogues-badge-mark {
 
 .aboutus-title {
   max-width: 860px;
-  font-size: 48px;
+  font-size: 38px;
   line-height: 1.08;
   font-weight: 540;
   color: #0c1e21;
   margin-bottom: 20px;
 }
+
 .aboutus-title span {
-  color: #a40000;
+  color: #8e0101;
 }
 
 .aboutus-label-icon {
@@ -12812,7 +12820,7 @@ s .dialogues-badge-mark {
 }
 
 .aboutus-label-text {
-  margin: 0;
+  margin: 10px;
   padding: 0;
 
   display: inline-block;

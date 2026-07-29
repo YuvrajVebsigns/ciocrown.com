@@ -58,7 +58,7 @@ export default function AboutUsSection() {
             />
             <span className="aboutus-label-text">THEME 2025</span>
           </div>
-
+          <br />
           <h4 className="aboutus-title theme-title">
             Orchestrating the Intelligent Enterprise
             <br />

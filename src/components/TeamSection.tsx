@@ -56,7 +56,7 @@ export default function TeamSection() {
             <div className="about-crown-card about-animate">
               {/* <span className="about-crown-card-count">01</span> */}
               <p>
-                CIO Crown is a meticulously curated gathering of pan-India CIOs, CTOs and Corporate
+                CIO CROWN is a meticulously curated gathering of pan-India CIOs, CTOs and Corporate
                 Technology Professionals looking to explore, discover, and collaborate through
                 highly interactive formats designed to provide a deeper understanding of new
                 emerging technologies and leadership issues that are needed to excel in their
@@ -64,14 +64,14 @@ export default function TeamSection() {
               </p>
               <br />
               <p>
-                Hosted by CORE Media, CIO Crown is the only independent event on the international
+                Hosted by CORE Media, CIO CROWN is the only independent event on the international
                 ICT engagement circuit. It is a mecca of ICT engagement for the CIO and ICT vendor
                 community with sessions designed to be more relevant, engaging and interactive for
                 delegates and vendors.
               </p>
               <br />
               <p>
-                A uniquely conceptualised pioneering platform, CIO Crown seeks to bring together the
+                A uniquely conceptualised pioneering platform, CIO CROWN seeks to bring together the
                 sharpest corporate CIO minds from India for Technology, Business, Brand and
                 Community Engagement.
               </p>

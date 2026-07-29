@@ -152,12 +152,19 @@ export default function FoundersMessage() {
           <br />
 
           {/* BUTTON */}
-          <Link href="/#contact-section" className="founder-btn">
+          <Link href="/#contact-section" className="talk-btn">
             <span>Partner With Us</span>
-            <div className="founder-btn-icon">
-              <ArrowUpRight size={22} />
+
+            <div className="talk-btn-icon">
+              <ArrowUpRight size={18} />
             </div>
           </Link>
+          {/* <Link href="/#contact-section" className="founder-btn">
+            <span></span>
+            <div className="talk-btn-icon">
+              <ArrowUpRight size={18} />
+            </div>
+          </Link> */}
         </div>
       </div>
     </section>
