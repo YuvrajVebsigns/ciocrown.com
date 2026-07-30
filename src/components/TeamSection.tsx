@@ -37,7 +37,10 @@ export default function TeamSection() {
           <div className="about-crown-left about-animate">
             {/* <span className="about-crown-subtitle">ABOUT CIO CROWN</span> */}
 
-            <h2 className="about-crown-title">ABOUT CIO CROWN</h2>
+            <h2 className="about-crown-title">
+              ABOUT <br />
+              <span className="about-crown-nowrap">CIO CROWN</span>
+            </h2>
 
             {/* <div className="about-crown-stats">
               <div>

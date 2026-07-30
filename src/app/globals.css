@@ -2859,8 +2859,9 @@ body {
 
 .about-crown-layout {
   display: grid;
+  margin-left: -51px;
   grid-template-columns: 0.9fr 1.1fr;
-  gap: 60px;
+  gap: 10px;
   align-items: start;
 }
 
@@ -2887,6 +2888,10 @@ body {
   font-weight: 500;
   color: #111;
   margin: 0;
+}
+
+.about-crown-nowrap {
+  white-space: nowrap;
 }
 
 .about-crown-title::after {
@@ -2933,6 +2938,7 @@ body {
 
 .about-crown-right {
   width: 1000px;
+  margin-left: 40px;
   display: grid;
   gap: 21px;
 }
@@ -12390,7 +12396,7 @@ s .dialogues-badge-mark {
 }
 
 .delegates-card-large p {
-  max-width: 920px;
+  max-width: 1000px;
   color: rgba(255, 255, 255, 0.82);
 }
 
@@ -12564,6 +12570,7 @@ s .dialogues-badge-mark {
 }
 
 .partners-hero {
+  margin-top: -100px;
   padding: 50px 20px 90px;
   text-align: center;
   background: linear-gradient(135deg, #8e0101, #d11f26);
