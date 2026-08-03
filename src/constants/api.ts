@@ -1,4 +1,4 @@
-export const API_BASE_URL = '';
+export { API_BASE_URL } from './app.constants';
 
 export const API_ENDPOINTS = {
   AUTH: {
@@ -19,6 +19,9 @@ export const API_ENDPOINTS = {
     EVENTS: {
       BASE: '/api/v1/website/events',
       BY_ID: (id: string) => `/api/v1/website/events/${encodeURIComponent(id)}`,
+    },
+    ANALYTICS: {
+      TRACK: '/api/v1/website/analytics/track',
     },
     BLOG_COMMENTS: {
       BASE: (id: string) => `/api/v1/website/blogs/${encodeURIComponent(id)}/comments`,

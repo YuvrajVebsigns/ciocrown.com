@@ -6,6 +6,7 @@ import Preloader from '@/components/Preloader';
 import Navbar from '@/components/Navbar';
 import ScrollProgress from '@/components/ScrollProgress';
 import ScrollAnimator from '@/components/ScrollAnimator';
+import CookieConsentBanner from '@/components/CookieConsentBanner';
 import Footer from '@/components/Footer';
 
 const inter = Inter({
@@ -33,7 +34,10 @@ export default function RootLayout({
         <Preloader />
         <ScrollProgress />
         <ScrollAnimator />
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          {children}
+          <CookieConsentBanner />
+        </QueryProvider>
         <Footer />
       </body>
     </html>
