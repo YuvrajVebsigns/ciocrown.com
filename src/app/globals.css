@@ -2627,10 +2627,9 @@ body {
   max-width: 680px;
   margin: 0 0 30px;
   color: #555555;
-  font-size: 19px;
+  font-size: 21px;
   line-height: 1.85;
 }
-
 /* =========================================================
    QUOTE
 ========================================================= */
@@ -2740,29 +2739,24 @@ body {
 
 .founder-author {
   display: flex;
-  align-items: center;
-  /* justify-content: space-between; */
-  gap: 24px;
+  flex-direction: column;
+  gap: 4px; /* or 2px */
   padding-top: 4px;
 }
 
-.founder-author-info {
-  min-width: 0;
-}
-
 .founder-author h3 {
-  margin: 0 0 6px;
+  margin: 0;
   color: #111111;
-  font-size: 23px;
-  line-height: 1.25;
-  font-weight: 800;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
 }
 
 .founder-author span {
-  display: block;
+  margin: 0; /* remove margin-top */
   color: #777777;
   font-size: 17px;
-  line-height: 1.5;
+  line-height: 1.4;
   font-weight: 600;
 }
 
@@ -2817,39 +2811,69 @@ body {
 @media (max-width: 1200px) {
   .founder-message-container {
     width: min(1120px, 100%);
-    grid-template-columns: minmax(350px, 0.9fr) minmax(0, 1.1fr);
-    gap: 50px;
+    margin: 0 auto;
+    grid-template-columns: 320px 1fr;
+    column-gap: 50px;
+  }
+
+  .founder-content {
+    margin-left: 0;
   }
 
   .founder-image-wrapper {
-    max-width: 500px;
+    max-width: 320px;
   }
 
   .founder-image {
-    height: 560px;
+    height: 400px;
   }
 }
 
 @media (max-width: 900px) {
   .founder-message-section {
-    padding: 90px 24px;
+    padding: 60px 20px;
   }
 
   .founder-message-container {
-    grid-template-columns: 1fr;
-    gap: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    gap: 40px;
   }
 
   .founder-image-wrapper {
+    position: relative;
+    top: 0;
     order: 0;
-    max-width: 520px;
+    width: 100%;
+    max-width: 300px;
     margin: 0 auto;
-    padding: 0 24px 42px 0;
+    padding: 0 16px 50px;
+  }
+
+  .founder-image-wrapper::before {
+    top: 16px;
+    left: 16px;
+    right: 0;
+    bottom: 0;
+  }
+
+  .founder-image-wrapper::after {
+    width: 70px;
+    height: 70px;
+  }
+
+  .founder-image {
+    height: 360px;
+    object-fit: contain;
   }
 
   .founder-content {
-    max-width: 760px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
     text-align: center;
   }
 
@@ -2859,8 +2883,8 @@ body {
 
   .founder-title,
   .founder-description {
-    margin-right: auto;
     margin-left: auto;
+    margin-right: auto;
   }
 
   .founder-quote {
@@ -2869,90 +2893,9 @@ body {
 
   .founder-author {
     justify-content: center;
-    text-align: left;
-  }
-
-  .founder-image {
-    height: 620px;
-  }
-}
-
-@media (max-width: 640px) {
-  .founder-message-section {
-    padding: 75px 18px 105px;
-  }
-
-  .founder-message-container {
-    gap: 55px;
-  }
-
-  .founder-image-wrapper {
-    max-width: 430px;
-    padding: 0 14px 55px 0;
-  }
-
-  .founder-image-wrapper::before {
-    top: 22px;
-    right: 0;
-    bottom: 8px;
-    left: 24px;
-    border-radius: 24px;
-  }
-
-  .founder-image-wrapper::after {
-    top: -20px;
-    left: -15px;
-    width: 80px;
-    height: 80px;
-    border-width: 13px;
-  }
-
-  .founder-image-frame {
-    border-radius: 24px;
-  }
-
-  .founder-image {
-    height: 500px;
-  }
-
-  .founder-experience-card {
-    right: auto;
-    bottom: 0;
-    left: 50%;
-    min-width: 185px;
-    padding: 18px 22px;
     text-align: center;
-    transform: translateX(-50%);
-    animation: none;
-  }
-
-  .founder-experience-card strong {
-    font-size: 36px;
-  }
-
-  .founder-title {
-    font-size: clamp(34px, 11vw, 48px);
-  }
-
-  .founder-description {
-    font-size: 16px;
-    line-height: 1.75;
-  }
-
-  .founder-quote {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 22px 20px;
-  }
-
-  .founder-quote p {
-    font-size: 16px;
-  }
-
-  .founder-author {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    gap: 18px;
   }
 
   .founder-btn {
@@ -2961,22 +2904,131 @@ body {
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 640px) {
   .founder-message-section {
-    padding-right: 14px;
-    padding-left: 14px;
+    padding: 50px 16px 70px;
+  }
+
+  .founder-message-container {
+    gap: 30px;
+    margin: 0;
+  }
+
+  .founder-image-wrapper {
+    max-width: 250px;
+    padding: 0 10px 45px;
+  }
+
+  .founder-image-wrapper::before {
+    top: 14px;
+    left: 14px;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+  }
+
+  .founder-image-wrapper::after {
+    width: 55px;
+    height: 55px;
+    border-width: 8px;
+    top: -12px;
+    left: -10px;
+  }
+
+  .founder-image-frame {
+    border-radius: 20px;
   }
 
   .founder-image {
-    height: 440px;
+    height: 300px;
+  }
+
+  .founder-experience-card {
+    left: 50%;
+    right: auto;
+    bottom: -10px;
+    transform: translateX(-50%);
+    min-width: 150px;
+    padding: 14px 18px;
+    animation: none;
+  }
+
+  .founder-experience-card strong {
+    font-size: 28px;
+  }
+
+  .founder-experience-card span {
+    font-size: 11px;
   }
 
   .founder-title {
-    font-size: 34px;
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .founder-description {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .founder-quote {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 18px;
+  }
+
+  .founder-quote p {
+    font-size: 15px;
+  }
+
+  .founder-author {
+    align-items: center;
+    text-align: center;
   }
 
   .founder-author h3 {
-    font-size: 21px;
+    font-size: 22px;
+  }
+
+  .founder-author span {
+    font-size: 15px;
+  }
+
+  .founder-btn {
+    width: 100%;
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 420px) {
+  .founder-message-section {
+    padding: 45px 14px 60px;
+  }
+
+  .founder-image-wrapper {
+    max-width: 220px;
+  }
+
+  .founder-image {
+    height: 260px;
+  }
+
+  .founder-title {
+    font-size: 26px;
+  }
+
+  .founder-description {
+    font-size: 14px;
+  }
+
+  .founder-author h3 {
+    font-size: 20px;
+  }
+
+  .founder-btn {
+    max-width: 220px;
+    font-size: 13px;
+    padding: 12px 20px;
   }
 }
 
@@ -3022,7 +3074,7 @@ body {
 
 .theme-heading {
   max-width: 980px;
-  margin: 0 auto 44px;
+  margin: 0 auto 4px;
   text-align: center;
 }
 
@@ -3072,7 +3124,7 @@ body {
   border-radius: 18px;
   background: #fff4f4;
   color: #8e0101 !important;
-  font-weight: 800;
+  font-weight: 540;
 }
 
 .theme-grid {
@@ -3211,21 +3263,22 @@ body {
 }
 
 .about-crown-container {
-  max-width: 1200px;
+  width: min(1320px, 100%);
   margin: 0 auto;
 }
 
 .about-crown-layout {
   display: grid;
-  margin-left: -51px;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 10px;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 20px;
   align-items: start;
 }
 
 .about-crown-left {
   position: sticky;
   top: 110px;
+  width: 100%;
+  max-width: 300px;
 }
 
 .about-crown-subtitle {
@@ -3241,11 +3294,13 @@ body {
 }
 
 .about-crown-title {
-  font-size: 56px;
+  font-size: 49px;
   line-height: 1.05;
   font-weight: 500;
   color: #111;
   margin: 0;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .about-crown-nowrap {
@@ -3295,20 +3350,19 @@ body {
 }
 
 .about-crown-right {
-  width: 1000px;
-  margin-left: 40px;
-  display: grid;
-  gap: 21px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .about-crown-card {
   position: relative;
-  padding: 34px 34px 34px 86px;
+  padding: 34px;
   border-radius: 26px;
   background: rgba(255, 255, 255, 0.86);
   border: 1px solid #eadada;
   overflow: hidden;
   transition: 0.35s ease;
+  box-sizing: border-box;
 }
 
 .about-crown-card::before {
@@ -12304,7 +12358,7 @@ s .dialogues-badge-mark {
 }
 
 .venue-hero {
-  padding: 140px 20px 100px;
+  padding: 40px 20px 100px;
   background: linear-gradient(135deg, #8e0101 0%, #d91c1c 100%);
   color: white;
   text-align: center;
@@ -12337,8 +12391,8 @@ s .dialogues-badge-mark {
 }
 
 .venue-hero h1 {
-  font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 800;
+  font-size: 33px;
+  font-weight: 540;
 }
 
 .venue-hero h1 span {
@@ -13152,8 +13206,8 @@ s .dialogues-badge-mark {
 }
 
 .aboutus-title {
-  max-width: 860px;
-  font-size: 38px;
+  max-width: 950px;
+  font-size: 32px;
   line-height: 1.08;
   font-weight: 540;
   color: #0c1e21;

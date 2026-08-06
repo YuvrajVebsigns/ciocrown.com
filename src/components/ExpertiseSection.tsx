@@ -61,8 +61,7 @@ export default function AboutUsSection() {
           <br />
           <h4 className="aboutus-title theme-title">
             Orchestrating the Intelligent Enterprise
-            <br />
-            <span>Moving the Growth Needle</span>
+            <span> Moving the Growth Needle</span>
           </h4>
         </div>
 
