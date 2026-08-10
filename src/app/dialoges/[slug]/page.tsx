@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 interface Dialogue {
   id: number;
   slug: string;
-  title: string;
+  title: string; 
   quote: string;
   author: string;
   role: string;
@@ -14,6 +14,7 @@ interface Dialogue {
   date: string;
 }
 
+//
 export default function DialogueDetail({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const [dialogue, setDialogue] = useState<Dialogue | null>(null);
