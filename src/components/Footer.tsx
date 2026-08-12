@@ -4,8 +4,46 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, Mail, Send } from 'lucide-react';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
+import { useState, useEffect } from 'react';
+import { submitWebsiteSubscription } from '@/services/subscription.service';
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (!statusMessage) return;
+
+    const timer = window.setTimeout(() => setStatusMessage(null), 3600);
+    return () => window.clearTimeout(timer);
+  }, [statusMessage]);
+
+  async function handleSubscribe(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail) {
+      setStatusMessage('Please enter a valid email address.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setStatusMessage(null);
+
+    try {
+      await submitWebsiteSubscription(trimmedEmail);
+      setStatusMessage('Thank you! You are now subscribed.');
+      setEmail('');
+    } catch (error) {
+      setStatusMessage(
+        error instanceof Error ? error.message : 'Failed to submit your subscription.',
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <footer className="footer-section">
       {/* MAIN FOOTER */}
@@ -65,13 +103,32 @@ export default function Footer() {
             <div className="footer-widget">
               <h4 className="footer-title">Subscribe</h4>
 
-              <form className="footer-subscribe">
-                <input type="email" placeholder="Enter your email" className="footer-input" />
+              <form className="footer-subscribe" onSubmit={handleSubscribe}>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="footer-input"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  required
+                />
 
-                <button type="submit" className="footer-submit" aria-label="Subscribe">
+                <button
+                  type="submit"
+                  className="footer-submit"
+                  aria-label="Subscribe"
+                  disabled={isSubmitting}
+                >
                   <Send size={18} />
                 </button>
               </form>
+
+              {statusMessage ? (
+                <p className="footer-subscribe-status" role="status" aria-live="polite">
+                  {statusMessage}
+                </p>
+              ) : null}
+
               <br />
               <h3>Office Address</h3>
               <p className="footer-description">

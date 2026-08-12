@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 interface Dialogue {
   id: number;
   slug: string;
-  title: string; 
+  title: string;
   quote: string;
   author: string;
   role: string;
