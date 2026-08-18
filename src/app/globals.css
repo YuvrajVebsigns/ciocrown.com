@@ -2093,7 +2093,7 @@ body {
 .contact-form-area {
   background: #810b0b;
   padding: 42px 50px;
-  height: 450px;
+  height: 520px;
   border-radius: 24px;
   margin-top: auto;
   position: relative;
@@ -2262,6 +2262,399 @@ body {
 
 .contact-btn:hover .contact-btn-icon {
   transform: rotate(45deg);
+}
+
+/* =========================================================
+   CAPTCHA SECTION
+========================================================= */
+
+.contact-captcha {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.captcha-title {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #f9f0f0;
+}
+
+/* =========================================================
+   CUSTOM CAPTCHA CARD
+========================================================= */
+
+.custom-captcha {
+  width: 60%;
+  min-height: 64px;
+  padding: 12px 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+
+  box-sizing: border-box;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* =========================================================
+   CAPTCHA CHECK ICON
+========================================================= */
+
+.captcha-check {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid #c7c7c7;
+  border-radius: 7px;
+
+  background: #fff;
+
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.captcha-check > span {
+  width: 11px;
+  height: 11px;
+  display: block;
+  border-radius: 50%;
+  background: #8e0101;
+}
+
+/* =========================================================
+   CAPTCHA CONTENT
+========================================================= */
+
+.captcha-content {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.captcha-content strong {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  color: #222;
+}
+
+.captcha-content small {
+  font-size: 11px;
+  line-height: 16px;
+  color: #777;
+}
+
+/* =========================================================
+   I'M HUMAN BUTTON
+========================================================= */
+
+.captcha-verify-button {
+  min-width: 105px;
+  height: 38px;
+
+  padding: 0 15px;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: #a40000;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+
+  white-space: nowrap;
+}
+
+.captcha-verify-button:hover:not(:disabled) {
+  background: #8e0101;
+  box-shadow: 0 4px 12px rgba(164, 0, 0, 0.2);
+}
+
+.captcha-verify-button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.captcha-verify-button:disabled {
+  background: #cfcfcf;
+  color: #777;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.75;
+}
+
+/* =========================================================
+   VERIFIED STATE
+========================================================= */
+
+.custom-captcha-verified {
+  border-color: #b8d9c1;
+  background: #f5fbf6;
+}
+
+.captcha-check-success {
+  border-color: #258a43;
+  background: #258a43;
+  color: #ffffff;
+}
+
+.captcha-check-success svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* =========================================================
+   ERROR STATE
+========================================================= */
+
+.custom-captcha-error {
+  border-color: #e1aaaa;
+  background: #fff8f8;
+}
+
+.custom-captcha-error .captcha-check {
+  border-color: #c62828;
+}
+
+.custom-captcha-error .captcha-check > span {
+  background: #c62828;
+}
+
+.custom-captcha-error .captcha-content strong {
+  color: #a40000;
+}
+
+/* =========================================================
+   VERIFYING STATE
+========================================================= */
+
+.captcha-check-loading {
+  border-color: #a40000;
+  color: #a40000;
+  background: #fff5f5;
+}
+
+.captcha-spin {
+  animation: captchaSpin 0.9s linear infinite;
+}
+
+@keyframes captchaSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   REFRESH BUTTON
+========================================================= */
+
+.captcha-refresh-icon-button {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #d5d5d5;
+  border-radius: 7px;
+
+  background: #ffffff;
+  color: #a40000;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.captcha-refresh-icon-button:hover:not(:disabled) {
+  background: #fff5f5;
+  border-color: #a40000;
+}
+
+.captcha-refresh-icon-button:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+.captcha-refresh-icon-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   INVISIBLE TURNSTILE
+========================================================= */
+
+.turnstile-invisible {
+  position: absolute !important;
+
+  width: 1px !important;
+  height: 1px !important;
+
+  overflow: hidden !important;
+
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* =========================================================
+   POPUP MESSAGE
+========================================================= */
+
+.contact-popup {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-left: auto;
+  max-width: 430px;
+
+  padding: 9px 12px;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+
+  animation: captchaPopupIn 0.25s ease;
+}
+
+.contact-popup-dot {
+  width: 7px;
+  height: 7px;
+  min-width: 7px;
+
+  border-radius: 50%;
+  background: #a40000;
+}
+
+.contact-popup p {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 17px;
+  color: #333;
+}
+
+.contact-popup button {
+  width: 22px;
+  height: 22px;
+
+  margin-left: auto;
+
+  border: 0;
+  background: transparent;
+
+  color: #777;
+
+  font-size: 20px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.contact-popup button:hover {
+  color: #a40000;
+}
+
+@keyframes captchaPopupIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   CAPTCHA RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+  .custom-captcha {
+    min-height: auto;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .captcha-content strong {
+    font-size: 13px;
+  }
+
+  .captcha-content small {
+    font-size: 10px;
+  }
+
+  .captcha-verify-button {
+    min-width: 90px;
+    padding: 0 11px;
+    font-size: 11px;
+  }
+
+  .contact-popup {
+    margin-top: 10px;
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-captcha {
+    flex-wrap: wrap;
+  }
+
+  .captcha-content {
+    flex: 1;
+  }
+
+  .captcha-verify-button {
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .captcha-refresh-icon-button {
+    margin-left: auto;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -6264,7 +6657,7 @@ body {
 .contact-form-area {
   background: #810b0b;
   padding: 42px 50px;
-  height: 450px;
+  height: 520px;
   border-radius: 24px;
   margin-top: auto;
   position: relative;
