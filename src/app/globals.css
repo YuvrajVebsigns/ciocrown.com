@@ -10870,10 +10870,13 @@ s .dialogues-badge-mark {
 }
 
 .footer-links a {
+  display: inline-block;
   font-size: 16px;
   color: #2a2a2a;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .footer-links a:hover {
@@ -10888,43 +10891,236 @@ s .dialogues-badge-mark {
 .footer-subscribe {
   display: flex;
   align-items: center;
+
+  width: 100%;
+  max-width: 360px;
+  min-height: 58px;
+
   overflow: hidden;
   border-radius: 999px;
+
   background: #d1c3c3;
-  margin-bottom: 24px;
-  max-width: 360px;
+
+  margin-bottom: 12px;
+
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
+.footer-subscribe:focus-within {
+  background: #d8cccc;
+  box-shadow: 0 0 0 3px rgba(157, 0, 0, 0.1);
+}
+
+/* =========================================================
+   SUBSCRIBE INPUT
+========================================================= */
 
 .footer-input {
   flex: 1;
+
+  width: 100%;
+  min-width: 0;
+
   height: 58px;
+
   border: none;
   outline: none;
+
   background: transparent;
+
   padding: 0 22px;
+
   font-size: 15px;
   color: #111111;
+
+  box-sizing: border-box;
 }
 
 .footer-input::placeholder {
   color: rgba(0, 0, 0, 0.45);
 }
 
+.footer-input:focus::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================================
+   SUBSCRIBE BUTTON
+========================================================= */
+
 .footer-submit {
   width: 58px;
   height: 58px;
+  min-width: 58px;
+
   border: none;
+
   background: #9d0000;
   color: #ffffff;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   cursor: pointer;
-  transition: background 0.3s ease;
+
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease,
+    opacity 0.25s ease;
 }
 
-.footer-submit:hover {
+.footer-submit:hover:not(:disabled) {
   background: #7d0000;
+}
+
+.footer-submit:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.footer-submit:focus-visible {
+  outline: 2px solid #9d0000;
+  outline-offset: 3px;
+}
+
+.footer-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.footer-submit:disabled:hover {
+  background: #9d0000;
+}
+
+/* =========================================================
+   SUBSCRIPTION POPUP
+========================================================= */
+
+.footer-subscribe-popup {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  max-width: 360px;
+
+  box-sizing: border-box;
+
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  padding: 11px 12px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(157, 0, 0, 0.18);
+  border-radius: 9px;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+
+  animation: footerPopupIn 0.25s ease;
+}
+
+/* =========================================================
+   SUBSCRIPTION POPUP DOT
+========================================================= */
+
+.footer-popup-dot {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+
+  border-radius: 50%;
+
+  background: #9d0000;
+}
+
+/* =========================================================
+   SUBSCRIPTION POPUP TEXT
+========================================================= */
+
+.footer-subscribe-popup p {
+  flex: 1;
+
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 18px;
+
+  color: #2c2c2c;
+}
+
+/* =========================================================
+   SUBSCRIPTION POPUP CLOSE
+========================================================= */
+
+.footer-subscribe-popup button {
+  width: 24px;
+  height: 24px;
+
+  min-width: 24px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: transparent;
+
+  color: #777777;
+
+  font-size: 21px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.footer-subscribe-popup button:hover {
+  color: #9d0000;
+  background: rgba(157, 0, 0, 0.08);
+}
+
+.footer-subscribe-popup button:focus-visible {
+  outline: 2px solid #9d0000;
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   SUBSCRIPTION POPUP ANIMATION
+========================================================= */
+
+@keyframes footerPopupIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   OFFICE ADDRESS
+========================================================= */
+
+.footer-widget h3 {
+  margin-top: 0;
 }
 
 /* =========================================================
@@ -10935,8 +11131,10 @@ s .dialogues-badge-mark {
   display: flex;
   align-items: flex-start;
   gap: 10px;
+
   font-size: 14px;
   line-height: 1.6;
+
   color: #2a2a2a;
 }
 
@@ -10963,7 +11161,9 @@ s .dialogues-badge-mark {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   gap: 24px;
+
   flex-wrap: wrap;
 }
 
@@ -10974,27 +11174,38 @@ s .dialogues-badge-mark {
 .footer-contact {
   display: flex;
   align-items: center;
+
   gap: 22px;
+
   flex-wrap: wrap;
 }
 
 .footer-contact-item {
   display: inline-flex;
   align-items: center;
+
   gap: 12px;
+
   text-decoration: none;
 }
 
 .footer-contact-icon {
   width: 38px;
   height: 38px;
+  min-width: 38px;
+
   border-radius: 50%;
+
   background: #9d0000;
   color: #ffffff;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
 }
 
 .footer-contact-item:hover .footer-contact-icon {
@@ -11020,14 +11231,22 @@ s .dialogues-badge-mark {
 .footer-socials a {
   width: 38px;
   height: 38px;
+
   border-radius: 50%;
+
   background: rgba(0, 0, 0, 0.08);
   color: #111111;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   text-decoration: none;
-  transition: all 0.3s ease;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .footer-socials a:hover {
@@ -11046,25 +11265,15 @@ s .dialogues-badge-mark {
 }
 
 /* =========================================================
-   RESPONSIVE
+   TABLET
 ========================================================= */
 
 @media (max-width: 1100px) {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
+
     column-gap: 50px;
     row-gap: 40px;
-  }
-}
-
-@media (max-width: 768px) {
-  .footer-section {
-    padding-top: 80px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
   }
 
   .footer-brand {
@@ -11072,7 +11281,45 @@ s .dialogues-badge-mark {
   }
 
   .footer-logo-img {
-    width: 160px;
+    width: 300px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .footer-section {
+    padding-top: 80px;
+  }
+
+  .footer-container {
+    padding: 0 20px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+
+    padding-bottom: 40px;
+  }
+
+  .footer-brand {
+    max-width: 100%;
+  }
+
+  .footer-logo-img {
+    width: 200px;
+    height: auto;
+  }
+
+  .footer-subscribe {
+    max-width: 100%;
+  }
+
+  .footer-subscribe-popup {
+    max-width: 100%;
   }
 
   .footer-bottom-wrapper {
@@ -11085,23 +11332,97 @@ s .dialogues-badge-mark {
     align-items: flex-start;
     gap: 14px;
   }
+
+  .footer-socials {
+    margin-top: 4px;
+  }
 }
 
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
 @media (max-width: 480px) {
+  .footer-section {
+    padding-top: 65px;
+  }
+
+  .footer-container {
+    padding: 0 16px;
+  }
+
   .footer-title {
     font-size: 20px;
   }
 
+  .footer-widget h3 {
+    font-size: 17px;
+  }
+
   .footer-description {
     font-size: 15px;
+    line-height: 1.75;
   }
 
   .footer-input {
-    font-size: 15px;
+    height: 54px;
+    padding: 0 17px;
+    font-size: 14px;
   }
 
   .footer-subscribe {
+    min-height: 54px;
     max-width: 100%;
+  }
+
+  .footer-submit {
+    width: 54px;
+    height: 54px;
+    min-width: 54px;
+  }
+
+  .footer-subscribe-popup {
+    max-width: 100%;
+
+    padding: 10px;
+
+    gap: 8px;
+  }
+
+  .footer-subscribe-popup p {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .footer-popup-dot {
+    width: 7px;
+    height: 7px;
+    min-width: 7px;
+  }
+
+  .footer-subscribe-popup button {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+
+    font-size: 19px;
+  }
+
+  .footer-contact-text {
+    font-size: 14px;
+  }
+
+  .footer-socials {
+    gap: 10px;
+  }
+
+  .footer-socials a {
+    width: 36px;
+    height: 36px;
+  }
+
+  .footer-copy {
+    font-size: 12px;
   }
 }
 

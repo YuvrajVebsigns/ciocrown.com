@@ -123,11 +123,26 @@ export default function Footer() {
                 </button>
               </form>
 
-              {statusMessage ? (
+              {/* {statusMessage ? (
                 <p className="footer-subscribe-status" role="status" aria-live="polite">
                   {statusMessage}
                 </p>
-              ) : null}
+              ) : null} */}
+              {statusMessage && (
+                <div className="footer-subscribe-popup" role="status" aria-live="polite">
+                  <span className="footer-popup-dot" aria-hidden="true" />
+
+                  <p>{statusMessage}</p>
+
+                  <button
+                    type="button"
+                    onClick={() => setStatusMessage(null)}
+                    aria-label="Close message"
+                  >
+                    ×
+                  </button>
+                </div>
+              )}
 
               <br />
               <h3>Office Address</h3>
