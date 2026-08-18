@@ -14,6 +14,7 @@ interface Dialogue {
   date: string;
 }
 
+//
 export default function DialogueDetail({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const [dialogue, setDialogue] = useState<Dialogue | null>(null);
