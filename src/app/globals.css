@@ -14137,3 +14137,350 @@ s .dialogues-badge-mark {
     font-size: 18px;
   }
 }
+
+/* =========================================================
+   CIO CROWN - DELEGATES PROFILE
+   MODERN EDITORIAL DESIGN
+   ========================================================= */
+
+.delegates-page {
+  min-height: 100vh;
+  background: #faf7f5;
+  color: #171717;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.delegates-hero {
+  position: relative;
+  min-height: 360px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #f3e9e6;
+  border-bottom: 1px solid #e4d8d4;
+}
+
+.delegates-hero::after {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: #8e0101;
+  opacity: 0.08;
+}
+
+.delegates-hero-overlay {
+  display: none;
+}
+
+.delegates-hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(1200px, calc(100% - 50px));
+  margin: 0 auto;
+  padding: 75px 0 55px;
+}
+
+.delegates-eyebrow {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #8e0101;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.delegates-hero h1 {
+  max-width: 800px;
+  margin: 0;
+  color: #171717;
+  font-size: clamp(44px, 7vw, 82px);
+  line-height: 0.98;
+  font-weight: 800;
+  letter-spacing: -3px;
+}
+
+.delegates-hero p {
+  max-width: 650px;
+  margin: 24px 0 0;
+  color: #5d5553;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.delegates-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+  color: #77706d;
+  font-size: 13px;
+}
+
+.delegates-breadcrumb a {
+  color: #8e0101;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.delegates-breadcrumb span:nth-child(2) {
+  color: #b5aaa6;
+}
+
+/* =========================================================
+   MAIN SECTION
+   ========================================================= */
+
+.delegates-section {
+  padding: 90px 20px 110px;
+  background: #faf7f5;
+}
+
+.delegates-container {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+/* =========================================================
+   INTRO LAYOUT
+   ========================================================= */
+
+.delegates-heading {
+  display: grid;
+  grid-template-columns: 0.75fr 1.6fr;
+  column-gap: 90px;
+  align-items: start;
+  text-align: left;
+}
+
+.delegates-label {
+  display: inline-block;
+  width: fit-content;
+  padding: 9px 16px;
+  border-radius: 3px;
+  background: #8e0101;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.delegates-heading h2 {
+  grid-column: 1;
+  margin: 25px 0 0;
+  color: #171717;
+  font-size: clamp(34px, 4vw, 54px);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.delegates-heading p {
+  grid-column: 2;
+  margin: 0 0 24px;
+  color: #514b49;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.delegates-heading p:first-of-type {
+  padding-top: 5px;
+}
+
+.delegates-heading p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   DECORATIVE DIVIDER
+   ========================================================= */
+
+.delegates-heading::after {
+  content: '';
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 1px;
+  margin-top: 65px;
+  background: #ded4d0;
+}
+
+/* =========================================================
+   INDUSTRY / DELEGATE INFO BLOCK
+   ========================================================= */
+
+/* .delegates-heading::before {
+  content: "AUTOMOTIVE   •   BANKING   •   BFSI   •   INSURANCE   •   IT / ITES   •   LOGISTICS   •   MANUFACTURING   •   MEDIA & ENTERTAINMENT   •   PHARMA / HEALTHCARE   •   RETAIL / FMCG   •   TELECOM";
+  grid-column: 1 / -1;
+  order: 10;
+  margin-top: 45px;
+  padding: 28px 30px;
+  border-left: 4px solid #8e0101;
+  background: #f0e6e3;
+  color: #4b4442;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 2;
+  letter-spacing: 0.8px;
+} */
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .delegates-hero-content {
+    width: min(100% - 40px, 1200px);
+  }
+
+  .delegates-heading {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .delegates-heading h2 {
+    grid-column: 1;
+    margin: 22px 0 35px;
+  }
+
+  .delegates-heading p {
+    grid-column: 1;
+  }
+
+  .delegates-heading::after {
+    grid-column: 1;
+    margin-top: 50px;
+  }
+
+  .delegates-heading::before {
+    grid-column: 1;
+    margin-top: 35px;
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .delegates-hero {
+    min-height: 330px;
+  }
+
+  .delegates-hero-content {
+    padding: 65px 0 45px;
+  }
+
+  .delegates-hero h1 {
+    font-size: 54px;
+    letter-spacing: -2px;
+  }
+
+  .delegates-hero p {
+    font-size: 15px;
+  }
+
+  .delegates-section {
+    padding: 65px 16px 80px;
+  }
+
+  .delegates-heading h2 {
+    font-size: 40px;
+  }
+
+  .delegates-heading p {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .delegates-heading::before {
+    padding: 22px;
+    font-size: 11px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .delegates-hero {
+    min-height: 310px;
+  }
+
+  .delegates-hero::after {
+    width: 260px;
+    height: 260px;
+    top: -70px;
+    right: -80px;
+  }
+
+  .delegates-hero-content {
+    width: calc(100% - 30px);
+    padding: 55px 0 38px;
+  }
+
+  .delegates-eyebrow {
+    margin-bottom: 16px;
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .delegates-hero h1 {
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: -1.5px;
+  }
+
+  .delegates-hero p {
+    margin-top: 18px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .delegates-breadcrumb {
+    margin-top: 20px;
+    font-size: 12px;
+  }
+
+  .delegates-section {
+    padding: 50px 15px 65px;
+  }
+
+  .delegates-label {
+    padding: 8px 13px;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .delegates-heading h2 {
+    margin: 18px 0 28px;
+    font-size: 32px;
+    letter-spacing: -0.8px;
+  }
+
+  .delegates-heading p {
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.75;
+    text-align: left;
+  }
+
+  .delegates-heading::after {
+    margin-top: 40px;
+  }
+
+  .delegates-heading::before {
+    margin-top: 30px;
+    padding: 20px 17px;
+    font-size: 10px;
+    line-height: 2.1;
+    letter-spacing: 0.4px;
+  }
+}
