@@ -121,13 +121,15 @@ export default function FoundersMessage() {
             Building Connections in a<br />
             <span>Digital World.</span>
           </h2> */}
-
           {/* DESCRIPTION */}
           <p className="founder-description">
-            At CORE Media, our journey has always been driven by a simple belief—meaningful
-            connections create meaningful business outcomes.
+            Anoop Mathur, a seasoned entrepreneur and visionary, has been at the forefront of the
+            technology and media landscape for over 17 years.
+          </p>{' '}
+          <p className="founder-description">
+            As the Founder of CORE MEDIA - Centre Of Recognition & Excellence, operating since June
+            2012 in Mumbai, India, he has pioneered a multi-platform new-age niche media company.
           </p>
-
           {/* QUOTE */}
           {/* <blockquote className="founder-quote">
             <p>
@@ -135,22 +137,18 @@ export default function FoundersMessage() {
               time.”
             </p>
           </blockquote> */}
-
           <div className="founder-readmore-wrap">
             <Link href="/foundermessage" className="founder-readmore-btn">
               Read more
             </Link>
           </div>
           <br />
-
           {/* AUTHOR */}
           <div className="founder-author">
             <h3>Anoop Mathur</h3>
             <span>Founder, CORE MEDIA</span>
           </div>
-
           <br />
-
           {/* BUTTON */}
           <Link href="/#contact-section" className="talk-btn">
             <span>Partner With Us</span>

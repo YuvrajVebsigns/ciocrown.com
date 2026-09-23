@@ -7,7 +7,7 @@ import ProjectsSection from '@/components/ProjectsSection';
 import ContactSection from '@/components/ContactSection';
 import BlogsSection from '@/components/BlogsSection';
 // import DialoguesSection from '@/components/DialoguesSection';
-import CIOPowerListProcess from '@/components/Process';
+// import CIOPowerListProcess from '@/components/Process';
 import Brands from '@/components/Brands';
 import AssociateBrandsPage from '@/components/Associatebrands';
 import TeamSection from '@/components/TeamSection';
@@ -20,7 +20,7 @@ export default function Home() {
       <FoundersMessage />
       <ExpertiseSection />
       <TeamSection />
-      <CIOPowerListProcess />
+      {/* <CIOPowerListProcess /> */}
       <KeyClient />
 
       <ProjectsSection />

@@ -2,29 +2,6 @@
 
 import { useEffect, useState } from 'react';
 
-// const associateBrands = [
-//   {
-//     name: 'CIO Angel Network',
-//     logo: '/assets/Associatedbrands/CAN.png',
-//   },
-//   {
-//     name: 'B2B 1K Ventures',
-//     logo: '/assets/Associatedbrands/b2b.png',
-//   },
-//   {
-//     name: 'Brand Three',
-//     logo: '/assets/Associatedbrands/CAN.png',
-//   },
-//   {
-//     name: 'Brand Four',
-//     logo: '/assets/Associatedbrands/b2b.png',
-//   },
-//   {
-//     name: 'Brand Five',
-//     logo: '/assets/Associatedbrands/b2b.png',
-//   },
-// ];
-
 function getTimeLeft() {
   const targetDate = new Date('2026-10-08T00:00:00').getTime();
   const now = new Date().getTime();
@@ -67,35 +44,6 @@ export default function AssociateBrandsPage() {
 
   return (
     <main className="associate-brands-page">
-      {/* <section className="associate-brands-hero">
-        <div className="associate-brands-container">
-          <div className="associate-brands-label">
-            <span>⬢</span>
-            Associate Brands
-          </div>
-
-          <h1>
-            Our Trusted <span>Associate Brands</span>
-          </h1>
-        </div>
-      </section> */}
-
-      {/* <section className="associate-brands-section">
-        <div className="associate-brands-container">
-          <div className="associate-brands-grid">
-            {associateBrands.map((brand, index) => (
-              <div className="associate-brand-card" key={index}>
-                <div className="associate-brand-logo-box">
-                  <img src={brand.logo} alt={brand.name} />
-                </div>
-
-                <h3>{brand.name}</h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
       <section className="event-schedule-section">
         <div className="event-schedule-container">
           <div className="event-schedule-heading">
@@ -111,6 +59,57 @@ export default function AssociateBrandsPage() {
                 <span>{item.label}</span>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="core-about-section">
+        <div className="core-about-container">
+          <div className="core-about-heading">
+            <h2>About CORE Media</h2>
+          </div>
+
+          <div className="core-about-text">
+            <p>
+              CORE Media (Centre of Recognition &amp; Excellence) is a multi-platform new age niche
+              media company that owns and operates proprietary marketing event brands in India with
+              a focus on ICT Enterprises, CIO Community &amp; Technology Startups.
+            </p>
+
+            <p>
+              Our products in all have a combined total reach of around 36,000 ICT Decision Makers
+              who procure ICT products &amp; services.
+            </p>
+
+            <p>
+              Our recognized unique brand engagements have touched over 600+ clients over the last
+              14 years.
+            </p>
+
+            <p>
+              CORE Media pioneered both the celebrity CIO engagements and technology startup
+              categories.
+            </p>
+
+            <p>
+              CORE champions B2B IT sellers via the powerful high-touch engagements for growth and
+              sales acceleration.
+            </p>
+
+            <p>
+              CORE Media has the power to influence the end-to-end value chain in the B2B technology
+              space with its media &amp; marketing products.
+            </p>
+
+            <p>
+              Today CORE Media is the highest achieving, most sought-after &amp; fastest-growing IT
+              Media &amp; Marketing Company in India within the B2B technology space.
+            </p>
+
+            <p className="core-about-highlight">
+              We aren&apos;t just a Media Company! We are a Marketing, Branding &amp; Connect
+              Company.
+            </p>
           </div>
         </div>
       </section>

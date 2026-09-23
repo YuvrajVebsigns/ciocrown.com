@@ -34,11 +34,11 @@ export default function Brands() {
       role: 'Premium Partner',
       image: '/assets/partner2026/freshworks.webp',
     },
-    // {
-    //   name: 'Ingram',
-    //   role: 'Premium Partner',
-    //   image: '/assets/partner2026/ingram.png',
-    // },
+    {
+      name: 'Ingram | DELL Technologies',
+      role: 'Premium Partner',
+      image: '/assets/partner2026/Ingram.jpg',
+    },
     {
       name: 'Juniper',
       role: 'Premium Partner',
@@ -49,21 +49,21 @@ export default function Brands() {
       role: 'Premium Partner',
       image: '/assets/partner2026/partner_logo_6.png',
     },
-    // {
-    //   name: 'NTT',
-    //   role: 'Premium Partner',
-    //   image: '/assets/partners/ntt.png',
-    // },
-    // {
-    //   name: 'Oracle',
-    //   role: 'Premium Partner',
-    //   image: '/assets/partners/oracle.png',
-    // },
-    // {
-    //   name: 'AdStringO',
-    //   role: 'Associate Partner',
-    //   image: '/assets/partners/adstringo.png',
-    // },
+    {
+      name: 'NTT DATA',
+      role: 'Premium Partner',
+      image: '/assets/partner2026/partners-5.jpg',
+    },
+    {
+      name: 'Oracle',
+      role: 'Premium Partner',
+      image: '/assets/partner2026/oracle.jpg',
+    },
+    {
+      name: 'AdStringO',
+      role: 'Associate Partner',
+      image: '/assets/partner2026/adstring.jpg',
+    },
     {
       name: 'Archon',
       role: 'Associate Partner',
@@ -74,56 +74,56 @@ export default function Brands() {
       role: 'Associate Partner',
       image: '/assets/partner2026/Barracuda.webp',
     },
-    // {
-    //   name: 'CBY',
-    //   role: 'Associate Partner',
-    //   image: '/assets/partners/cby.png',
-    // },
-    // {
-    //   name: 'COMnet',
-    //   role: 'Associate Partner',
-    //   image: '/assets/partners/comnet.png',
-    // },
-    // {
-    //   name: 'Datadog',
-    //   role: 'Associate Partner',
-    //   image: '/assets/partners/datadog.png',
-    // },
-    // {
-    //   name: 'Digital Track',
-    //   role: 'Associate Partner',
-    //   image: '/assets/partners/digital-track.png',
-    // },
+    {
+      name: 'CBY',
+      role: 'Associate Partner',
+      image: '/assets/partner2026/partners-22.jpg',
+    },
+    {
+      name: 'COMnet | QUANTUM',
+      role: 'Associate Partner',
+      image: '/assets/partner2026/partners-20.jpg',
+    },
+    {
+      name: 'Datadog',
+      role: 'Associate Partner',
+      image: '/assets/partner2026/datadog.jpg',
+    },
+    {
+      name: 'Digital Track | NVIDIA',
+      role: 'Associate Partner',
+      image: '/assets/partner2026/partners-15.jpg',
+    },
     {
       name: 'IceWarp',
       role: 'Associate Partner',
       image: '/assets/partner2026/IceWarp.webp',
     },
-    // {
-    //   name: 'Karnival',
-    //   role: 'Associate Partner',
-    //   image: '/assets/partners/karnival.png',
-    // },
+    {
+      name: 'Karnival',
+      role: 'Associate Partner',
+      image: '/assets/partner2026/karnival.jpg',
+    },
     {
       name: 'NeoSoft',
       role: 'Associate Partner',
       image: '/assets/partner2026/partner_3.png',
     },
-    // {
-    //   name: 'New era',
-    //   role: 'Associate Partner',
-    //   image: '/assets/partners/new-era.png',
-    // },
+    {
+      name: 'New era',
+      role: 'Associate Partner',
+      image: '/assets/partner2026/new era.jpg',
+    },
     {
       name: 'Rubrik',
       role: 'Associate Partner',
       image: '/assets/partner2026/partner_logo_8.png',
     },
-    // {
-    //   name: 'ServiceNow',
-    //   role: 'Associate Partner',
-    //   image: '/assets/partners/servicenow.png',
-    // },
+    {
+      name: 'ServiceNow',
+      role: 'Associate Partner',
+      image: '/assets/partner2026/service now.jpg',
+    },
     {
       name: 'SymphonyAI',
       role: 'Associate Partner',
@@ -134,11 +134,11 @@ export default function Brands() {
       role: 'Associate Partner',
       image: '/assets/partner2026/Tata-Communications.webp',
     },
-    // {
-    //   name: 'Zarthi',
-    //   role: 'Associate Partner',
-    //   image: '/assets/partners/zarthi.png',
-    // },
+    {
+      name: 'Zarthi',
+      role: 'Associate Partner',
+      image: '/assets/partner2026/zarthi.jpg',
+    },
   ];
 
   const getPageCount = () => Math.ceil(partners.length / cardsPerPage);

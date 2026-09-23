@@ -116,67 +116,83 @@ export default function FoundersMessage() {
             <span className="founder-label-text">Founder’s Message</span>
           </div>
           <br />
-          {/* TITLE */}
-          {/* <h2 className="founder-title">
-            Building Connections in a<br />
-            <span>Digital World.</span>
-          </h2> */}
 
           {/* DESCRIPTION */}
           <p className="founder-description">
-            At CORE Media, our journey has always been driven by a simple belief—meaningful
-            connections create meaningful business outcomes. For over 14 years, we have been
-            bringing together technology leaders, enterprises, innovators, and solution providers,
-            creating platforms that inspire collaboration, recognize excellence, and accelerate
-            business growth across the ICT ecosystem.
+            <strong>Anoop Mathur</strong>, a seasoned entrepreneur and visionary, has been at the
+            forefront of the technology and media landscape for over 17 years.
           </p>
-          <p className="founder-description">
-            {' '}
-            Every brand, platform, and initiative we have built reflects our customer-first
-            philosophy. From proprietary events and executive communities to bespoke marketing
-            programs and digital engagement solutions, our focus has remained constant: helping our
-            clients deliver the right message to the right audience through experiences that are
-            relevant, engaging, and result-oriented.
-          </p>
-          <p className="founder-description">
-            In today&apos;s fast-evolving digital landscape, expectations continue to rise,
-            challenging us to innovate with purpose. This commitment has enabled us to create
-            community-driven platforms that foster meaningful relationships, facilitate strategic
-            conversations, and generate measurable business impact.
-          </p>
-          <p className="founder-description">
-            Our success is built on long-term partnerships founded on trust, collaboration, and
-            shared growth. We believe that every interaction should create value beyond business
-            transactions, strengthening relationships that endure and opportunities that inspire
-            progress.
-          </p>
-          <p className="founder-description">
-            As we continue to evolve, our commitment remains unwavering—to create ideas that matter,
-            build communities that thrive, and empower businesses to connect, grow, and lead with
-            confidence.
-          </p>
-          <p className="founder-description">
-            Partner with CORE Media, and together, let&apos;s connect the dots to create the future
-            of business.
-          </p>
-          {/* <p className="founder-description">
-            Thank you for being part of our journey. We look forward to shaping the future of
-            technology engagement together.
-          </p> */}
 
-          {/* QUOTE */}
-          {/* <blockquote className="founder-quote">
-            <p>
-              “We innovate to build relationships that deliver exceptional results, every single
-              time.”
-            </p>
-          </blockquote> */}
+          <p className="founder-description">
+            As the Founder of <strong>CORE MEDIA - Centre Of Recognition &amp; Excellence</strong>,
+            operating since June 2012 in Mumbai, India, he has pioneered a multi-platform new-age
+            niche media company.
+          </p>
 
-          {/* <div className="founder-readmore-wrap">
-            <Link href="/aboutus" className="founder-readmore-btn">
-              Read more
-            </Link>
-          </div> */}
+          <p className="founder-description">
+            <strong>CORE MEDIA</strong> focuses on curating proprietary marketing event brands with
+            a dedicated emphasis on ICT Enterprises, CIO Community, and Technology Start-ups.
+          </p>
+
+          <p className="founder-description">
+            The organization&apos;s reach extends to more than 100,000 ICT Decision Makers,
+            influencing the B2B technology space with innovative media and marketing products. (
+            <a href="https://www.core-mediagroup.com/" target="_blank" rel="noopener noreferrer">
+              www.core-mediagroup.com
+            </a>
+            )
+          </p>
+
+          <p className="founder-description">
+            In addition to his role at CORE Media, Anoop is the Founder and Managing Partner of{' '}
+            <strong>CXO Capital</strong>, a dynamic entity based in Dubai, United Arab Emirates.
+            Established in August 2023, CXO Capital specializes in providing market intelligence,
+            advisory, consulting services, marketing strategies, and bespoke engagements and events
+            tailored for Information and Communications Technology (ICT) enterprises in the Middle
+            East and Africa regions. (
+            <a href="https://www.cxo-capital.com/" target="_blank" rel="noopener noreferrer">
+              www.cxo-capital.com
+            </a>
+            )
+          </p>
+
+          <p className="founder-description">
+            He is also the Founder &amp; Managing Partner of{' '}
+            <strong>ANOOP MATHUR CAPITAL LLP</strong> since June 2021, a privately owned boutique
+            wealth management family office in Mumbai, India. Specializing in building diversified
+            portfolios encompassing early-stage start-ups, real estate, and capital markets, ANOOP
+            MATHUR CAPITAL leverages a profound network cultivated over 24 years of corporate,
+            media, and technology entrepreneurship and investments.
+          </p>
+
+          <p className="founder-description">
+            His commitment to fostering entrepreneurship extends to being a Private Investor in
+            various ventures, including roles as a Partner at <strong>Cloud Surfer LLP</strong>, a
+            new-age training academy for on-demand cloud certification courses, and a Director on
+            the Board of <strong>Rainmaker360</strong>, a niche channel partner engagement services
+            company.
+          </p>
+
+          <p className="founder-description">
+            Anoop has been actively involved in contributing to the startup ecosystem. As a Private
+            Investor at <strong>100X.VC</strong>, <strong>Indian Angel Network</strong>,{' '}
+            <strong>Inflection Point Ventures</strong>, and <strong>CIO Angel Network</strong>, he
+            supports emerging ventures aiming to be the first source of funding for technology
+            entrepreneurs at the seed stage.
+          </p>
+
+          <p className="founder-description">
+            Furthermore, he has played a pivotal role in transforming the B2B technology startup
+            ecosystem through <strong>B2B 1K Ventures (Brand Hub Marketing)</strong>, a brand
+            capital that connects early-stage technology companies with brand investments, positive
+            guidance, and industry CIO or CTO connects.
+          </p>
+
+          <p className="founder-description">
+            With a track record of over two decades, Anoop continues to be a driving force in the
+            realms of entrepreneurship, wealth management, and technology innovation, leaving an
+            indelible mark on the global business landscape.
+          </p>
 
           {/* AUTHOR */}
           <div className="founder-author">

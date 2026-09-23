@@ -208,7 +208,7 @@ export default function KeyClient() {
           </div>
 
           <h2 className="clients-title">
-            Celebrating 15 Years of <span>CIO CROWN</span>
+            Celebrating 13 Years of <span>CIO CROWN</span>
           </h2>
 
           <p className="crown-subtitle">

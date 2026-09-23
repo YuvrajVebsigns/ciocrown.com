@@ -83,7 +83,7 @@ const associatePartners = [
   { name: 'Rubrik', logo: '/assets/partner2026/Rubrik.webp' },
   { name: 'ServiceNow', logo: '/assets/partner2026/service now.jpg' },
   { name: 'SymphonyAI', logo: '/assets/partner2026/SY.webp' },
-  { name: 'Tata Communication', logo: '/assets/partner2026/Tata-Communication.webp' },
+  { name: 'Tata Communication', logo: '/assets/partner2026/Tata-Communications.webp' },
   { name: 'Zarthi', logo: '/assets/partner2026/zarthi.jpg' },
 ];
 

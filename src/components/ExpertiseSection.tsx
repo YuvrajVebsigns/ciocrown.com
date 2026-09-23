@@ -9,121 +9,144 @@ export default function AboutUsSection() {
     initialTransform: 'translateY(40px)',
   });
 
-  // const cards = [
-  //   {
-  //     image: '/assets/aboutus/technology-dark.png',
-  //     title: 'Data & AI',
-  //     description:
-  //       'Harnessing data, AI, automation, and agile platforms to continuously sense, respond, and adapt.',
-  //   },
-  //   {
-  //     image: '/assets/aboutus/leadership.png',
-  //     title: 'CIO as Orchestrator',
-  //     description:
-  //       'Integrating technologies, bridging business and IT, and driving innovation at enterprise scale.',
-  //   },
-  //   {
-  //     image: '/assets/aboutus/winner.png',
-  //     title: 'Business Growth',
-  //     description: 'Moving beyond efficiency to measurable business impact and value creation.',
-  //   },
-  //   {
-  //     image: '/assets/aboutus/recognized.png',
-  //     title: 'Agility & Resilience',
-  //     description:
-  //       'Architecting digital foundations that enable foresight, adaptability, security, and trust.',
-  //   },
-  //   {
-  //     image: '/assets/aboutus/learn.png',
-  //     title: 'Future-Ready Enterprise',
-  //     description:
-  //       'Building intelligent platforms, adaptive workplaces, and scalable digital capabilities.',
-  //   },
-  // ];
-
   return (
     <section ref={sectionRef} className="aboutus-section theme-section">
       <div className="theme-bg-orb theme-orb-one" />
       <div className="theme-bg-orb theme-orb-two" />
 
       <div className="aboutus-container theme-container">
+        {/* Heading */}
         <div className="aboutus-heading theme-heading">
           <div className="aboutus-label">
             <Image
               src="/assets/icon.png"
-              alt="Theme 2025"
+              alt="Theme 2026"
               width={20}
               height={20}
               className="aboutus-label-icon"
             />
-            <span className="aboutus-label-text">THEME 2025</span>
+            <span className="aboutus-label-text">THEME 2026</span>
           </div>
+
           <br />
+
           <h4 className="aboutus-title theme-title">
-            Orchestrating the Intelligent Enterprise
-            <span> Moving the Growth Needle</span>
+            The Crowned Enterprise:
+            <span> AI, Trust &amp; Leadership for the Next Era of Business</span>
           </h4>
+
+          <p className="theme-subtitle">
+            Where India&apos;s Technology Visionaries Shape Tomorrow&apos;s Enterprise
+          </p>
         </div>
 
+        {/* Main Theme Content */}
         <div className="theme-content-card">
+          <h3>The enterprise is being reimagined.</h3>
+
           <p>
-            In a world defined by relentless disruption, enterprises can no longer rely solely on
-            digital transformation—they must evolve into intelligent enterprises. These are
-            organizations that harness the full power of data, AI, automation, and agile platforms
-            to continuously sense, respond, and adapt to change while driving meaningful business
-            growth.
+            Artificial Intelligence is no longer an emerging technology—it is the engine of business
+            reinvention. Every decision, every customer interaction, every operation, and every
+            innovation is being reshaped by intelligent technologies. Yet technology alone is not
+            enough. The enterprises that will lead the next decade will be distinguished by
+            visionary leadership, trusted digital ecosystems, resilient operations, and the ability
+            to translate AI into sustainable business value.
+          </p>
+
+          <p>This is the defining moment for the modern CIO.</p>
+
+          <p>
+            No longer custodians of technology, today&apos;s CIOs are architects of growth,
+            catalysts of innovation, guardians of trust, and strategic partners to the boardroom.
+            Their leadership will determine how organizations navigate disruption, unlock new
+            business models, strengthen resilience, and build enterprises that are intelligent by
+            design.
           </p>
 
           <p>
-            “Orchestrating the Intelligent Enterprise” is not just about implementing smart
-            technologies—it is about strategically aligning people, processes, and platforms to
-            amplify outcomes. It requires a unified vision, enterprise-wide collaboration, and the
-            ability to make real-time, data-driven decisions.
+            <strong>CIO CROWN 2026</strong> is an exclusive gathering of India&apos;s most
+            influential CIOs, CDOs, CISOs, CTOs, Digital Leaders, and senior IT decision-makers.
+            Designed as a premier leadership forum, the conference will bring together the brightest
+            minds in technology and business to explore the ideas, strategies, and innovations
+            shaping the future of the intelligent enterprise.
           </p>
 
           <p>
-            The CIO and Digital Leader plays the pivotal role of chief orchestrator—integrating
-            technologies, bridging business and IT, and driving innovation at scale.
+            Over the course of the summit, delegates will engage in visionary keynotes,
+            thought-provoking executive dialogues, real-world transformation stories, interactive
+            leadership panels, and exclusive networking experiences. Every session is curated to
+            deliver practical insights, strategic perspectives, and actionable frameworks that
+            enable leaders to move confidently from experimentation to enterprise-wide
+            transformation.
           </p>
 
-          <p>
-            This theme, “Moving the Growth Needle,” underscores the shift from operational
-            efficiency to measurable business impact. Growth today depends on smarter customer
-            engagement, intelligent automation, predictive operations, and innovation fuelled by
-            emerging technologies like GenAI, edge computing, and cloud-native architectures.
-          </p>
+          {/* Conference Focus */}
+          <div className="theme-subsection">
+            <h3 className="theme-section-title">Conference Focus</h3>
 
-          <p>
-            At the centre of this transformation stands the CIO and Digital Leader, empowered and
-            expected to architect the digital fabric that enables agility, foresight, and
-            resilience.
-          </p>
+            <ul className="theme-focus-list">
+              <li>Building AI-first enterprises that deliver measurable business outcomes</li>
+              <li>Establishing trust through cyber resilience, governance, and responsible AI</li>
+              <li>Transforming data into competitive intelligence and business advantage</li>
+              <li>Modernizing cloud, infrastructure, and digital platforms for the AI era</li>
+              <li>Accelerating productivity through intelligent automation and Agentic AI</li>
+              <li>
+                Driving innovation while balancing risk, compliance, and operational resilience
+              </li>
+              <li>
+                Redefining leadership for an increasingly autonomous and data-driven enterprise
+              </li>
+              <li>
+                Creating future-ready organizations powered by talent, culture, and continuous
+                innovation
+              </li>
+            </ul>
+          </div>
 
-          <p>
-            This year, CIO Crown 2025 will bring together visionary CIOs, industry leaders, and
-            transformation experts to explore the new playbook for enterprise growth—led by
-            intelligent systems and strategic orchestration.
-          </p>
+          {/* Why Attend */}
+          <div className="theme-subsection">
+            <h3 className="theme-section-title">Why Attend</h3>
 
-          <p className="theme-final-note">
-            The question is no longer what technology can do—but how CIOs and Digital Leaders can
-            harness its full potential to lead with intelligence, purpose, and speed for business
-            value.
-          </p>
+            <p>
+              <strong>CIO CROWN 2026</strong> is more than a conference—it is a leadership movement.
+            </p>
+
+            <p>
+              It is where India&apos;s technology leaders exchange ideas with peers, engage with
+              global visionaries, discover breakthrough innovations, and build strategic
+              partnerships that accelerate business transformation. Delegates will gain unparalleled
+              insights into emerging technologies, proven implementation strategies, and leadership
+              practices that are shaping the world&apos;s most successful enterprises.
+            </p>
+          </div>
+
+          {/* The Crowned Enterprise */}
+          <div className="theme-subsection theme-crowned-enterprise">
+            <h3 className="theme-section-title">The Crowned Enterprise</h3>
+
+            <p>
+              The future belongs to organizations that can combine intelligence with integrity,
+              innovation with resilience, and technology with purposeful leadership.
+            </p>
+
+            <p>
+              The Crowned Enterprise represents more than digital maturity. It symbolizes
+              organizations that lead with vision, earn trust through execution, embrace AI
+              responsibly, and continuously create value for customers, employees, and stakeholders.
+            </p>
+
+            <p>These are the enterprises that will define the next era of business.</p>
+
+            <p>These are the leaders who will shape the future of enterprises.</p>
+
+            <p className="theme-final-note">
+              <strong>Welcome to CIO CROWN 2026.</strong>
+              <br />
+              Where AI, Trust, and Leadership converge to shape the future of the intelligent
+              enterprise.
+            </p>
+          </div>
         </div>
-
-        {/* <div className="aboutus-grid theme-grid">
-          {cards.map((card, index) => (
-            <div key={card.title} className={`aboutus-card theme-card theme-stagger-${index + 1}`}>
-              <div className="aboutus-image-wrapper theme-icon-wrap">
-                <img src={card.image} alt={card.title} className="aboutus-image theme-icon" />
-              </div>
-
-              <h3 className="aboutus-card-title">{card.title}</h3>
-              <p className="aboutus-card-description">{card.description}</p>
-            </div>
-          ))}
-        </div> */}
       </div>
     </section>
   );
