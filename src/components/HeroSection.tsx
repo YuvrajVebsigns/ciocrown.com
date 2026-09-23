@@ -16,7 +16,7 @@ export default function HeroSection() {
       {show && (
         <div className="hero-image-only animate__animated animate__jackInTheBox">
           <Image
-            src="/assets/home/heroimg3.png"
+            src="/assets/home/WhatsApp Image 2026-09-23 at 18.41.55.jpeg"
             alt="Hero Banner"
             width={1920}
             height={1000}

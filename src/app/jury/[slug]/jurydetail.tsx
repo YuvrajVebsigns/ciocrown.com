@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { fetchWebsitePageBySlug } from '@/services/pages.service';
 
-type Speaker = {
+type JuryMember = {
   name: string;
   title: string;
   company: string;
@@ -18,9 +18,9 @@ type Testimonial = {
   avatar?: string;
 };
 
-const FALLBACK_SPEAKER_IMAGE = '/assets/team/1.jpg';
+const FALLBACK_JURY_IMAGE = '/assets/team/1.jpg';
 
-export default function SpeakersPage() {
+export default function JuryPage() {
   const params = useParams();
 
   const rawSlug = params?.slug;
@@ -31,10 +31,9 @@ export default function SpeakersPage() {
       ? rawSlug
       : '';
 
-  const [speakers, setSpeakers] = useState<Speaker[]>([]);
-  const [pageTitle, setPageTitle] = useState('Speakers');
+  const [juryMembers, setJuryMembers] = useState<JuryMember[]>([]);
+  const [pageTitle, setPageTitle] = useState('Jury');
   const [pageDescription, setPageDescription] = useState('');
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -51,11 +50,11 @@ export default function SpeakersPage() {
         setLoading(true);
         setError('');
 
-        // console.log('Fetching speaker page:', slug);
+        // console.log('Fetching jury page:', slug);
 
         const response = await fetchWebsitePageBySlug(slug);
 
-        // console.log('SPEAKER PAGE API RESPONSE:', response);
+        // console.log('JURY PAGE API RESPONSE:', response);
 
         if (!mounted) {
           return;
@@ -67,37 +66,18 @@ export default function SpeakersPage() {
           throw new Error(`No page data found for slug: ${slug}`);
         }
 
-        /*
-         * Page title
-         */
         if (page.title) {
           setPageTitle(page.title);
         }
 
-        /*
-         * Page description
-         */
         if (page.shortDescription) {
           setPageDescription(page.shortDescription);
         }
 
-        /*
-         * Speakers are stored in:
-         *
-         * content.blocks[].data.testimonials[]
-         *
-         * Each item:
-         *
-         * author -> name
-         * role   -> designation
-         * quote  -> company
-         * avatar -> image
-         */
-
-        const foundSpeakers: Speaker[] = [];
+        const foundJuryMembers: JuryMember[] = [];
 
         /*
-         * Read speakers from content.blocks
+         * Read jury members from content.blocks
          */
         if (page.content?.blocks && Array.isArray(page.content.blocks)) {
           page.content.blocks.forEach((block) => {
@@ -111,7 +91,7 @@ export default function SpeakersPage() {
                   return;
                 }
 
-                foundSpeakers.push({
+                foundJuryMembers.push({
                   name: testimonial.author.trim(),
 
                   title: typeof testimonial.role === 'string' ? testimonial.role.trim() : '',
@@ -129,13 +109,9 @@ export default function SpeakersPage() {
         }
 
         /*
-         * Fallback:
-         * Read speakers from sections[]
-         *
-         * This is useful if the backend returns
-         * the data in sections but not blocks.
+         * Fallback to sections
          */
-        if (foundSpeakers.length === 0) {
+        if (foundJuryMembers.length === 0) {
           if (page.sections && Array.isArray(page.sections)) {
             page.sections.forEach((section) => {
               const testimonials = section.data?.testimonials;
@@ -148,7 +124,7 @@ export default function SpeakersPage() {
                     return;
                   }
 
-                  foundSpeakers.push({
+                  foundJuryMembers.push({
                     name: testimonial.author.trim(),
 
                     title: typeof testimonial.role === 'string' ? testimonial.role.trim() : '',
@@ -167,27 +143,33 @@ export default function SpeakersPage() {
         }
 
         /*
-         * Remove duplicate speakers.
+         * IMPORTANT:
+         * Do NOT use author/name for deduplication.
          *
-         * The API currently contains the same
-         * testimonials in both content.blocks and
-         * sections, so this prevents every speaker
-         * from appearing twice.
+         * Multiple jury members can have the same role/title.
+         *
+         * We only remove an exact duplicate when the same
+         * image URL appears more than once.
          */
-        const uniqueSpeakers = Array.from(
-          new Map(foundSpeakers.map((speaker) => [speaker.name, speaker])).values(),
+        const uniqueJuryMembers = Array.from(
+          new Map(
+            foundJuryMembers.map((member, index) => [
+              member.image || `${member.name}-${member.title}-${index}`,
+              member,
+            ]),
+          ).values(),
         );
 
-        // console.log('FOUND SPEAKERS:', uniqueSpeakers);
+        // console.log('FOUND JURY MEMBERS:', uniqueJuryMembers);
 
         if (mounted) {
-          setSpeakers(uniqueSpeakers);
+          setJuryMembers(uniqueJuryMembers);
         }
       } catch (err) {
-        // console.error('Failed to load speaker page:', err);
+        // console.error('Failed to load jury page:', err);
 
         if (mounted) {
-          setError(err instanceof Error ? err.message : 'Failed to load speaker page.');
+          setError(err instanceof Error ? err.message : 'Failed to load jury page.');
         }
       } finally {
         if (mounted) {
@@ -207,51 +189,51 @@ export default function SpeakersPage() {
     <main className="speakers2025-page">
       {/* HERO */}
       <section className="speakers2025-hero">
-        <span className="speakers2025-badge">Speakers 2025</span>
+        <span className="speakers2025-badge">Jury 2025</span>
 
         <h1>{pageTitle}</h1>
 
         {pageDescription && <p>{pageDescription}</p>}
       </section>
 
-      {/* SPEAKERS */}
+      {/* JURY MEMBERS */}
       <section className="speakers2025-section">
         <div className="speakers2025-container">
-          {/* LOADING */}
-          {loading && <div className="speakers2025-loading">Loading speakers...</div>}
+          {loading && <div className="speakers2025-loading">Loading jury members...</div>}
 
-          {/* ERROR */}
           {!loading && error && <div className="speakers2025-error">{error}</div>}
 
-          {/* SPEAKER GRID */}
-          {!loading && !error && speakers.length > 0 && (
+          {!loading && !error && juryMembers.length > 0 && (
             <>
               <div className="speakers2025-heading">
-                <span>Speakers 2025</span>
+                <span>Jury 2025</span>
 
-                <h2>Speakers</h2>
+                <h2>Jury Members</h2>
               </div>
 
               <div className="speakers2025-grid">
-                {speakers.map((speaker, index) => (
-                  <article className="speaker2025-card" key={`${speaker.name}-${index}`}>
+                {juryMembers.map((member, index) => (
+                  <article
+                    className="speaker2025-card"
+                    key={`${member.name}-${member.image || index}`}
+                  >
                     <div className="speaker2025-avatar">
                       <img
-                        src={speaker.image || FALLBACK_SPEAKER_IMAGE}
-                        alt={speaker.name}
+                        src={member.image || FALLBACK_JURY_IMAGE}
+                        alt={member.name}
                         loading="lazy"
                         onError={(event) => {
-                          event.currentTarget.src = FALLBACK_SPEAKER_IMAGE;
+                          event.currentTarget.src = FALLBACK_JURY_IMAGE;
                         }}
                       />
                     </div>
 
                     <div className="speaker2025-info">
-                      <h3>{speaker.name}</h3>
+                      <h3>{member.name}</h3>
 
-                      {speaker.title && <p>{speaker.title}</p>}
+                      {member.title && <p>{member.title}</p>}
 
-                      {speaker.company && <strong>{speaker.company}</strong>}
+                      {member.company && <strong>{member.company}</strong>}
                     </div>
                   </article>
                 ))}
@@ -259,9 +241,8 @@ export default function SpeakersPage() {
             </>
           )}
 
-          {/* NO DATA */}
-          {!loading && !error && speakers.length === 0 && (
-            <div className="speakers2025-error">No speaker data found for this page.</div>
+          {!loading && !error && juryMembers.length === 0 && (
+            <div className="speakers2025-error">No jury data found for this page.</div>
           )}
         </div>
       </section>

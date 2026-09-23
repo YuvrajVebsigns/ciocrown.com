@@ -21,7 +21,7 @@ const aboutLinks = [
 
 const speakerLinks = [{ label: 'Speaker 2025', href: '/speakers/speaker-2025' }];
 
-const juryLinks = [{ label: 'Jury 2025', href: '/jury/jury-2025' }];
+const juryLinks = [{ label: 'Jury 2025', href: '/jury/jury-healthcare-2026' }];
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -234,7 +234,7 @@ export default function Navbar() {
           </div>
 
           <Link
-            href="/partners/partner-2025"
+            href="/partners/partners-2025"
             className={`nav-link ${isPartnerPage ? 'active' : ''}`}
             onClick={closeAllMenus}
           >
@@ -344,7 +344,6 @@ export default function Navbar() {
               </div>
             )}
           </div>
-
           {/* <Link
             href="/register"
             className={`nav-link ${pathname === '/register' ? 'active' : ''}`}
