@@ -219,7 +219,13 @@ export default function SpeakersPage() {
       <section className="speakers2025-section">
         <div className="speakers2025-container">
           {/* LOADING */}
-          {loading && <div className="speakers2025-loading">Loading speakers...</div>}
+          {/* {loading && <div className="speakers2025-loading">Loading speakers...</div>} */}
+
+          {loading && (
+            <div className="speakers2025-loader-wrapper">
+              <div className="speakers2025-loader"></div>
+            </div>
+          )}
 
           {/* ERROR */}
           {!loading && error && <div className="speakers2025-error">{error}</div>}

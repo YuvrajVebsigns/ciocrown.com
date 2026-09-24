@@ -32,7 +32,7 @@ export default function Brands() {
     {
       name: 'Freshworks',
       role: 'Premium Partner',
-      image: '/assets/partner2026/freshworks.webp',
+      image: '/assets/partner2026/Freshworks.webp',
     },
     {
       name: 'Ingram | DELL Technologies',

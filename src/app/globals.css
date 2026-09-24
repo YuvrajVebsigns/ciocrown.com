@@ -14642,3 +14642,26 @@ s .dialogues-badge-mark {
     letter-spacing: 0.4px;
   }
 }
+
+.speakers2025-loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  width: 100%;
+}
+
+.speakers2025-loader {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #e5e5e5;
+  border-top-color: #8e0101;
+  border-radius: 50%;
+  animation: speakersLoaderSpin 0.8s linear infinite;
+}
+
+@keyframes speakersLoaderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
