@@ -1719,7 +1719,7 @@ body {
 
 @media (max-width: 480px) {
   .navbar {
-    padding: 12px 14px;
+    padding: 2px 4px 0px 0px;
   }
 
   .navbar.mobile-open .navbar-menu {
@@ -2401,6 +2401,7 @@ body {
 @media (max-width: 480px) {
   .custom-captcha {
     flex-wrap: wrap;
+    width: 220px;
   }
 
   .captcha-content {
@@ -11258,7 +11259,7 @@ s .dialogues-badge-mark {
   }
 
   .footer-logo-img {
-    width: 300px;
+    width: 250px;
   }
 }
 
@@ -11287,7 +11288,7 @@ s .dialogues-badge-mark {
   }
 
   .footer-logo-img {
-    width: 200px;
+    width: 150px;
     height: auto;
   }
 
