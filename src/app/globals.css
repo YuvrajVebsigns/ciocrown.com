@@ -7760,7 +7760,16 @@ body {
 }
 
 .event-sponsors-section {
+  width: 100%;
   margin-top: 28px;
+}
+
+.event-sponsors-section--single {
+  max-width: 420px;
+}
+
+.event-sponsors-section--double {
+  max-width: 760px;
 }
 
 .event-sponsors-card {
@@ -7792,6 +7801,14 @@ body {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
+}
+
+.event-sponsors-section--single .event-sponsors-grid {
+  grid-template-columns: 1fr;
+}
+
+.event-sponsors-section--double .event-sponsors-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .event-sponsor-card {
@@ -7965,6 +7982,11 @@ body {
   .event-sponsors-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
+  }
+
+  .event-sponsors-section--single,
+  .event-sponsors-section--double {
+    max-width: 100%;
   }
 }
 

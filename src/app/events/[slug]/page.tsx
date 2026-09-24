@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react';
 import ClientErrorBoundary from '@/components/ClientErrorBoundary';
 import EventDetailsAnimated from '@/components/EventDetailsAnimated';
 import EventSponsorsSection from '@/components/EventSponsorsSection';
+import { resolveEventSponsors } from '@/lib/event-sponsors';
+import type { WebsiteSponsor } from '@/services/sponsors.service';
 import {
   fetchWebsiteEventByIdOrSlug,
   fetchWebsiteEvents,
@@ -59,6 +61,7 @@ export default function EventDetailsPage() {
   const slug: string = Array.isArray(params?.slug) ? (params.slug[0] ?? '') : (params?.slug ?? '');
 
   const [event, setEvent] = useState<WebsiteEvent | null>(null);
+  const [eventSponsors, setEventSponsors] = useState<WebsiteSponsor[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showShareOptions, setShowShareOptions] = useState(false);
@@ -148,11 +151,22 @@ export default function EventDetailsPage() {
 
         if (isMounted) {
           setEvent(loadedEvent);
+          if (loadedEvent) {
+            try {
+              const sponsors = await resolveEventSponsors(loadedEvent);
+              if (isMounted) setEventSponsors(sponsors);
+            } catch {
+              if (isMounted) setEventSponsors([]);
+            }
+          } else {
+            setEventSponsors([]);
+          }
           setError(loadedEvent ? null : 'Event not found.');
         }
       } catch (loadError) {
         if (isMounted) {
           setEvent(null);
+          setEventSponsors([]);
           setError(loadError instanceof Error ? loadError.message : 'Failed to load event');
         }
       } finally {
@@ -397,7 +411,7 @@ export default function EventDetailsPage() {
         <ClientErrorBoundary>
           <EventDetailsAnimated featuredEvent={featuredEvent} readableSlug={readableSlug} />
 
-          <EventSponsorsSection />
+          <EventSponsorsSection sponsors={eventSponsors} />
 
           {contentBlocks.length > 0 ? (
             <div>{contentBlocks.map((block, index) => renderBlock(block, index))}</div>
