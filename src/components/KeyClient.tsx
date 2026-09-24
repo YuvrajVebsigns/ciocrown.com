@@ -228,7 +228,7 @@ export default function KeyClient() {
                   className="crown-image"
                 />
 
-                <div className="crown-year-badge">{item.year}</div>
+                {/* <div className="crown-year-badge">{item.year}</div> */}
               </div>
 
               <div className="crown-content">

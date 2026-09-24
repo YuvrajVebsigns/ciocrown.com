@@ -1235,9 +1235,17 @@ body {
   overflow: visible;
 }
 
-/* READ MORE / READ LESS */
+/* READ MORE / READ LESS + VISIT */
+.speaker2025-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
 .speaker2025-read-more {
-  margin: 4px 0 0;
+  margin: 0;
   padding: 0;
   border: none;
   outline: none;
@@ -1257,6 +1265,35 @@ body {
   transform: translateY(-1px);
 }
 
+/* VISIT BUTTON */
+.speaker2025-visit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  padding: 9px 22px;
+  border-radius: 999px;
+  background: #8e0101;
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 800;
+  border: 1px solid #8e0101;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.speaker2025-visit-button:hover {
+  background: #b30000;
+  border-color: #b30000;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(142, 1, 1, 0.18);
+}
 /* KEYNOTE CARDS */
 .keynote-grid .speaker2025-card {
   min-height: 0;

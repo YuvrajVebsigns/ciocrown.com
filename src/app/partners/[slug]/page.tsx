@@ -37,7 +37,12 @@ type PartnerPageData = {
   }>;
 };
 
-const FALLBACK_PARTNER_IMAGE = '/assets/team/1.jpg';
+const FALLBACK_PARTNER_IMAGE = '/assets/logo/logo2.png';
+// const PARTNER_WEBSITES: string[] = [
+//   'https://www.anunta.com/',
+//   'https://www.freshworks.com/',
+//   'https://www.ingrammicro.com/',
+// ];
 
 export default function PartnersPage() {
   const params = useParams();
@@ -271,32 +276,27 @@ export default function PartnersPage() {
                               {description}
                             </div>
 
-                            {/* READ MORE */}
-                            <button
-                              type="button"
-                              className="speaker2025-read-more"
-                              onClick={() => toggleReadMore(index)}
-                            >
-                              {isExpanded ? 'Read Less' : 'Read More'}
-                            </button>
-                          </>
-                        )}
+                            <div className="speaker2025-actions">
+                              <button
+                                type="button"
+                                className="speaker2025-read-more"
+                                onClick={() => toggleReadMore(index)}
+                              >
+                                {isExpanded ? 'Read Less' : 'Read More'}
+                              </button>
 
-                        {/* 4. VISIT BUTTON */}
-                        {partner.website && (
-                          <a
-                            href={
-                              partner.website.startsWith('http://') ||
-                              partner.website.startsWith('https://')
-                                ? partner.website
-                                : `https://${partner.website}`
-                            }
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="speaker2025-visit-button"
-                          >
-                            Visit
-                          </a>
+                              {partner.title && (
+                                <a
+                                  href={partner.title}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="speaker2025-visit-button"
+                                >
+                                  Visit
+                                </a>
+                              )}
+                            </div>
+                          </>
                         )}
                       </div>
                     </article>

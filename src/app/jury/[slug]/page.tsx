@@ -38,7 +38,7 @@ type JurySection = {
   members: JuryMember[];
 };
 
-const FALLBACK_JURY_IMAGE = '/assets/team/1.jpg';
+const FALLBACK_JURY_IMAGE = '/assets/logo/logo2.png';
 
 const JURY_PAGES = [
   {

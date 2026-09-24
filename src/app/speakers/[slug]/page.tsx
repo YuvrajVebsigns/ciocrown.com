@@ -40,7 +40,7 @@ type SpeakerSection = {
   speakers: Speaker[];
 };
 
-const FALLBACK_SPEAKER_IMAGE = '/assets/team/1.jpg';
+const FALLBACK_SPEAKER_IMAGE = '/assets/logo/logo2.png';
 
 const SPEAKER_PAGES = [
   {
