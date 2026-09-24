@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
 import { fetchWebsitePageBySlug } from '@/services/pages.service';
 
 type Speaker = {
@@ -18,176 +17,178 @@ type Testimonial = {
   avatar?: string;
 };
 
+type WebsitePage = {
+  title?: string;
+  shortDescription?: string;
+  content?: {
+    blocks?: Array<{
+      data?: {
+        testimonials?: Testimonial[];
+      };
+    }>;
+  };
+  sections?: Array<{
+    data?: {
+      testimonials?: Testimonial[];
+    };
+  }>;
+};
+
+type SpeakerSection = {
+  heading: string;
+  slug: string;
+  speakers: Speaker[];
+};
+
 const FALLBACK_SPEAKER_IMAGE = '/assets/team/1.jpg';
 
+const SPEAKER_PAGES = [
+  {
+    slug: 'keynote-speakers',
+    heading: 'Keynote Speakers',
+  },
+  {
+    slug: 'speaker-2025',
+    heading: 'Speakers 2025',
+  },
+  {
+    slug: 'partner-speakers',
+    heading: 'Partner Speakers',
+  },
+];
+
+function extractSpeakers(page: WebsitePage | undefined): Speaker[] {
+  if (!page) {
+    return [];
+  }
+
+  const foundSpeakers: Speaker[] = [];
+
+  /*
+   * Read speakers from:
+   * content.blocks[].data.testimonials[]
+   */
+  if (page.content?.blocks && Array.isArray(page.content.blocks)) {
+    page.content.blocks.forEach((block) => {
+      const testimonials = block.data?.testimonials;
+
+      if (!Array.isArray(testimonials)) {
+        return;
+      }
+
+      testimonials.forEach((item) => {
+        const testimonial = item as Testimonial;
+
+        if (typeof testimonial.author !== 'string' || !testimonial.author.trim()) {
+          return;
+        }
+
+        foundSpeakers.push({
+          name: testimonial.author.trim(),
+
+          title: typeof testimonial.role === 'string' ? testimonial.role.trim() : '',
+
+          company: typeof testimonial.quote === 'string' ? testimonial.quote.trim() : '',
+
+          image:
+            typeof testimonial.avatar === 'string' && testimonial.avatar.trim()
+              ? testimonial.avatar.trim()
+              : undefined,
+        });
+      });
+    });
+  }
+
+  /*
+   * Fallback:
+   * sections[].data.testimonials[]
+   */
+  if (foundSpeakers.length === 0) {
+    if (page.sections && Array.isArray(page.sections)) {
+      page.sections.forEach((section) => {
+        const testimonials = section.data?.testimonials;
+
+        if (!Array.isArray(testimonials)) {
+          return;
+        }
+
+        testimonials.forEach((item) => {
+          const testimonial = item as Testimonial;
+
+          if (typeof testimonial.author !== 'string' || !testimonial.author.trim()) {
+            return;
+          }
+
+          foundSpeakers.push({
+            name: testimonial.author.trim(),
+
+            title: typeof testimonial.role === 'string' ? testimonial.role.trim() : '',
+
+            company: typeof testimonial.quote === 'string' ? testimonial.quote.trim() : '',
+
+            image:
+              typeof testimonial.avatar === 'string' && testimonial.avatar.trim()
+                ? testimonial.avatar.trim()
+                : undefined,
+          });
+        });
+      });
+    }
+  }
+
+  return foundSpeakers;
+}
+
+function removeDuplicateSpeakers(speakers: Speaker[]): Speaker[] {
+  return Array.from(
+    new Map(speakers.map((speaker) => [speaker.name.toLowerCase(), speaker])).values(),
+  );
+}
+
 export default function SpeakersPage() {
-  const params = useParams();
-
-  const rawSlug = params?.slug;
-
-  const slug: string = Array.isArray(rawSlug)
-    ? rawSlug[0] || ''
-    : typeof rawSlug === 'string'
-      ? rawSlug
-      : '';
-
-  const [speakers, setSpeakers] = useState<Speaker[]>([]);
-  const [pageTitle, setPageTitle] = useState('Speakers');
-  const [pageDescription, setPageDescription] = useState('');
+  const [speakerSections, setSpeakerSections] = useState<SpeakerSection[]>([]);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (!slug) {
-      setLoading(false);
-      return;
-    }
-
     let mounted = true;
 
-    async function loadPage() {
+    async function loadSpeakerPages() {
       try {
         setLoading(true);
         setError('');
 
-        // console.log('Fetching speaker page:', slug);
-
-        const response = await fetchWebsitePageBySlug(slug);
-
-        // console.log('SPEAKER PAGE API RESPONSE:', response);
+        /*
+         * Fetch all 3 backend pages
+         */
+        const responses = await Promise.all(
+          SPEAKER_PAGES.map((page) => fetchWebsitePageBySlug(page.slug)),
+        );
 
         if (!mounted) {
           return;
         }
 
-        const page = response?.data;
-
-        if (!page) {
-          throw new Error(`No page data found for slug: ${slug}`);
-        }
-
         /*
-         * Page title
+         * Create separate sections
          */
-        if (page.title) {
-          setPageTitle(page.title);
-        }
+        const sections: SpeakerSection[] = SPEAKER_PAGES.map((pageConfig, index) => {
+          const page = responses[index]?.data as WebsitePage | undefined;
 
-        /*
-         * Page description
-         */
-        if (page.shortDescription) {
-          setPageDescription(page.shortDescription);
-        }
+          const speakers = removeDuplicateSpeakers(extractSpeakers(page));
 
-        /*
-         * Speakers are stored in:
-         *
-         * content.blocks[].data.testimonials[]
-         *
-         * Each item:
-         *
-         * author -> name
-         * role   -> designation
-         * quote  -> company
-         * avatar -> image
-         */
+          return {
+            heading: pageConfig.heading,
+            slug: pageConfig.slug,
+            speakers,
+          };
+        });
 
-        const foundSpeakers: Speaker[] = [];
-
-        /*
-         * Read speakers from content.blocks
-         */
-        if (page.content?.blocks && Array.isArray(page.content.blocks)) {
-          page.content.blocks.forEach((block) => {
-            const testimonials = block.data?.testimonials;
-
-            if (Array.isArray(testimonials)) {
-              testimonials.forEach((item) => {
-                const testimonial = item as Testimonial;
-
-                if (typeof testimonial.author !== 'string' || !testimonial.author.trim()) {
-                  return;
-                }
-
-                foundSpeakers.push({
-                  name: testimonial.author.trim(),
-
-                  title: typeof testimonial.role === 'string' ? testimonial.role.trim() : '',
-
-                  company: typeof testimonial.quote === 'string' ? testimonial.quote.trim() : '',
-
-                  image:
-                    typeof testimonial.avatar === 'string' && testimonial.avatar.trim()
-                      ? testimonial.avatar.trim()
-                      : undefined,
-                });
-              });
-            }
-          });
-        }
-
-        /*
-         * Fallback:
-         * Read speakers from sections[]
-         *
-         * This is useful if the backend returns
-         * the data in sections but not blocks.
-         */
-        if (foundSpeakers.length === 0) {
-          if (page.sections && Array.isArray(page.sections)) {
-            page.sections.forEach((section) => {
-              const testimonials = section.data?.testimonials;
-
-              if (Array.isArray(testimonials)) {
-                testimonials.forEach((item) => {
-                  const testimonial = item as Testimonial;
-
-                  if (typeof testimonial.author !== 'string' || !testimonial.author.trim()) {
-                    return;
-                  }
-
-                  foundSpeakers.push({
-                    name: testimonial.author.trim(),
-
-                    title: typeof testimonial.role === 'string' ? testimonial.role.trim() : '',
-
-                    company: typeof testimonial.quote === 'string' ? testimonial.quote.trim() : '',
-
-                    image:
-                      typeof testimonial.avatar === 'string' && testimonial.avatar.trim()
-                        ? testimonial.avatar.trim()
-                        : undefined,
-                  });
-                });
-              }
-            });
-          }
-        }
-
-        /*
-         * Remove duplicate speakers.
-         *
-         * The API currently contains the same
-         * testimonials in both content.blocks and
-         * sections, so this prevents every speaker
-         * from appearing twice.
-         */
-        const uniqueSpeakers = Array.from(
-          new Map(foundSpeakers.map((speaker) => [speaker.name, speaker])).values(),
-        );
-
-        // console.log('FOUND SPEAKERS:', uniqueSpeakers);
-
-        if (mounted) {
-          setSpeakers(uniqueSpeakers);
-        }
+        setSpeakerSections(sections);
       } catch (err) {
-        // console.error('Failed to load speaker page:', err);
-
         if (mounted) {
-          setError(err instanceof Error ? err.message : 'Failed to load speaker page.');
+          setError(err instanceof Error ? err.message : 'Failed to load speaker data.');
         }
       } finally {
         if (mounted) {
@@ -196,25 +197,25 @@ export default function SpeakersPage() {
       }
     }
 
-    loadPage();
+    loadSpeakerPages();
 
     return () => {
       mounted = false;
     };
-  }, [slug]);
+  }, []);
 
   return (
     <main className="speakers2025-page">
       {/* HERO */}
       <section className="speakers2025-hero">
-        <span className="speakers2025-badge">Speakers 2025</span>
+        <span className="speakers2025-badge">Speakers</span>
 
-        <h1>{pageTitle}</h1>
+        <h1>Our Speakers</h1>
 
-        {pageDescription && <p>{pageDescription}</p>}
+        <p>Meet the distinguished technology leaders, keynote speakers and partner speakers.</p>
       </section>
 
-      {/* SPEAKERS */}
+      {/* SPEAKER SECTIONS */}
       <section className="speakers2025-section">
         <div className="speakers2025-container">
           {/* LOADING */}
@@ -223,46 +224,52 @@ export default function SpeakersPage() {
           {/* ERROR */}
           {!loading && error && <div className="speakers2025-error">{error}</div>}
 
-          {/* SPEAKER GRID */}
-          {!loading && !error && speakers.length > 0 && (
-            <>
-              <div className="speakers2025-heading">
-                <span>Speakers 2025</span>
+          {/* THREE SECTIONS */}
+          {!loading &&
+            !error &&
+            speakerSections.map((section) => (
+              <div className="speaker-category-section" key={section.slug}>
+                <div className="speakers2025-heading">
+                  <span>Our Distinguished Voices</span>
 
-                <h2>Speakers</h2>
+                  <h2>{section.heading}</h2>
+                </div>
+
+                {section.speakers.length > 0 ? (
+                  <div className="speakers2025-grid">
+                    {section.speakers.map((speaker, index) => (
+                      <article
+                        className="speaker2025-card"
+                        key={`${section.slug}-${speaker.name}-${index}`}
+                      >
+                        <div className="speaker2025-avatar">
+                          <img
+                            src={speaker.image || FALLBACK_SPEAKER_IMAGE}
+                            alt={speaker.name}
+                            loading="lazy"
+                            onError={(event) => {
+                              event.currentTarget.src = FALLBACK_SPEAKER_IMAGE;
+                            }}
+                          />
+                        </div>
+
+                        <div className="speaker2025-info">
+                          <h3>{speaker.name}</h3>
+
+                          {speaker.title && <p>{speaker.title}</p>}
+
+                          {speaker.company && <strong>{speaker.company}</strong>}
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="speakers2025-error">No speakers found in this section.</div>
+                )}
+                <br />
+                <br />
               </div>
-
-              <div className="speakers2025-grid">
-                {speakers.map((speaker, index) => (
-                  <article className="speaker2025-card" key={`${speaker.name}-${index}`}>
-                    <div className="speaker2025-avatar">
-                      <img
-                        src={speaker.image || FALLBACK_SPEAKER_IMAGE}
-                        alt={speaker.name}
-                        loading="lazy"
-                        onError={(event) => {
-                          event.currentTarget.src = FALLBACK_SPEAKER_IMAGE;
-                        }}
-                      />
-                    </div>
-
-                    <div className="speaker2025-info">
-                      <h3>{speaker.name}</h3>
-
-                      {speaker.title && <p>{speaker.title}</p>}
-
-                      {speaker.company && <strong>{speaker.company}</strong>}
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </>
-          )}
-
-          {/* NO DATA */}
-          {!loading && !error && speakers.length === 0 && (
-            <div className="speakers2025-error">No speaker data found for this page.</div>
-          )}
+            ))}
         </div>
       </section>
     </main>
