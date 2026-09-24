@@ -41,7 +41,7 @@ export default function Navbar() {
     isHomePage && (activeHash === '#founders-message' || activeHash === '#about-cio-crown');
   const isSpeakerPage = pathname.startsWith('/speakers');
   const isJuryPage = pathname.startsWith('/jury');
-  const isPartnerPage = pathname === '/partners/partner-2025';
+  const isPartnerPage = pathname === '/partners/partners-2025';
 
   const openAbout = () => {
     if (aboutCloseTimer.current) {
@@ -352,7 +352,7 @@ export default function Navbar() {
             Registration
           </Link> */}
 
-          <Link
+          {/* <Link
             href="/#contact-section"
             className={`nav-link ${
               pathname === '/' && activeHash === '#contact-section' ? 'active' : ''
@@ -360,7 +360,7 @@ export default function Navbar() {
             onClick={closeAllMenus}
           >
             Contact
-          </Link>
+          </Link> */}
         </nav>
 
         <div className="navbar-actions">

@@ -9,6 +9,7 @@ import useScrollAnimation from '../../../hooks/useScrollAnimation';
 import BlogCommentsPanel from '@/components/BlogCommentsPanel';
 import {
   fetchWebsiteBlogBySlug,
+  getWebsiteBlogImage,
   type WebsiteBlogContentBlock,
   type WebsiteBlogDetailItem,
 } from '@/services/blogs.service';
@@ -47,7 +48,7 @@ function formatPublishedDate(value?: string) {
 }
 
 function getBlogImage(blog?: WebsiteBlogDetailItem | null) {
-  return blog?.featureImage || blog?.seo?.ogImage || '/assets/blogs/blog-1.webp';
+  return getWebsiteBlogImage(blog);
 }
 
 function getBlogCategory(blog?: WebsiteBlogDetailItem | null) {

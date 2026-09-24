@@ -7,16 +7,19 @@ import { useEffect, useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import {
   fetchWebsiteBlogs,
+  getWebsiteBlogImage,
   submitWebsiteBlogLike,
   type WebsiteBlogItem,
 } from '@/services/blogs.service';
+
+const FALLBACK_BLOG_IMAGE = '/assets/blogs/blog-1.webp';
 
 function getBlogCategory(blog: WebsiteBlogItem) {
   return blog.websites?.[0]?.name || blog.tags?.[0] || 'Blog';
 }
 
 function getBlogImage(blog: WebsiteBlogItem) {
-  return blog.featureImage || blog.seo?.ogImage || '/assets/blogs/blog-1.png';
+  return getWebsiteBlogImage(blog) || FALLBACK_BLOG_IMAGE;
 }
 
 export default function BlogsSection() {
@@ -227,6 +230,9 @@ export default function BlogsSection() {
                     height={320}
                     className="blog-image"
                     unoptimized
+                    onError={(event) => {
+                      event.currentTarget.src = FALLBACK_BLOG_IMAGE;
+                    }}
                   />
                 </div>
 

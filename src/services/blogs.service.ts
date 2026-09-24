@@ -1,4 +1,4 @@
-import { API_ENDPOINTS } from '@/constants/api';
+import { API_BASE_URL, API_ENDPOINTS } from '@/constants/api';
 import { getWebsiteDomain } from '@/lib/website-auth';
 
 export interface WebsiteBlogWebsite {
@@ -19,7 +19,7 @@ export interface WebsiteBlogItem {
   slug: string;
   title: string;
   excerpt?: string;
-  featureImage?: string;
+  featureImage?: WebsiteBlogMedia | string;
   featureImageId?: string | null;
   websites?: WebsiteBlogWebsite[];
   author?: WebsiteBlogAuthor;
@@ -31,7 +31,7 @@ export interface WebsiteBlogItem {
     metaTitle?: string;
     metaDescription?: string;
     keywords?: string[];
-    ogImage?: string;
+    ogImage?: WebsiteBlogMedia | string;
     ogImageId?: string | null;
   };
   engagement?: {
@@ -39,6 +39,61 @@ export interface WebsiteBlogItem {
     views?: number;
     commentsCount?: number;
   };
+}
+
+export interface WebsiteBlogMedia {
+  url?: string;
+  original?: string;
+  thumbnail?: string;
+  small?: string;
+  medium?: string;
+  large?: string;
+  urlVariants?: {
+    thumbnail?: string;
+    small?: string;
+    medium?: string;
+    large?: string;
+  };
+}
+
+function getMediaUrl(media?: WebsiteBlogMedia | string) {
+  if (typeof media === 'string') return media.trim();
+  if (!media || typeof media !== 'object') return '';
+
+  return (
+    media.urlVariants?.medium ||
+    media.urlVariants?.large ||
+    media.urlVariants?.small ||
+    media.medium ||
+    media.large ||
+    media.small ||
+    media.original ||
+    media.url ||
+    media.thumbnail ||
+    media.urlVariants?.thumbnail ||
+    ''
+  ).trim();
+}
+
+export function getWebsiteBlogImage(blog?: WebsiteBlogItem | null) {
+  const image = getMediaUrl(blog?.featureImage) || getMediaUrl(blog?.seo?.ogImage);
+  if (!image) return '/assets/blogs/blog-1.webp';
+
+  if (/^(https?:)?\/\//i.test(image) || image.startsWith('data:') || image.startsWith('/')) {
+    if (!image.startsWith('/')) return image;
+
+    try {
+      return new URL(image, API_BASE_URL).toString();
+    } catch {
+      return image;
+    }
+  }
+
+  try {
+    return new URL(image, API_BASE_URL).toString();
+  } catch {
+    return '/assets/blogs/blog-1.webp';
+  }
 }
 
 export interface WebsiteBlogsResponse {

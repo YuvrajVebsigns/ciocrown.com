@@ -64,6 +64,7 @@ export default function EventDetailsAnimated({
             fill
             priority
             className="event-details-image"
+            unoptimized={featuredEvent.heroImage.startsWith('http')}
           />
         </div>
 

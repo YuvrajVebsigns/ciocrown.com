@@ -12,6 +12,7 @@ import EventSponsorsSection from '@/components/EventSponsorsSection';
 import {
   fetchWebsiteEventByIdOrSlug,
   fetchWebsiteEvents,
+  getWebsiteEventImage,
   type WebsiteEvent,
 } from '@/services/events.service';
 
@@ -30,6 +31,18 @@ function getString(value: unknown, fallback = ''): string {
 
 function getEventField(event: WebsiteEvent, key: string): unknown {
   return (event as unknown as Record<string, unknown>)[key];
+}
+
+function formatEventDate(value: unknown): string {
+  if (typeof value !== 'string' || !value.trim()) return 'Not available';
+
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+
+  return new Intl.DateTimeFormat('en-IN', {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+  }).format(date);
 }
 
 function openExternal(url: string) {
@@ -263,13 +276,8 @@ export default function EventDetailsPage() {
     author: String(
       getEventField(event, 'organizer') ?? getEventField(event, 'author') ?? 'CORE Media',
     ),
-    date: String(getEventField(event, 'startsAt') ?? getEventField(event, 'date') ?? ''),
-    heroImage: String(
-      getEventField(event, 'image') ??
-        getEventField(event, 'heroImage') ??
-        getEventField(event, 'banner') ??
-        '/assets/blogs/blog-1.webp',
-    ),
+    date: formatEventDate(getEventField(event, 'startsAt') ?? getEventField(event, 'date')),
+    heroImage: getWebsiteEventImage(event, true),
     badge: String(getEventField(event, 'category') ?? 'Events'),
     summary: extractTextFromContent(
       getEventField(event, 'description') ?? getEventField(event, 'summary') ?? '',

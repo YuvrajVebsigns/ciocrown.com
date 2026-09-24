@@ -475,6 +475,8 @@ export default function ContactSection() {
 
   const turnstileWidgetIdRef = useRef<string | null>(null);
 
+  const captchaAttemptRef = useRef(false);
+
   /* =========================================================
      UI STATE
   ========================================================= */
@@ -572,6 +574,7 @@ export default function ContactSection() {
               return;
             }
 
+            captchaAttemptRef.current = false;
             setCaptchaToken(token);
 
             setCaptchaStatus('verified');
@@ -592,34 +595,31 @@ export default function ContactSection() {
               return;
             }
 
+            captchaAttemptRef.current = false;
             setCaptchaToken('');
 
             setCaptchaStatus('ready');
 
             setIsRefreshingCaptcha(false);
-
-            setPopupMessage('CAPTCHA verification expired. Please verify again.');
           },
 
           /*
            * Turnstile error.
            */
-          'error-callback': (errorCode) => {
+          'error-callback': () => {
             if (cancelled) {
               return;
             }
 
+            const wasUserInitiated = captchaAttemptRef.current;
+            captchaAttemptRef.current = false;
             setCaptchaToken('');
 
-            setCaptchaStatus('error');
+            setCaptchaStatus(wasUserInitiated ? 'error' : 'ready');
 
             setIsRefreshingCaptcha(false);
 
-            if (errorCode === '110200') {
-              setPopupMessage(
-                'CAPTCHA domain is not authorized in Cloudflare. Please add this website hostname to Turnstile Hostname Management.',
-              );
-            } else {
+            if (wasUserInitiated) {
               setPopupMessage('CAPTCHA verification failed. Please try again.');
             }
           },
@@ -632,13 +632,17 @@ export default function ContactSection() {
               return;
             }
 
+            const wasUserInitiated = captchaAttemptRef.current;
+            captchaAttemptRef.current = false;
             setCaptchaToken('');
 
             setCaptchaStatus('ready');
 
             setIsRefreshingCaptcha(false);
 
-            setPopupMessage('CAPTCHA verification timed out. Please try again.');
+            if (wasUserInitiated) {
+              setPopupMessage('CAPTCHA verification failed. Please try again.');
+            }
           },
         });
 
@@ -744,7 +748,7 @@ export default function ContactSection() {
 
     const timer = window.setTimeout(() => {
       setPopupMessage(null);
-    }, 5000);
+    }, 4000);
 
     return () => {
       window.clearTimeout(timer);
@@ -806,6 +810,7 @@ export default function ContactSection() {
     }
 
     try {
+      captchaAttemptRef.current = true;
       setCaptchaStatus('verifying');
 
       setIsRefreshingCaptcha(false);
@@ -814,9 +819,10 @@ export default function ContactSection() {
 
       window.turnstile.execute(turnstileWidgetIdRef.current);
     } catch {
+      captchaAttemptRef.current = false;
       setCaptchaStatus('error');
 
-      setPopupMessage('Unable to start CAPTCHA verification. Please try again.');
+      setPopupMessage('CAPTCHA verification failed. Please try again.');
     }
   }
 

@@ -194,7 +194,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useEffect, useState } from 'react';
-import { fetchWebsiteEvents, type WebsiteEvent } from '@/services/events.service';
+import {
+  fetchWebsiteEvents,
+  getWebsiteEventImage,
+  type WebsiteEvent,
+} from '@/services/events.service';
 
 function getStoredWebsiteId(): string | undefined {
   if (typeof window === 'undefined') return undefined;
@@ -216,24 +220,6 @@ function getStoredWebsiteId(): string | undefined {
   return undefined;
 }
 
-function getEventImage(event: WebsiteEvent): string {
-  if (event.bannerImage?.medium) return event.bannerImage.medium;
-  if (event.bannerImage?.small) return event.bannerImage.small;
-  if (event.bannerImage?.large) return event.bannerImage.large;
-  if (event.bannerImage?.original) return event.bannerImage.original;
-
-  if (event.bannerImageId?.urlVariants?.medium) return event.bannerImageId.urlVariants.medium;
-  if (event.bannerImageId?.urlVariants?.small) return event.bannerImageId.urlVariants.small;
-  if (event.bannerImageId?.urlVariants?.large) return event.bannerImageId.urlVariants.large;
-  if (event.bannerImageId?.url) return event.bannerImageId.url;
-
-  if (typeof event.image === 'string') return event.image;
-  if (typeof event.heroImage === 'string') return event.heroImage;
-  if (typeof event.banner === 'string') return event.banner;
-
-  return '/assets/blogs/blog-1.webp';
-}
-
 function getEventTitle(event: WebsiteEvent): string {
   return event.title || 'Event';
 }
@@ -252,8 +238,36 @@ function getEventCategory(event: WebsiteEvent): string {
   return event.type || event.category || 'Events';
 }
 
+type EventFilter = 'all' | 'online' | 'offline';
+
+function getEventMode(event: WebsiteEvent): Exclude<EventFilter, 'all'> | null {
+  const rawEvent = event as Record<string, unknown>;
+  const onlineValue = rawEvent.isOnline ?? rawEvent.online;
+
+  if (onlineValue === true) return 'online';
+  if (onlineValue === false) return 'offline';
+
+  const values = [
+    rawEvent.type,
+    rawEvent.category,
+    rawEvent.mode,
+    rawEvent.eventType,
+    rawEvent.format,
+    rawEvent.location,
+  ]
+    .map((value) => (typeof value === 'string' ? value.toLowerCase() : ''))
+    .filter(Boolean)
+    .join(' ');
+
+  if (/online|virtual|webinar|remote|digital/.test(values)) return 'online';
+  if (/offline|physical|in-person|in person|onsite|on-site/.test(values)) return 'offline';
+
+  return null;
+}
+
 export default function EventsPage() {
   const [events, setEvents] = useState<WebsiteEvent[] | null>(null);
+  const [eventFilter, setEventFilter] = useState<EventFilter>('all');
 
   useEffect(() => {
     fetchWebsiteEvents(getStoredWebsiteId())
@@ -292,6 +306,9 @@ export default function EventsPage() {
     threshold: 0.12,
     once: false,
   });
+
+  const filteredEvents =
+    events?.filter((event) => eventFilter === 'all' || getEventMode(event) === eventFilter) ?? null;
 
   return (
     <>
@@ -332,16 +349,30 @@ export default function EventsPage() {
 
       <section className="project-section">
         <div className="project-container">
+          <div className="event-filters" role="group" aria-label="Filter events">
+            {(['all', 'online', 'offline'] as const).map((filter) => (
+              <button
+                key={filter}
+                type="button"
+                className={`event-filter-button ${eventFilter === filter ? 'active' : ''}`}
+                aria-pressed={eventFilter === filter}
+                onClick={() => setEventFilter(filter)}
+              >
+                {filter === 'all' ? 'All' : filter === 'online' ? 'Online' : 'Offline'}
+              </button>
+            ))}
+          </div>
+
           <div className="project-grid">
             {events === null ? (
               <div className="events-loading">Loading events…</div>
-            ) : events.length === 0 ? (
+            ) : filteredEvents?.length === 0 ? (
               <div className="events-empty">No events available at the moment.</div>
             ) : (
-              events.map((item, index) => {
+              filteredEvents?.map((item, index) => {
                 const title = getEventTitle(item);
                 const slug = getEventSlug(item);
-                const imageSrc = getEventImage(item);
+                const imageSrc = getWebsiteEventImage(item);
                 const category = getEventCategory(item);
 
                 return (

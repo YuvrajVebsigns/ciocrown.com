@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { fetchWebsiteEvents, WebsiteEvent } from '@/services/events.service';
+import { fetchWebsiteEvents, getWebsiteEventImage, WebsiteEvent } from '@/services/events.service';
 
 function getStoredWebsiteId(): string | undefined {
   if (typeof window === 'undefined') return undefined;
@@ -122,23 +122,27 @@ export default function ProjectsSection() {
                   'Event',
               );
               const slug =
-                item.id && typeof item.id === 'string'
-                  ? String(item.id)
+                typeof item.slug === 'string' && item.slug.trim()
+                  ? item.slug.trim()
                   : title
                       .toLowerCase()
                       .replace(/\s+/g, '-')
                       .replace(/[^a-z0-9-]/g, '');
 
-              const imageSrc = String(
-                item.image ?? item.heroImage ?? item.banner ?? '/assets/blogs/blog-1.webp',
-              );
+              const imageSrc = getWebsiteEventImage(item);
               const category = String(item.category ?? 'Events');
 
               return (
                 <Link key={slug} href={`/events/${slug}`}>
                   <div className="project-card" ref={index === 0 ? customLeftRef : customRightRef}>
                     <div className="project-image-wrap">
-                      <Image src={imageSrc} alt={title} fill className="project-image" />
+                      <Image
+                        src={imageSrc}
+                        alt={title}
+                        fill
+                        className="project-image"
+                        unoptimized={imageSrc.startsWith('http')}
+                      />
                     </div>
 
                     <div className="project-overlay">
