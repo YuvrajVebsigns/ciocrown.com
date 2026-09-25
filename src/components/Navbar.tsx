@@ -141,6 +141,51 @@ export default function Navbar() {
       window.removeEventListener('hashchange', updateHash);
     };
   }, []);
+  useEffect(() => {
+    setMobileOpen(false);
+    setAboutOpen(false);
+    setSpeakersOpen(false);
+    setJuryOpen(false);
+
+    if (typeof window !== 'undefined') {
+      setActiveHash(window.location.hash);
+    }
+  }, [pathname]);
+
+  // CLOSE MOBILE MENU WHEN CLICKING OUTSIDE NAVBAR
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const handleOutsideClick = (event: PointerEvent) => {
+      const target = event.target as HTMLElement;
+
+      if (!target.closest('.navbar')) {
+        closeAllMenus();
+      }
+    };
+
+    document.addEventListener('pointerdown', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('pointerdown', handleOutsideClick);
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (aboutCloseTimer.current) {
+        clearTimeout(aboutCloseTimer.current);
+      }
+
+      if (speakersCloseTimer.current) {
+        clearTimeout(speakersCloseTimer.current);
+      }
+
+      if (juryCloseTimer.current) {
+        clearTimeout(juryCloseTimer.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -176,7 +221,7 @@ export default function Navbar() {
           <Image
             src="/assets/logo/logo2-removebg.png"
             alt="CIO Crown"
-            width={180}
+            width={130}
             height={70}
             priority
           />
@@ -384,7 +429,7 @@ export default function Navbar() {
               setJuryOpen(false);
             }}
           >
-            {mobileOpen ? <X size={22} strokeWidth={2} /> : <Menu size={22} strokeWidth={2} />}
+            {mobileOpen ? <X size={42} strokeWidth={2} /> : <Menu size={42} strokeWidth={2} />}
           </button>
         </div>
       </div>

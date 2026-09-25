@@ -365,7 +365,10 @@ export default function EventsPage() {
 
           <div className="project-grid">
             {events === null ? (
-              <div className="events-loading">Loading events…</div>
+              // <div className="events-loading">Loading events…</div>
+              <div className="speakers2025-loader-wrapper">
+                <div className="speakers2025-loader"></div>
+              </div>
             ) : filteredEvents?.length === 0 ? (
               <div className="events-empty">No events available at the moment.</div>
             ) : (

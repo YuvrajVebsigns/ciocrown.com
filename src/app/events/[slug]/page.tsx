@@ -222,7 +222,10 @@ export default function EventDetailsPage() {
   if (isLoading) {
     return (
       <main className="event-details-page">
-        <p style={{ padding: '80px 20px', textAlign: 'center' }}>Loading event...</p>
+        {/* <p style={{ padding: '80px 20px', textAlign: 'center' }}>Loading event...</p> */}
+        <div className="speakers2025-loader-wrapper">
+          <div className="speakers2025-loader"></div>
+        </div>
       </main>
     );
   }
