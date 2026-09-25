@@ -887,7 +887,7 @@ export default function NominatePage() {
                         }
                       }}
                       maxLength={10}
-                      placeholder="9876543210"
+                      placeholder="9XXXXXXXXX"
                       className="nominate-input-field"
                     />
                     {errors.nominatorContact && (
@@ -1009,7 +1009,7 @@ export default function NominatePage() {
                             updateCio(idx, 'mobile', e.target.value.replace(/[^0-9]/g, ''))
                           }
                           maxLength={10}
-                          placeholder="9876543210"
+                          placeholder="9XXXXXXXXX"
                           className="nominate-input-field"
                         />
                         {errors.cios?.[idx]?.mobile && (

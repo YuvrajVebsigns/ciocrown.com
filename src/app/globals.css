@@ -1337,8 +1337,8 @@ body {
 
   .speaker2025-avatar,
   .keynote-grid .speaker2025-avatar {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border-radius: 15px;
   }
 
@@ -8289,7 +8289,7 @@ body {
 .registration-section {
   width: 100%;
   min-height: 100vh;
-  padding: 100px 20px;
+  padding: 100px 20px 100px;
   background: linear-gradient(135deg, #d7cccc 0%, #f3ebeb 40%, #f9f3f3 100%);
   display: flex;
   align-items: center;

@@ -201,7 +201,7 @@ export default function Footer() {
 
           {/* SOCIAL */}
           <div className="footer-socials">
-            <a href="https://www.facebook.com/coremediaindia/" aria-label="Facebook">
+            <a href="https://www.facebook.com/CIOCrown.in" aria-label="Facebook">
               <FaFacebookF />
             </a>
 
