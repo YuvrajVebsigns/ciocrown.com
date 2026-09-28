@@ -6738,6 +6738,19 @@ body {
     top: 56%;
     left: 77%;
   }
+
+  .label-1 {
+    top: 51% !important;
+    left: 70% !important;
+  }
+  .label-2 {
+    top: 45% !important;
+    left: 60% !important;
+  }
+  .label-3 {
+    top: 56% !important;
+    left: 86% !important;
+  }
 }
 
 /* =========================
