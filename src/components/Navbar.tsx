@@ -23,17 +23,24 @@ const speakerLinks = [{ label: 'Speaker 2025', href: '/speakers/speaker-2025' }]
 
 const juryLinks = [{ label: 'Jury 2026', href: '/jury/jury-healthcare-2026' }];
 
+const partnerLinks = [
+  { label: 'Partners 2026', href: '/partners/partners-2026' },
+  { label: 'Partners 2025', href: '/partners/partners-2025' },
+];
+
 export default function Navbar() {
   const pathname = usePathname();
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [speakersOpen, setSpeakersOpen] = useState(false);
+  const [partnersOpen, setPartnersOpen] = useState(false);
   const [juryOpen, setJuryOpen] = useState(false);
   const [activeHash, setActiveHash] = useState('');
 
   const aboutCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const speakersCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const partnersCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const juryCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isMobileNav = () => window.matchMedia('(max-width: 992px)').matches;
 
@@ -42,7 +49,7 @@ export default function Navbar() {
     isHomePage && (activeHash === '#founders-message' || activeHash === '#about-cio-crown');
   const isSpeakerPage = pathname.startsWith('/speakers');
   const isJuryPage = pathname.startsWith('/jury');
-  const isPartnerPage = pathname === '/partners/partners-2025';
+  const isPartnerPage = partnerLinks.some((partner) => partner.href === pathname);
 
   const openAbout = () => {
     if (isMobileNav()) return;
@@ -92,6 +99,30 @@ export default function Navbar() {
     }, 140);
   };
 
+  const openPartners = () => {
+    if (isMobileNav()) return;
+
+    if (partnersCloseTimer.current) {
+      clearTimeout(partnersCloseTimer.current);
+    }
+
+    partnersCloseTimer.current = null;
+    setPartnersOpen(true);
+  };
+
+  const closePartners = () => {
+    if (isMobileNav()) return;
+
+    if (partnersCloseTimer.current) {
+      clearTimeout(partnersCloseTimer.current);
+    }
+
+    partnersCloseTimer.current = setTimeout(() => {
+      setPartnersOpen(false);
+      partnersCloseTimer.current = null;
+    }, 140);
+  };
+
   const openJury = () => {
     if (isMobileNav()) return;
 
@@ -120,18 +151,28 @@ export default function Navbar() {
     setMobileOpen(false);
     setAboutOpen(false);
     setSpeakersOpen(false);
+    setPartnersOpen(false);
     setJuryOpen(false);
   };
 
   const toggleAbout = () => {
     setAboutOpen((open) => !open);
     setSpeakersOpen(false);
+    setPartnersOpen(false);
     setJuryOpen(false);
   };
 
   const toggleSpeakers = () => {
     setSpeakersOpen((open) => !open);
     setAboutOpen(false);
+    setPartnersOpen(false);
+    setJuryOpen(false);
+  };
+
+  const togglePartners = () => {
+    setPartnersOpen((open) => !open);
+    setAboutOpen(false);
+    setSpeakersOpen(false);
     setJuryOpen(false);
   };
 
@@ -139,6 +180,7 @@ export default function Navbar() {
     setJuryOpen((open) => !open);
     setAboutOpen(false);
     setSpeakersOpen(false);
+    setPartnersOpen(false);
   };
 
   useEffect(() => {
@@ -158,6 +200,7 @@ export default function Navbar() {
     setMobileOpen(false);
     setAboutOpen(false);
     setSpeakersOpen(false);
+    setPartnersOpen(false);
     setJuryOpen(false);
 
     if (typeof window !== 'undefined') {
@@ -204,6 +247,7 @@ export default function Navbar() {
     setMobileOpen(false);
     setAboutOpen(false);
     setSpeakersOpen(false);
+    setPartnersOpen(false);
     setJuryOpen(false);
 
     if (typeof window !== 'undefined') {
@@ -219,6 +263,10 @@ export default function Navbar() {
 
       if (speakersCloseTimer.current) {
         clearTimeout(speakersCloseTimer.current);
+      }
+
+      if (partnersCloseTimer.current) {
+        clearTimeout(partnersCloseTimer.current);
       }
 
       if (juryCloseTimer.current) {
@@ -291,13 +339,45 @@ export default function Navbar() {
             )}
           </div>
 
-          <Link
-            href="/partners/partners-2026"
-            className={`nav-link ${isPartnerPage ? 'active' : ''}`}
-            onClick={closeAllMenus}
+          <div
+            className={`nav-dropdown ${partnersOpen ? 'open' : ''}`}
+            onMouseEnter={openPartners}
+            onMouseLeave={closePartners}
           >
-            Partners 2026
-          </Link>
+            <button
+              type="button"
+              className={`nav-link ${isPartnerPage ? 'active' : ''}`}
+              aria-expanded={partnersOpen}
+              aria-haspopup="true"
+              onClick={togglePartners}
+            >
+              Partners
+              <ChevronDown size={16} />
+            </button>
+
+            {partnersOpen && (
+              <div className="mega-panel" onMouseEnter={openPartners} onMouseLeave={closePartners}>
+                <div className="mega-inner">
+                  <div className="mega-column">
+                    <ul>
+                      {partnerLinks.map((partner) => (
+                        <li key={partner.href}>
+                          <Link
+                            href={partner.href}
+                            className={`mega-item ${pathname === partner.href ? 'active' : ''}`}
+                            onClick={closeAllMenus}
+                          >
+                            <span className="mega-icon" aria-hidden />
+                            <span>{partner.label}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
 
           <div
             className={`nav-dropdown ${speakersOpen ? 'open' : ''}`}
@@ -439,6 +519,7 @@ export default function Navbar() {
               setMobileOpen((state) => !state);
               setAboutOpen(false);
               setSpeakersOpen(false);
+              setPartnersOpen(false);
               setJuryOpen(false);
             }}
           >
