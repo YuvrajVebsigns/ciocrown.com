@@ -253,7 +253,11 @@ export default function PartnersPage() {
                 {partners.map((partner, index) => {
                   const isExpanded = expandedPartners[index] || false;
 
-                  const description = [partner.title, partner.company].filter(Boolean).join(' ');
+                  const description = [partner.title, partner.company]
+                    .filter(Boolean)
+                    .map((text) => text.replace(/^(?:https?:\/\/|www\.)\S+\s*/i, ''))
+                    .filter(Boolean)
+                    .join(' ');
 
                   return (
                     <article className="speaker2025-card" key={`${partner.name}-${index}`}>

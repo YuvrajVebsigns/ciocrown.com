@@ -56,7 +56,7 @@ export default function Footer() {
                 <Image
                   src="/assets/logo/logo2-removebg.png"
                   alt="Core Media"
-                  width={420}
+                  width={620}
                   height={240}
                   className="footer-logo-img"
                   priority

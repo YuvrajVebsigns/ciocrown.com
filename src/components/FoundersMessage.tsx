@@ -160,12 +160,12 @@ export default function FoundersMessage() {
 
               <a
                 href="https://www.linkedin.com/in/mathuranoop/"
-                className="founder-linkedin"
+                className="founder-linkedin-btn"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Anoop Mathur on LinkedIn"
               >
-                <FaLinkedinIn size={16} />
+                <FaLinkedinIn size={16} aria-hidden="true" />
               </a>
             </div>
           </div>

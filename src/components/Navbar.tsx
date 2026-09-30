@@ -35,6 +35,7 @@ export default function Navbar() {
   const aboutCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const speakersCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const juryCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isMobileNav = () => window.matchMedia('(max-width: 992px)').matches;
 
   const isHomePage = pathname === '/';
   const isAboutActive =
@@ -44,6 +45,8 @@ export default function Navbar() {
   const isPartnerPage = pathname === '/partners/partners-2025';
 
   const openAbout = () => {
+    if (isMobileNav()) return;
+
     if (aboutCloseTimer.current) {
       clearTimeout(aboutCloseTimer.current);
     }
@@ -53,6 +56,8 @@ export default function Navbar() {
   };
 
   const closeAbout = () => {
+    if (isMobileNav()) return;
+
     if (aboutCloseTimer.current) {
       clearTimeout(aboutCloseTimer.current);
     }
@@ -64,6 +69,8 @@ export default function Navbar() {
   };
 
   const openSpeakers = () => {
+    if (isMobileNav()) return;
+
     if (speakersCloseTimer.current) {
       clearTimeout(speakersCloseTimer.current);
     }
@@ -73,6 +80,8 @@ export default function Navbar() {
   };
 
   const closeSpeakers = () => {
+    if (isMobileNav()) return;
+
     if (speakersCloseTimer.current) {
       clearTimeout(speakersCloseTimer.current);
     }
@@ -84,6 +93,8 @@ export default function Navbar() {
   };
 
   const openJury = () => {
+    if (isMobileNav()) return;
+
     if (juryCloseTimer.current) {
       clearTimeout(juryCloseTimer.current);
     }
@@ -93,6 +104,8 @@ export default function Navbar() {
   };
 
   const closeJury = () => {
+    if (isMobileNav()) return;
+
     if (juryCloseTimer.current) {
       clearTimeout(juryCloseTimer.current);
     }
