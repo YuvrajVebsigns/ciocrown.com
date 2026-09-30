@@ -219,7 +219,7 @@ export default function PartnersPage() {
     <main className="speakers2025-page">
       {/* HERO */}
       <section className="speakers2025-hero">
-        <span className="speakers2025-badge">Partners 2025</span>
+        <span className="speakers2025-badge">Partners</span>
 
         <h1>{pageTitle}</h1>
 
@@ -245,7 +245,7 @@ export default function PartnersPage() {
           {!loading && !error && partners.length > 0 && (
             <>
               <div className="speakers2025-heading">
-                <span>Partners 2025</span>
+                <span>Partners 2026</span>
                 <h2>Partners</h2>
               </div>
 

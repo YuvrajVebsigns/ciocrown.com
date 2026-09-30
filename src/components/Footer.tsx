@@ -70,7 +70,7 @@ export default function Footer() {
             </div>
 
             {/* COLUMN 2 */}
-            {/* <div className="footer-widget">
+            <div className="footer-widget">
               <h4 className="footer-title">Services</h4>
 
               <ul className="footer-links">
@@ -79,10 +79,10 @@ export default function Footer() {
                 </li>
 
                 <li>
-                  <Link href="/nominate">Nominate</Link>
+                  <Link href="/delegates-profile">Delegates Profile</Link>
                 </li>
               </ul>
-            </div> */}
+            </div>
 
             {/* COLUMN 3 */}
             <div className="footer-widget">

@@ -279,11 +279,11 @@ export default function Navbar() {
           </div>
 
           <Link
-            href="/partners/partners-2025"
+            href="/partners/partners-2026"
             className={`nav-link ${isPartnerPage ? 'active' : ''}`}
             onClick={closeAllMenus}
           >
-            Partners 2025
+            Partners 2026
           </Link>
 
           <div

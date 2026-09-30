@@ -1,7 +1,6 @@
 'use client';
 
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import Image from 'next/image';
 
 export default function AboutUsSection() {
   const sectionRef = useScrollAnimation<HTMLDivElement>({
@@ -18,16 +17,10 @@ export default function AboutUsSection() {
         {/* Heading */}
         <div className="aboutus-heading theme-heading">
           <div className="aboutus-label">
-            <Image
-              src="/assets/icon.png"
-              alt="Theme 2026"
-              width={20}
-              height={20}
-              className="aboutus-label-icon"
-            />
             <span className="aboutus-label-text">THEME 2026</span>
           </div>
 
+          <br />
           <br />
 
           <h4 className="aboutus-title theme-title">

@@ -214,7 +214,7 @@ export default function PartnerDetailClient({ slug }: PartnerDetailClientProps) 
 
               <span>{section.partners.length} partners</span>
 
-              <h3>Partners 2025</h3>
+              <h3>Partners 2026</h3>
             </div>
 
             {/* PARTNER GRID */}

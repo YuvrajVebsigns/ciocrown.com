@@ -518,6 +518,14 @@ export default function EventDetailsPage() {
               </div>
             </div>
           </div>
+          <br />
+          <Link href="/events" className="talk-btn">
+            <span>Back</span>
+
+            <div className="talk-btn-icon">
+              <ArrowUpRight size={18} />
+            </div>
+          </Link>
         </ClientErrorBoundary>
       </div>
     </main>
