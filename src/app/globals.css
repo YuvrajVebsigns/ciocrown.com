@@ -6084,7 +6084,7 @@ body {
 
 @media (max-width: 768px) {
   .project-section {
-    padding: 70px 16px;
+    /* padding: 70px 16px; */
   }
 
   .project-container {
