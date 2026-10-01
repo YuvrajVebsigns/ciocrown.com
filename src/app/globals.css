@@ -1502,8 +1502,7 @@ body {
 
   top: calc(100% + 16px);
   left: 50%;
-
-  width: 270px;
+  width: 210px;
   max-width: calc(100vw - 32px);
 
   padding: 18px 14px;
@@ -1789,7 +1788,7 @@ body {
   align-items: center;
 
   gap: 14px;
-
+  margin-right: 10px;
   border-radius: 999px;
 
   background: linear-gradient(90deg, #9d1111, #8e0101);
@@ -4094,7 +4093,11 @@ body {
 
 @media (max-width: 640px) {
   .founder-action-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 12px;
+    width: 100%;
   }
 
   .founder-facebook-btn {
@@ -4325,7 +4328,7 @@ body {
 
 @media (max-width: 768px) {
   .theme-section {
-    padding: 75px 0;
+    padding: 25px 20px;
   }
 
   .theme-content-card {
@@ -7678,7 +7681,7 @@ body {
 
 .blogs-heading {
   text-align: center;
-  margin-bottom: 70px;
+  /* margin-bottom: 20px; */
 }
 
 .blogs-subtitle {
@@ -8015,7 +8018,7 @@ body {
 
 @media (max-width: 768px) {
   .blogs-section {
-    padding: 80px 16px;
+    /* padding: 30px 16px; */
   }
 
   .blogs-grid {
@@ -9219,259 +9222,807 @@ body {
   }
 }
 
-/* registration form */
+/* =========================================================
+   REGISTRATION SECTION
+========================================================= */
 
 .registration-section {
   width: 100%;
   min-height: 100vh;
-  /* padding: 100px 20px 100px; */
-  background: linear-gradient(135deg, #d7cccc 0%, #f3ebeb 40%, #f9f3f3 100%);
+  padding: 20px 20px;
+
+  background: linear-gradient(135deg, #d7cccc 0%, #f3ebeb 45%, #f9f3f3 100%);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   position: relative;
   overflow: visible;
 }
+
+/* =========================================================
+   CONTAINER
+========================================================= */
 
 .registration-container {
   width: 100%;
   max-width: 1050px;
   margin: 0 auto;
+
   position: relative;
   z-index: 2;
 }
 
+/* =========================================================
+   FORM WRAPPER
+========================================================= */
+
 .registration-wrapper {
   width: 100%;
-  max-width: 800px;
-  margin: 15px auto 0;
+  max-width: 1000px;
+  margin: 0 auto;
+
   border-radius: 28px;
-  background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid #9d1111;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+
+  background: rgba(255, 255, 255, 0.42);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(157, 17, 17, 0.35);
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+
   overflow: visible;
   position: relative;
 }
 
+/* =========================================================
+   FORM TITLE
+========================================================= */
+
 .registration-title {
   margin: 0;
   padding: 22px 30px;
+
   border-radius: 28px 28px 0 0;
+
   background: linear-gradient(90deg, #8e0101 0%, #9d1111 100%);
-  color: #fff;
+
+  color: #ffffff;
+
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
+/* =========================================================
+   FORM
+========================================================= */
+
 .registration-form {
   width: 100%;
-  padding: 30px 40px 40px;
+
+  padding: 32px 40px 40px;
+
   display: grid;
+
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px 30px;
+
+  column-gap: 35px;
+  row-gap: 22px;
+
+  box-sizing: border-box;
 }
 
+/* =========================================================
+   FIELD
+========================================================= */
+
 .registration-label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #585555;
-  position: relative;
+  width: 100%;
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns: 120px minmax(0, 1fr);
+
+  align-items: center;
+
+  column-gap: 12px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  color: #4e4a4a;
+
+  white-space: nowrap;
+
+  box-sizing: border-box;
 }
+
+/* =========================================================
+   FIXED TITLE WIDTH
+========================================================= */
+
+.registration-label > span,
+.registration-label > label,
+.registration-label .field-title {
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+
+  line-height: 1.2;
+
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   FIXED INPUT AREA
+   Keeps input / placeholder width independent
+   from title text length.
+========================================================= */
+
+.registration-label > input,
+.registration-label > select,
+.registration-label > textarea,
+.registration-label > .registration-country-select,
+.registration-label > .custom-select-wrap,
+.registration-label > .registration-phone-field {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   INPUTS / SELECTS
+========================================================= */
 
 .registration-form input,
 .registration-form select,
 .registration-country-select,
 .custom-select-btn {
-  width: 100%;
-  height: 48px;
-  padding: 0 16px;
-  border: 2px solid #ddd;
-  border-radius: 999px;
-  background: #fff;
+  height: 46px;
+  padding: 0 15px;
+  border: 1.5px solid #d7d0d0;
+  margin-left: 20px;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #292727;
   outline: none;
-  font-size: 15px;
-  color: #2f2e2e;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  box-sizing: border-box;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.registration-form input::placeholder {
+  color: #a5a0a0;
+
+  font-size: 12px;
+
+  font-weight: 400;
+
+  opacity: 1;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.registration-form select {
+  cursor: pointer;
+}
+
+/* =========================================================
+   COUNTRY CODE
+========================================================= */
+
+.registration-country-select {
+  width: 72px !important;
+  min-width: 72px !important;
+  max-width: 72px !important;
+
+  flex: 0 0 72px !important;
+
+  padding-left: 7px !important;
+  padding-right: 7px !important;
+
+  font-size: 11px !important;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.registration-country-select::placeholder {
+  font-size: 11px !important;
+
+  color: #a5a0a0;
+}
+
+/* =========================================================
+   PHONE FIELD
+========================================================= */
+
+.registration-phone-field {
+  width: 100%;
+
+  min-width: 0;
+
+  max-width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
   box-sizing: border-box;
 }
+
+.registration-phone-field .registration-country-select {
+  width: 72px !important;
+  min-width: 72px !important;
+  max-width: 72px !important;
+
+  flex: 0 0 72px !important;
+}
+
+.registration-phone-field input {
+  width: 100%;
+
+  min-width: 0;
+
+  max-width: 100%;
+
+  flex: 1 1 auto;
+}
+
+.registration-phone-field input::placeholder {
+  font-size: 12px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+/* =========================================================
+   PHONE / LANDLINE
+========================================================= */
+
+.registration-form input[type='tel'] {
+  min-width: 0;
+
+  max-width: 100%;
+}
+
+.registration-form input[type='tel']::placeholder {
+  font-size: 12px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+/* =========================================================
+   FOCUS
+========================================================= */
 
 .registration-form input:focus,
 .registration-form select:focus,
 .registration-country-select:focus,
 .custom-select-btn:focus {
   border-color: #8e0101;
-  box-shadow: 0 0 0 4px rgba(142, 1, 1, 0.15);
+
+  background: #ffffff;
+
+  box-shadow: 0 0 0 3px rgba(142, 1, 1, 0.1);
 }
+
+/* =========================================================
+   CUSTOM SELECT WRAPPER
+========================================================= */
 
 .custom-select-wrap {
   position: relative;
+
   width: 100%;
-  z-index: 50;
+  min-width: 0;
+  max-width: 100%;
+
+  box-sizing: border-box;
 }
 
+/* =========================================================
+   CUSTOM SELECT BUTTON
+========================================================= */
+
 .custom-select-btn {
+  width: 100%;
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
+
   cursor: pointer;
+
   text-align: left;
 }
 
 .custom-select-btn span:first-child {
   overflow: hidden;
+
   white-space: nowrap;
+
   text-overflow: ellipsis;
 }
 
 .custom-select-arrow {
   flex-shrink: 0;
-  margin-left: 10px;
+
+  margin-left: 8px;
 }
+
+/* =========================================================
+   CUSTOM SELECT MENU
+========================================================= */
 
 .custom-select-menu {
   position: absolute;
+
   top: calc(100% + 6px);
+
   left: 0;
+
   width: 100%;
-  max-height: 120px;
+
+  max-height: 160px;
+
   overflow-y: auto;
-  background: #fff;
+
+  background: #ffffff;
+
   border: 1px solid #ddd;
+
   border-radius: 12px;
+
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+
   z-index: 9999;
 }
 
+/* =========================================================
+   CUSTOM SELECT OPTION
+========================================================= */
+
 .custom-select-option {
   width: 100%;
-  min-height: 28px;
-  padding: 6px 14px;
+
+  min-height: 34px;
+
+  padding: 8px 14px;
+
   border: 0;
-  background: #fff;
-  color: #222;
+
+  background: #ffffff;
+
+  color: #222222;
+
   text-align: left;
+
   font-size: 13px;
-  line-height: 1.2;
+
+  line-height: 1.3;
+
   cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .custom-select-option:hover {
   background: #f5eeee;
+
   color: #8e0101;
 }
+
+/* =========================================================
+   FULL WIDTH FIELD
+========================================================= */
+
+.registration-full-width {
+  grid-column: 1 / -1;
+}
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.registration-form textarea {
+  width: 100%;
+
+  min-height: 90px;
+
+  padding: 12px 15px;
+
+  border: 1.5px solid #d7d0d0;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  color: #292727;
+
+  outline: none;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  resize: vertical;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.registration-form textarea::placeholder {
+  color: #a5a0a0;
+
+  font-size: 13px;
+}
+
+.registration-form textarea:focus {
+  border-color: #8e0101;
+
+  box-shadow: 0 0 0 3px rgba(142, 1, 1, 0.1);
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
 
 .registration-error {
   margin-top: 4px;
-  font-size: 13px;
+
+  font-size: 12px;
+
   font-weight: 500;
+
   color: #8e0101;
 }
 
-.registration-button-wrap {
+/* =========================================================
+   CHECKBOX / CONSENT
+========================================================= */
+
+.registration-consent {
   grid-column: 1 / -1;
+
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  margin-top: 2px;
+
+  color: #555050;
+
+  font-size: 13px;
+
+  line-height: 1.5;
 }
 
-.registration-btn {
-  height: 58px;
-  padding: 0 42px;
-  border: none;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #8e0101 0%, #9d1111 100%);
-  color: #fff;
-  font-size: 15px;
-  font-weight: 700;
+.registration-consent input[type='checkbox'] {
+  width: 18px;
+
+  height: 18px;
+
+  flex: 0 0 18px;
+
+  margin-top: 1px;
+
+  accent-color: #8e0101;
+
   cursor: pointer;
+}
+
+/* =========================================================
+   BUTTON WRAPPER
+========================================================= */
+
+.registration-button-wrap {
+  grid-column: 1 / -1;
+
+  display: flex;
+
+  justify-content: center;
+
+  margin-top: 12px;
+}
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.registration-btn {
+  min-width: 220px;
+
+  height: 54px;
+
+  padding: 0 40px;
+
+  border: none;
+
+  border-radius: 999px;
+
+  background: linear-gradient(90deg, #8e0101 0%, #9d1111 100%);
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
   box-shadow: 0 10px 25px rgba(142, 1, 1, 0.3);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.registration-btn:hover {
+  transform: translateY(-2px);
+
+  background: linear-gradient(90deg, #7c0000 0%, #940000 100%);
+
+  box-shadow: 0 14px 32px rgba(142, 1, 1, 0.35);
 }
 
 .registration-btn:disabled {
   opacity: 0.6;
+
   cursor: not-allowed;
+
+  transform: none;
+
+  box-shadow: 0 5px 15px rgba(142, 1, 1, 0.15);
 }
+
+/* =========================================================
+   POPUP
+========================================================= */
 
 .registration-popup {
   position: fixed;
+
   top: 110px;
+
   right: 24px;
+
   z-index: 9999;
+
   display: flex;
+
   align-items: center;
+
   gap: 12px;
+
   max-width: 360px;
+
   padding: 14px 16px;
+
   border-radius: 14px;
-  background: #fff;
+
+  background: #ffffff;
+
   color: #7a0d0d;
+
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
 }
 
 .registration-popup p {
   margin: 0;
+
   font-size: 14px;
+
   font-weight: 600;
 }
 
 .registration-popup-dot {
   width: 12px;
+
   height: 12px;
-  border-radius: 999px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
   background: #19a65a;
 }
 
 .registration-popup button {
   margin-left: auto;
+
   border: none;
+
   background: transparent;
+
   color: inherit;
+
   font-size: 20px;
+
   cursor: pointer;
 }
 
+/* =========================================================
+   DOWNLOAD REPORT SECTION
+========================================================= */
+
 .download-report-section {
   width: 100%;
-  min-height: 80vh;
-  padding: 100px 20px;
+
+  min-height: 70vh;
+
+  padding: 80px 20px;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   background: linear-gradient(135deg, #f5f0ef 0%, #ffffff 100%);
 }
 
+/* =========================================================
+   DOWNLOAD REPORT CARD
+========================================================= */
+
 .download-report-card {
   width: 100%;
+
   max-width: 520px;
+
   padding: 48px 32px;
+
   text-align: center;
+
   border-radius: 30px;
-  background: #fff;
+
+  background: #ffffff;
+
   box-shadow: 0 36px 80px rgba(48, 25, 25, 0.08);
 }
 
+/* =========================================================
+   DOWNLOAD BUTTON
+========================================================= */
+
 .download-report-btn {
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
+
   min-width: 220px;
+
   height: 52px;
+
   padding: 0 24px;
+
   border-radius: 999px;
+
   background: #8e0101;
-  color: #fff;
+
+  color: #ffffff;
+
   font-weight: 700;
+
   text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
+
+.download-report-btn:hover {
+  background: #700000;
+
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .registration-form {
+    column-gap: 20px;
+    padding: 28px;
+  }
+
+  .registration-label {
+    grid-template-columns: 100px minmax(0, 1fr);
+    column-gap: 8px;
+    font-size: 12px;
+  }
+
+  .registration-label > span,
+  .registration-label > label,
+  .registration-label .field-title {
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+  }
+
+  .registration-country-select {
+    width: 68px !important;
+    min-width: 68px !important;
+    max-width: 68px !important;
+    flex-basis: 68px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    font-size: 10px !important;
+  }
+
+  .registration-phone-field .registration-country-select {
+    width: 68px !important;
+    min-width: 68px !important;
+    max-width: 68px !important;
+    flex-basis: 68px !important;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 768px) {
   .registration-section {
-    padding: 70px 16px;
+    padding: 20px 16px;
   }
 
   .registration-wrapper {
@@ -9480,23 +10031,185 @@ body {
   }
 
   .registration-title {
+    padding: 20px 22px;
     border-radius: 22px 22px 0 0;
     font-size: 18px;
   }
 
   .registration-form {
-    padding: 24px;
     grid-template-columns: 1fr;
+    padding: 24px;
+    row-gap: 20px;
+  }
+
+  .registration-full-width,
+  .registration-button-wrap,
+  .registration-consent {
+    grid-column: auto;
+  }
+
+  .registration-label {
+    grid-template-columns: 120px minmax(0, 1fr);
+    column-gap: 8px;
+  }
+
+  .registration-phone-field {
+    width: 100%;
+    min-width: 0;
+    gap: 7px;
+  }
+
+  .registration-phone-field .registration-country-select {
+    width: 68px !important;
+    min-width: 68px !important;
+    max-width: 68px !important;
+    flex: 0 0 68px !important;
+  }
+
+  .registration-phone-field input {
+    width: 100%;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  /* =========================================
+     CENTER SUBMIT BUTTON
+  ========================================= */
+
+  .registration-button-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 12px auto 0;
   }
 
   .registration-btn {
-    width: 100%;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  .custom-select-menu {
-    max-height: 75px;
+    width: auto;
+    min-width: 220px;
+    max-width: 90%;
+
+    height: 54px;
+
+    margin: 0 auto;
+
+    padding: 0 32px;
   }
 }
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+  .registration-label {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 7px;
+    white-space: normal;
+  }
+
+  .registration-label > span,
+  .registration-label > label,
+  .registration-label .field-title {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    flex: none;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+
+  .registration-form input,
+  .registration-form select,
+  .registration-country-select,
+  .custom-select-btn {
+    width: 90%;
+  }
+
+  .registration-form {
+    padding: 20px 16px 28px;
+  }
+
+  /* =========================================
+     CENTER BUTTON ON SMALL MOBILE
+  ========================================= */
+
+  .registration-button-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    margin: 12px auto 0;
+  }
+
+  .registration-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 90%;
+    max-width: 320px;
+    min-width: 0;
+
+    height: 52px;
+
+    margin: 0 auto;
+
+    padding: 0 20px;
+
+    text-align: center;
+  }
+
+  .registration-popup {
+    left: 16px;
+    right: 16px;
+    max-width: none;
+  }
+
+  /* =========================================
+     PHONE FIELD
+  ========================================= */
+
+  .registration-phone-field {
+    width: 100%;
+    display: flex;
+    gap: 7px;
+  }
+
+  .registration-phone-field .registration-country-select {
+    width: 66px !important;
+    min-width: 66px !important;
+    max-width: 66px !important;
+    flex: 0 0 66px !important;
+
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+
+    font-size: 10px !important;
+  }
+
+  .registration-phone-field input {
+    width: 100%;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .registration-phone-field input::placeholder,
+  .registration-form input[type='tel']::placeholder {
+    font-size: 11px;
+  }
+}
+
 /* =========================================
    NOMINATE PAGE
 ========================================= */
@@ -15510,7 +16223,7 @@ s .dialogues-badge-mark {
 
 @media (max-width: 480px) {
   .delegates-section {
-    padding: 50px 15px 65px;
+    padding: 0px 15px 65px;
   }
 
   .delegates-label {
