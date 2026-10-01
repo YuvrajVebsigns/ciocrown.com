@@ -201,19 +201,39 @@ export default function Footer() {
 
           {/* SOCIAL */}
           <div className="footer-socials">
-            <a href="https://www.facebook.com/CIOCrown.in" aria-label="Facebook">
+            <a
+              href="https://www.facebook.com/CIOCrown.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
               <FaFacebookF />
             </a>
 
-            <a href="https://www.instagram.com/core_media_/" aria-label="Instagram">
+            <a
+              href="https://www.instagram.com/core_media_/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
               <FaInstagram />
             </a>
 
-            <a href="https://x.com/CIOChoice" aria-label="Twitter">
+            <a
+              href="https://x.com/CIOChoice"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter"
+            >
               <FaXTwitter />
             </a>
 
-            <a href="https://www.linkedin.com/company/core-mediagroup/" aria-label="LinkedIn">
+            <a
+              href="https://www.linkedin.com/company/core-mediagroup/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
               <FaLinkedinIn />
             </a>
           </div>
