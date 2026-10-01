@@ -10,6 +10,13 @@ type Section = {
   body: string;
 };
 
+type AgendaItem = {
+  time?: string;
+  title?: string;
+  speaker?: string;
+  description?: string;
+};
+
 type FeaturedEvent = {
   title: string;
   author: string;
@@ -37,9 +44,11 @@ function AnimatedEventSection({ section }: { section: Section }) {
 export default function EventDetailsAnimated({
   featuredEvent,
   readableSlug,
+  agenda,
 }: {
   featuredEvent: FeaturedEvent;
   readableSlug: string;
+  agenda: AgendaItem[];
 }) {
   const heroRef = useScrollAnimation<HTMLDivElement>({
     animationClass: 'animate-fade-in-right',
@@ -53,7 +62,6 @@ export default function EventDetailsAnimated({
     animationClass: 'animate-fade-in',
     initialTransform: 'translateY(24px)',
   });
-
   return (
     <>
       <div className="event-details-hero" ref={heroRef}>
@@ -94,6 +102,62 @@ export default function EventDetailsAnimated({
 
       <article className="event-details-article">
         {featuredEvent.summary && <p className="event-details-intro">{featuredEvent.summary}</p>}
+
+        {agenda.length > 0 && (
+          <section className="event-details-agenda">
+            <div className="event-details-agenda-heading">
+              <h2>Agenda</h2>
+              {/* <span>
+                {agenda.length} {agenda.length === 1 ? 'session' : 'sessions'}
+              </span> */}
+            </div>
+            <div className="event-details-agenda-table-wrap">
+              <table className="event-details-agenda-table">
+                <thead>
+                  <tr>
+                    <th scope="col" className="event-details-agenda-number-heading">
+                      Sr. No.
+                    </th>
+                    <th scope="col">Date &amp; Time</th>
+                    <th scope="col">Day</th>
+                    <th scope="col">Segment Title</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {agenda.map((item, index) => {
+                    const agendaDate = item.time ? new Date(item.time) : null;
+                    const formattedTime =
+                      agendaDate && !Number.isNaN(agendaDate.getTime())
+                        ? new Intl.DateTimeFormat('en-IN', {
+                            dateStyle: 'medium',
+                            timeStyle: 'short',
+                          }).format(agendaDate)
+                        : 'Time to be announced';
+
+                    return (
+                      <tr key={`${item.title ?? 'agenda'}-${index}`}>
+                        <td className="event-details-agenda-number">{index + 1}</td>
+                        <td>
+                          {agendaDate && !Number.isNaN(agendaDate.getTime()) ? (
+                            <time dateTime={item.time}>{formattedTime}</time>
+                          ) : (
+                            formattedTime
+                          )}
+                        </td>
+                        <td>{item.speaker || 'To be announced'}</td>
+                        <th scope="row">{item.title || 'Agenda item'}</th>
+                        <td className="event-details-agenda-description">
+                          {item.description || 'Details to be announced'}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
 
         {featuredEvent.quote && (
           <div className="event-details-quote" ref={quoteRef}>

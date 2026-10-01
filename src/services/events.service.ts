@@ -327,6 +327,7 @@ export type WebsiteEvent = {
   startDate?: string;
   endDate?: string;
   totalRegistrations?: number;
+  agenda?: EventAgendaItem[];
   image?: string;
   heroImage?: string;
   banner?: string;
@@ -348,6 +349,13 @@ export type WebsiteEvent = {
     };
   };
   [key: string]: unknown;
+};
+
+export type EventAgendaItem = {
+  time?: string;
+  title?: string;
+  speaker?: string;
+  description?: string;
 };
 
 export function getWebsiteEventImage(event: WebsiteEvent, preferOriginal = false): string {

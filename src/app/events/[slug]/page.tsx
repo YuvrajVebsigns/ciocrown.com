@@ -15,6 +15,7 @@ import {
   fetchWebsiteEventByIdOrSlug,
   fetchWebsiteEvents,
   getWebsiteEventImage,
+  type EventAgendaItem,
   type WebsiteEvent,
 } from '@/services/events.service';
 
@@ -302,6 +303,15 @@ export default function EventDetailsPage() {
     sections: normalizedSections,
   };
 
+  const agenda: EventAgendaItem[] = Array.isArray(event.agenda)
+    ? event.agenda.filter(isRecord).map((item) => ({
+        time: getString(item.time) || undefined,
+        title: getString(item.title) || undefined,
+        speaker: getString(item.speaker) || undefined,
+        description: getString(item.description) || undefined,
+      }))
+    : [];
+
   function renderBlock(block: unknown, index: number) {
     if (!isRecord(block)) return null;
 
@@ -412,7 +422,11 @@ export default function EventDetailsPage() {
     <main className="event-details-page">
       <div className="event-details-shell">
         <ClientErrorBoundary>
-          <EventDetailsAnimated featuredEvent={featuredEvent} readableSlug={readableSlug} />
+          <EventDetailsAnimated
+            featuredEvent={featuredEvent}
+            readableSlug={readableSlug}
+            agenda={agenda}
+          />
 
           <EventSponsorsSection sponsors={eventSponsors} />
 
@@ -441,7 +455,14 @@ export default function EventDetailsPage() {
               </div>
             ) : null}
 
-            <div style={{ marginTop: 24 }}>
+            <div className="event-details-actions">
+              <Link href="/events" className="talk-btn">
+                <span>Back</span>
+
+                <div className="talk-btn-icon">
+                  <ArrowUpRight size={18} />
+                </div>
+              </Link>
               {/* <Link href="/register" className="talk-btn">
                 Registration
               </Link> */}
@@ -452,9 +473,6 @@ export default function EventDetailsPage() {
                   <ArrowUpRight size={18} />
                 </div>
               </Link>
-            </div>
-
-            <div style={{ marginTop: 24 }}>
               <div className="share-container">
                 <button
                   type="button"
@@ -469,8 +487,6 @@ export default function EventDetailsPage() {
                     <ArrowUpRight size={18} />
                   </div>
                 </button>
-
-                <br />
 
                 {showShareOptions ? (
                   <div className="share-popup" role="menu" aria-labelledby="share-button">
@@ -518,14 +534,6 @@ export default function EventDetailsPage() {
               </div>
             </div>
           </div>
-          <br />
-          <Link href="/events" className="talk-btn">
-            <span>Back</span>
-
-            <div className="talk-btn-icon">
-              <ArrowUpRight size={18} />
-            </div>
-          </Link>
         </ClientErrorBoundary>
       </div>
     </main>
