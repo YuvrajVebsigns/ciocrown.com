@@ -8670,27 +8670,112 @@ body {
   margin: 0 0 18px;
 }
 
-.event-details-agenda {
-  margin: 28px 0;
-}
-
 .event-details-agenda-heading {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
 .event-details-agenda-heading h2 {
   margin: 0;
-  color: #2c1313;
-  font-size: 24px;
 }
 
-.event-details-agenda-heading span {
-  color: #69737c;
-  font-size: 13px;
+.event-details-agenda-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.agenda-page {
+  min-height: 70vh;
+  padding: 130px 20px 80px;
+  background: #f5eeee;
+}
+
+.agenda-page-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 56px);
+  border-radius: 20px;
+  background: #fff;
+  color: #263238;
+  line-height: 1.8;
+}
+
+.agenda-page-content h1,
+.agenda-page-content h2,
+.agenda-page-content h3 {
+  color: #8e0101;
+  line-height: 1.25;
+}
+
+.agenda-page-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px auto;
+}
+
+.agenda-page-content blockquote {
+  margin: 24px 0;
+  padding-left: 18px;
+  border-left: 3px solid #8e0101;
+}
+
+.agenda-pdf-page {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #fff;
+}
+
+.agenda-pdf-page > p {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  place-items: center;
+}
+
+.agenda-pdf-viewer {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  border: 0;
+  background: #fff;
+}
+
+.event-details-download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 20px;
+  border-radius: 8px;
+
+  background: #8e0101;
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.event-details-download-btn:hover {
+  background: #a40000;
+  transform: translateY(-2px);
 }
 
 .event-details-agenda-table-wrap {
@@ -9379,7 +9464,7 @@ body {
 .registration-section {
   width: 100%;
   min-height: 100vh;
-  padding: 20px 20px;
+  padding: 20px;
 
   background: linear-gradient(135deg, #d7cccc 0%, #f3ebeb 45%, #f9f3f3 100%);
 
@@ -9480,7 +9565,7 @@ body {
 
   grid-template-columns: 120px minmax(0, 1fr);
 
-  align-items: center;
+  align-items: start;
 
   column-gap: 12px;
 
@@ -9492,10 +9577,12 @@ body {
   white-space: nowrap;
 
   box-sizing: border-box;
+
+  position: relative;
 }
 
 /* =========================================================
-   FIXED TITLE WIDTH
+   FIELD TITLE
 ========================================================= */
 
 .registration-label > span,
@@ -9517,9 +9604,7 @@ body {
 }
 
 /* =========================================================
-   FIXED INPUT AREA
-   Keeps input / placeholder width independent
-   from title text length.
+   FIELD INPUT AREA
 ========================================================= */
 
 .registration-label > input,
@@ -9536,6 +9621,49 @@ body {
 }
 
 /* =========================================================
+   INPUT WRAPPER
+   Allows input + error to stay together
+========================================================= */
+
+.registration-label > input,
+.registration-label > select,
+.registration-label > textarea,
+.registration-label > .custom-select-wrap,
+.registration-label > .registration-phone-field {
+  grid-column: 2;
+}
+
+/* =========================================================
+   ERROR MESSAGE
+   IMPORTANT: keeps error BELOW the input
+========================================================= */
+
+.registration-error {
+  display: block;
+
+  grid-column: 2;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin: -2px 0 0;
+
+  color: #8e0101;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  white-space: normal;
+
+  overflow: visible;
+  text-overflow: unset;
+
+  box-sizing: border-box;
+}
+
+/* =========================================================
    INPUTS / SELECTS
 ========================================================= */
 
@@ -9544,21 +9672,43 @@ body {
 .registration-country-select,
 .custom-select-btn {
   height: 46px;
+
   padding: 0 15px;
+
   border: 1.5px solid #d7d0d0;
+
   margin-left: 20px;
+
   border-radius: 10px;
+
   background: #ffffff;
+
   color: #292727;
+
   outline: none;
+
   font-family: inherit;
+
   font-size: 14px;
   font-weight: 400;
+
   box-sizing: border-box;
+
   transition:
     border-color 0.25s ease,
     box-shadow 0.25s ease,
     background 0.25s ease;
+}
+
+/* =========================================================
+   INPUT ERROR STATE
+========================================================= */
+
+.registration-form input[aria-invalid='true'],
+.registration-form select[aria-invalid='true'],
+.registration-form textarea[aria-invalid='true'] {
+  border-color: #8e0101;
+  box-shadow: 0 0 0 2px rgba(142, 1, 1, 0.08);
 }
 
 /* =========================================================
@@ -9654,6 +9804,8 @@ body {
   max-width: 100%;
 
   flex: 1 1 auto;
+
+  margin-left: 0;
 }
 
 .registration-phone-field input::placeholder {
@@ -9866,20 +10018,6 @@ body {
 }
 
 /* =========================================================
-   ERROR
-========================================================= */
-
-.registration-error {
-  margin-top: 4px;
-
-  font-size: 12px;
-
-  font-weight: 500;
-
-  color: #8e0101;
-}
-
-/* =========================================================
    CHECKBOX / CONSENT
 ========================================================= */
 
@@ -9906,13 +10044,33 @@ body {
 
   height: 18px;
 
+  min-width: 18px;
+
   flex: 0 0 18px;
 
-  margin-top: 1px;
+  margin: 1px 0 0;
 
   accent-color: #8e0101;
 
   cursor: pointer;
+}
+
+.registration-consent > span {
+  display: block;
+
+  flex: 1;
+
+  min-width: 0;
+}
+
+.registration-consent .registration-error {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 5px;
+
+  color: #8e0101;
 }
 
 /* =========================================================
@@ -10131,12 +10289,15 @@ body {
 @media (max-width: 900px) {
   .registration-form {
     column-gap: 20px;
+
     padding: 28px;
   }
 
   .registration-label {
     grid-template-columns: 100px minmax(0, 1fr);
+
     column-gap: 8px;
+
     font-size: 12px;
   }
 
@@ -10144,24 +10305,41 @@ body {
   .registration-label > label,
   .registration-label .field-title {
     width: 100px;
+
     min-width: 100px;
+
     max-width: 100px;
+  }
+
+  .registration-error {
+    grid-column: 2;
+
+    font-size: 11px;
   }
 
   .registration-country-select {
     width: 68px !important;
+
     min-width: 68px !important;
+
     max-width: 68px !important;
+
     flex-basis: 68px !important;
+
     padding-left: 6px !important;
+
     padding-right: 6px !important;
+
     font-size: 10px !important;
   }
 
   .registration-phone-field .registration-country-select {
     width: 68px !important;
+
     min-width: 68px !important;
+
     max-width: 68px !important;
+
     flex-basis: 68px !important;
   }
 }
@@ -10177,18 +10355,23 @@ body {
 
   .registration-wrapper {
     max-width: 100%;
+
     border-radius: 22px;
   }
 
   .registration-title {
     padding: 20px 22px;
+
     border-radius: 22px 22px 0 0;
+
     font-size: 18px;
   }
 
   .registration-form {
     grid-template-columns: 1fr;
+
     padding: 24px;
+
     row-gap: 20px;
   }
 
@@ -10199,26 +10382,44 @@ body {
   }
 
   .registration-label {
+    display: grid;
+
     grid-template-columns: 120px minmax(0, 1fr);
+
     column-gap: 8px;
+  }
+
+  .registration-error {
+    grid-column: 2;
+
+    width: 100%;
+
+    margin-top: -2px;
   }
 
   .registration-phone-field {
     width: 100%;
+
     min-width: 0;
+
     gap: 7px;
   }
 
   .registration-phone-field .registration-country-select {
     width: 68px !important;
+
     min-width: 68px !important;
+
     max-width: 68px !important;
+
     flex: 0 0 68px !important;
   }
 
   .registration-phone-field input {
     width: 100%;
+
     min-width: 0;
+
     flex: 1 1 auto;
   }
 
@@ -10228,20 +10429,29 @@ body {
 
   .registration-button-wrap {
     width: 100%;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     text-align: center;
+
     margin: 12px auto 0;
   }
 
   .registration-btn {
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     width: auto;
+
     min-width: 220px;
+
     max-width: 90%;
 
     height: 54px;
@@ -10259,9 +10469,13 @@ body {
 @media (max-width: 520px) {
   .registration-label {
     display: flex;
+
     flex-direction: column;
+
     align-items: stretch;
+
     gap: 7px;
+
     white-space: normal;
   }
 
@@ -10269,12 +10483,27 @@ body {
   .registration-label > label,
   .registration-label .field-title {
     width: 100%;
+
     min-width: 0;
+
     max-width: none;
+
     flex: none;
+
     white-space: normal;
+
     overflow: visible;
+
     text-overflow: unset;
+  }
+
+  /* Error must stay directly below the input */
+  .registration-label .registration-error {
+    width: 100%;
+
+    margin-top: -2px;
+
+    grid-column: auto;
   }
 
   .registration-form input,
@@ -10294,9 +10523,13 @@ body {
 
   .registration-button-wrap {
     width: 100%;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     text-align: center;
 
     margin: 12px auto 0;
@@ -10304,11 +10537,15 @@ body {
 
   .registration-btn {
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     width: 90%;
+
     max-width: 320px;
+
     min-width: 0;
 
     height: 52px;
@@ -10322,7 +10559,9 @@ body {
 
   .registration-popup {
     left: 16px;
+
     right: 16px;
+
     max-width: none;
   }
 
@@ -10332,17 +10571,23 @@ body {
 
   .registration-phone-field {
     width: 100%;
+
     display: flex;
+
     gap: 7px;
   }
 
   .registration-phone-field .registration-country-select {
     width: 66px !important;
+
     min-width: 66px !important;
+
     max-width: 66px !important;
+
     flex: 0 0 66px !important;
 
     padding-left: 5px !important;
+
     padding-right: 5px !important;
 
     font-size: 10px !important;
@@ -10350,13 +10595,109 @@ body {
 
   .registration-phone-field input {
     width: 100%;
+
     min-width: 0;
+
     flex: 1 1 auto;
   }
 
   .registration-phone-field input::placeholder,
   .registration-form input[type='tel']::placeholder {
     font-size: 11px;
+  }
+
+  /* =========================================
+     MOBILE ERROR
+  ========================================= */
+
+  .registration-error {
+    font-size: 11px;
+
+    line-height: 1.4;
+
+    white-space: normal;
+  }
+
+  /* =========================================
+     MOBILE CONSENT ERROR
+  ========================================= */
+
+  .registration-consent {
+    width: 100%;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 8px;
+
+    font-size: 12px;
+  }
+
+  .registration-consent > span {
+    width: 100%;
+  }
+
+  .registration-consent .registration-error {
+    width: 100%;
+
+    margin-top: 4px;
+  }
+}
+/* =========================================================
+   ERROR MESSAGE - FULL LINE
+========================================================= */
+
+.registration-error {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 5px 0 0 !important;
+  padding: 0 !important;
+
+  color: #8e0101;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+
+  word-break: normal;
+  overflow-wrap: break-word;
+
+  box-sizing: border-box;
+}
+
+/* Desktop / tablet */
+.registration-label .registration-error {
+  grid-column: 2 !important;
+
+  min-width: 0;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+  .registration-label .registration-error {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    grid-column: auto !important;
+
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+
+    word-break: normal;
+    overflow-wrap: break-word;
   }
 }
 
@@ -16415,5 +16756,406 @@ s .dialogues-badge-mark {
 @keyframes speakersLoaderSpin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   AGENDA DOWNLOAD MODAL
+========================================================= */
+
+.event-download-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(12, 30, 33, 0.7);
+  backdrop-filter: blur(6px);
+
+  overflow-y: auto;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.event-download-modal {
+  position: relative;
+
+  width: 100%;
+  max-width: 720px;
+  max-height: calc(100vh - 40px);
+
+  padding: 38px;
+
+  background: #ffffff;
+  border-radius: 20px;
+
+  overflow-y: auto;
+
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+
+  animation: eventDownloadModalIn 0.25s ease-out;
+}
+
+@keyframes eventDownloadModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.event-download-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #f5eeee;
+  color: #8e0101;
+
+  font-size: 27px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.event-download-modal-close:hover {
+  background: #8e0101;
+  color: #ffffff;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.event-download-modal-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.event-download-modal-header span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 7px 15px;
+  margin-bottom: 10px;
+
+  border-radius: 50px;
+
+  background: #f5eeee;
+  color: #8e0101;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.event-download-modal-header h2 {
+  margin: 0;
+
+  color: #0c1e21;
+
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.event-download-modal-header p {
+  max-width: 520px;
+
+  margin: 10px auto 0;
+
+  color: #666666;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.event-download-form {
+  width: 100%;
+}
+
+.event-download-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.event-download-field {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.event-download-field-full {
+  grid-column: 1 / -1;
+}
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.event-download-field label {
+  color: #0c1e21;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.event-download-field label span {
+  color: #8e0101;
+}
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.event-download-field input,
+.event-download-field select {
+  width: 100%;
+  height: 48px;
+
+  padding: 0 14px;
+
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+
+  outline: none;
+
+  background: #ffffff;
+  color: #0c1e21;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.event-download-field input::placeholder {
+  color: #999999;
+}
+
+.event-download-field input:focus,
+.event-download-field select:focus {
+  border-color: #8e0101;
+
+  box-shadow: 0 0 0 3px rgba(142, 1, 1, 0.08);
+}
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+.event-download-phone {
+  display: grid;
+  grid-template-columns: 105px minmax(0, 1fr);
+
+  gap: 8px;
+}
+
+.event-download-phone select {
+  padding: 0 8px;
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.event-download-form-error {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+
+  border-radius: 8px;
+
+  background: #fff0f0;
+  color: #b00000;
+
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.event-download-submit {
+  width: 100%;
+  height: 50px;
+
+  margin-top: 24px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #8e0101;
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.event-download-submit:hover:not(:disabled) {
+  background: #700000;
+  transform: translateY(-1px);
+}
+
+.event-download-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.event-download-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.event-download-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.event-download-modal::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 10px;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+  .event-download-modal {
+    max-width: 650px;
+    padding: 32px 25px;
+  }
+
+  .event-download-modal-header h2 {
+    font-size: 27px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+  .event-download-modal-overlay {
+    padding: 12px;
+  }
+
+  .event-download-modal {
+    max-height: calc(100vh - 24px);
+
+    padding: 28px 18px;
+
+    border-radius: 16px;
+  }
+
+  .event-download-modal-header {
+    margin-bottom: 22px;
+    padding-right: 20px;
+  }
+
+  .event-download-modal-header h2 {
+    font-size: 24px;
+  }
+
+  .event-download-modal-header p {
+    font-size: 14px;
+  }
+
+  .event-download-form-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .event-download-field-full {
+    grid-column: auto;
+  }
+
+  .event-download-phone {
+    grid-template-columns: 90px minmax(0, 1fr);
+  }
+
+  .event-download-modal-close {
+    top: 10px;
+    right: 10px;
+
+    width: 34px;
+    height: 34px;
+
+    font-size: 24px;
+  }
+
+  .event-download-submit {
+    height: 48px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+  .event-download-modal {
+    padding: 25px 15px;
+  }
+
+  .event-download-modal-header h2 {
+    font-size: 21px;
+  }
+
+  .event-download-field input,
+  .event-download-field select {
+    height: 45px;
+    font-size: 13px;
+  }
+
+  .event-download-phone {
+    grid-template-columns: 80px minmax(0, 1fr);
   }
 }
