@@ -1,7 +1,6 @@
 'use client';
 
 import { useMemo } from 'react';
-import en from 'react-phone-number-input/locale/en.json';
 import { getCountries, getCountryCallingCode, type Country } from 'react-phone-number-input';
 
 type CountryCodeSelectProps = {
@@ -30,11 +29,13 @@ export default function CountryCodeSelect({
     () =>
       getCountries().map((country: Country) => {
         const dialCode = getDialCodeFromCountry(country);
-        const label = (en as Record<string, string>)[country] ?? country;
+        const shortCode = country.toUpperCase();
         return {
           country,
           dialCode,
-          label: `${label} (${dialCode})`,
+          shortCode,
+          label: `${dialCode} ${shortCode}`,
+          displayName: `${country} ${dialCode}`,
         };
       }),
     [],
@@ -54,7 +55,7 @@ export default function CountryCodeSelect({
       <option value="" disabled>
         Select country code
       </option>
-      {options.map(({ country, label }: { country: Country; label: string }) => (
+      {options.map(({ country, label }) => (
         <option key={country} value={country}>
           {label}
         </option>
