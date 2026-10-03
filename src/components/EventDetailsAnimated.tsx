@@ -1,192 +1,12 @@
-// 'use client';
-
-// // import React from 'react';
-// import Link from 'next/link';
-// import useScrollAnimation from '../hooks/useScrollAnimation';
-// import Image from 'next/image';
-
-// type Section = {
-//   heading: string;
-//   body: string;
-// };
-
-// type AgendaItem = {
-//   time?: string;
-//   title?: string;
-//   speaker?: string;
-//   description?: string;
-// };
-
-// type FeaturedEvent = {
-//   title: string;
-//   author: string;
-//   date: string;
-//   comments?: string;
-//   heroImage: string;
-//   badge?: string;
-//   summary?: string;
-//   sections: Section[];
-//   quote?: string;
-//   quoteAuthor?: string;
-// };
-
-// function AnimatedEventSection({ section }: { section: Section }) {
-//   const sectionRef = useScrollAnimation<HTMLDivElement>();
-
-//   return (
-//     <section key={section.heading} className="event-details-section" ref={sectionRef}>
-//       <h2>{section.heading}</h2>
-//       <p>{section.body}</p>
-//     </section>
-//   );
-// }
-
-// export default function EventDetailsAnimated({
-//   featuredEvent,
-//   readableSlug,
-//   agenda,
-// }: {
-//   featuredEvent: FeaturedEvent;
-//   readableSlug: string;
-//   agenda: AgendaItem[];
-// }) {
-//   const heroRef = useScrollAnimation<HTMLDivElement>({
-//     animationClass: 'animate-fade-in-right',
-//     initialTransform: 'translateX(-24px)',
-//   });
-//   const metaRef = useScrollAnimation<HTMLDivElement>({
-//     animationClass: 'animate-fade-in-left',
-//     initialTransform: 'translateX(24px)',
-//   });
-//   const quoteRef = useScrollAnimation<HTMLDivElement>({
-//     animationClass: 'animate-fade-in',
-//     initialTransform: 'translateY(24px)',
-//   });
-//   return (
-//     <>
-//       <div className="event-details-hero" ref={heroRef}>
-//         <div className="event-details-image-wrap">
-//           <Image
-//             src={featuredEvent.heroImage}
-//             alt={featuredEvent.title}
-//             fill
-//             priority
-//             className="event-details-image"
-//             unoptimized={featuredEvent.heroImage.startsWith('http')}
-//           />
-//         </div>
-
-//         <div className="event-details-headline">
-//           <span className="event-details-badge">{featuredEvent.badge}</span>
-//           <h1>{featuredEvent.title}</h1>
-//           <div className="event-details-breadcrumb">
-//             <Link href="/">Home</Link>
-//             <span>&gt;</span>
-//             <Link href="/events">Events</Link>
-//             <span>&gt;</span>
-//             <p>{readableSlug}</p>
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className="event-details-meta-grid" ref={metaRef}>
-//         <div className="event-details-meta-card">
-//           <span className="event-details-meta-label">Authored by</span>
-//           <strong>{featuredEvent.author}</strong>
-//         </div>
-//         <div className="event-details-meta-card">
-//           <span className="event-details-meta-label">Date Released</span>
-//           <strong>{featuredEvent.date}</strong>
-//         </div>
-//       </div>
-
-//       <article className="event-details-article">
-//         {featuredEvent.summary && <p className="event-details-intro">{featuredEvent.summary}</p>}
-
-//         {agenda.length > 0 && (
-//           <section className="event-details-agenda">
-//             <div className="event-details-agenda-heading">
-//   <h2>Agenda</h2>
-
-//   <a
-//     href="/assets/agenda.pdf"
-//     download
-//     className="event-details-download-btn"
-//   >
-//     Download Agenda
-//   </a>
-// </div>
-//             <div className="event-details-agenda-table-wrap">
-//               <table className="event-details-agenda-table">
-//                 <thead>
-//                   <tr>
-//                     <th scope="col" className="event-details-agenda-number-heading">
-//                       Sr. No.
-//                     </th>
-//                     <th scope="col">Date &amp; Time</th>
-//                     <th scope="col">Day</th>
-//                     <th scope="col">Segment Title</th>
-//                     <th scope="col">Description</th>
-//                   </tr>
-//                 </thead>
-//                 <tbody>
-//                   {agenda.map((item, index) => {
-//                     const agendaDate = item.time ? new Date(item.time) : null;
-//                     const formattedTime =
-//                       agendaDate && !Number.isNaN(agendaDate.getTime())
-//                         ? new Intl.DateTimeFormat('en-IN', {
-//                             dateStyle: 'medium',
-//                             timeStyle: 'short',
-//                           }).format(agendaDate)
-//                         : 'Time to be announced';
-
-//                     return (
-//                       <tr key={`${item.title ?? 'agenda'}-${index}`}>
-//                         <td className="event-details-agenda-number">{index + 1}</td>
-//                         <td>
-//                           {agendaDate && !Number.isNaN(agendaDate.getTime()) ? (
-//                             <time dateTime={item.time}>{formattedTime}</time>
-//                           ) : (
-//                             formattedTime
-//                           )}
-//                         </td>
-//                         <td>{item.speaker || 'To be announced'}</td>
-//                         <th scope="row">{item.title || 'Agenda item'}</th>
-//                         <td className="event-details-agenda-description">
-//                           {item.description || 'Details to be announced'}
-//                         </td>
-//                       </tr>
-//                     );
-//                   })}
-//                 </tbody>
-//               </table>
-//             </div>
-//           </section>
-//         )}
-
-//         {featuredEvent.quote && (
-//           <div className="event-details-quote" ref={quoteRef}>
-//             <div className="event-details-quote-mark">“</div>
-//             <p>{featuredEvent.quote}</p>
-//             <span>— {featuredEvent.quoteAuthor}</span>
-//           </div>
-//         )}
-
-//         {featuredEvent.sections.map((section) => (
-//           <AnimatedEventSection key={section.heading} section={section} />
-//         ))}
-//       </article>
-//     </>
-//   );
-// }
-
 'use client';
 
 import Link from 'next/link';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { downloadWebsiteReport } from '@/services/reports.service';
+import { ApiError } from '@/services/apiFetch';
+import { fetchWebsitePageBySlug, type WebsitePage } from '@/services/pages.service';
 
 type Section = {
   heading: string;
@@ -213,12 +33,45 @@ type FeaturedEvent = {
   quoteAuthor?: string;
 };
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null;
+}
+
+function getAgendaPdfUrl(page: WebsitePage): string | null {
+  const blocks = [...(page.content?.blocks ?? []), ...(page.sections ?? [])];
+
+  for (const block of blocks) {
+    if (!isRecord(block.data) || !Array.isArray(block.data.testimonials)) {
+      continue;
+    }
+
+    for (const testimonial of block.data.testimonials) {
+      if (!isRecord(testimonial)) continue;
+
+      if (typeof testimonial.quote !== 'string') continue;
+
+      try {
+        const url = new URL(testimonial.quote.trim());
+
+        if (url.protocol === 'https:' && url.pathname.toLowerCase().endsWith('.pdf')) {
+          return url.toString();
+        }
+      } catch {
+        continue;
+      }
+    }
+  }
+
+  return null;
+}
+
 function AnimatedEventSection({ section }: { section: Section }) {
   const sectionRef = useScrollAnimation<HTMLDivElement>();
 
   return (
     <section key={section.heading} className="event-details-section" ref={sectionRef}>
       <h2>{section.heading}</h2>
+
       <p>{section.body}</p>
     </section>
   );
@@ -227,14 +80,16 @@ function AnimatedEventSection({ section }: { section: Section }) {
 export default function EventDetailsAnimated({
   featuredEvent,
   readableSlug,
-  agenda,
 }: {
   featuredEvent: FeaturedEvent;
   readableSlug: string;
   agenda: AgendaItem[];
 }) {
   const [isDownloading, setIsDownloading] = useState(false);
+
   const [showDownloadForm, setShowDownloadForm] = useState(false);
+
+  const [agendaPdfUrl, setAgendaPdfUrl] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -264,10 +119,49 @@ export default function EventDetailsAnimated({
     initialTransform: 'translateY(24px)',
   });
 
+  /* =========================================================
+     LOAD AGENDA PDF
+  ========================================================= */
+
+  useEffect(() => {
+    const loadAgendaPdf = async () => {
+      try {
+        const response = await fetchWebsitePageBySlug('agenda');
+
+        if (!response.success || !response.data) {
+          setAgendaPdfUrl(null);
+          return;
+        }
+
+        const pdfUrl = getAgendaPdfUrl(response.data);
+
+        setAgendaPdfUrl(pdfUrl);
+      } catch (error) {
+        // console.error('Unable to load agenda PDF:', error);
+        setAgendaPdfUrl(null);
+      }
+    };
+
+    loadAgendaPdf();
+  }, []);
+
+  /* =========================================================
+     DOWNLOAD AGENDA
+  ========================================================= */
+
   const handleDownloadAgenda = () => {
+    // Do not open the form when no agenda exists.
+    if (!agendaPdfUrl) {
+      return;
+    }
+
     setFormError('');
     setShowDownloadForm(true);
   };
+
+  /* =========================================================
+     FORM CHANGE
+  ========================================================= */
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -278,10 +172,16 @@ export default function EventDetailsAnimated({
     }));
   };
 
+  /* =========================================================
+     DOWNLOAD FORM SUBMIT
+  ========================================================= */
+
   const handleDownloadSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (isDownloading) return;
+    if (isDownloading || !agendaPdfUrl) {
+      return;
+    }
 
     setFormError('');
 
@@ -305,10 +205,13 @@ export default function EventDetailsAnimated({
       setShowDownloadForm(false);
 
       window.open(downloadUrl, '_blank');
-    } catch (error) {
-      // console.error('Agenda download failed:', error);
-
-      setFormError('Unable to download the agenda. Please try again.');
+    } catch (error: unknown) {
+      if (error instanceof ApiError && error.statusCode === 404) {
+        setShowDownloadForm(false);
+        window.open(agendaPdfUrl, '_blank');
+      } else {
+        setFormError('Unable to download the agenda. Please try again.');
+      }
     } finally {
       setIsDownloading(false);
     }
@@ -378,18 +281,17 @@ export default function EventDetailsAnimated({
 
         {/* =========================================================
             AGENDA
+
+            Agenda is displayed ONLY when a valid PDF exists
+            in the backend.
         ========================================================= */}
 
-        {agenda.length > 0 && (
+        {agendaPdfUrl && (
           <section className="event-details-agenda">
             <div className="event-details-agenda-heading">
               <h2>Agenda</h2>
 
               <div className="event-details-agenda-actions">
-                <Link href="/agenda" className="event-details-download-btn">
-                  View Agenda
-                </Link>
-
                 <button
                   type="button"
                   onClick={handleDownloadAgenda}
@@ -401,60 +303,31 @@ export default function EventDetailsAnimated({
               </div>
             </div>
 
+            {/* =====================================================
+                AGENDA TABLE
+
+                Currently hidden. Keep this container if the table
+                is required later.
+            ===================================================== */}
+
             <div id="event-details-agenda-table" className="event-details-agenda-table-wrap">
-              <table className="event-details-agenda-table">
-                <thead>
-                  <tr>
-                    <th scope="col" className="event-details-agenda-number-heading">
-                      Sr. No.
-                    </th>
+              {/* Agenda table can be enabled here later if required. */}
+            </div>
 
-                    <th scope="col">Date &amp; Time</th>
+            {/* =====================================================
+                AGENDA PDF
+            ===================================================== */}
 
-                    <th scope="col">Day</th>
+            <div id="event-details-agenda-pdf" className="event-agenda-inline">
+              <div className="event-agenda-inline-header">
+                <h3>Event Agenda</h3>
+              </div>
 
-                    <th scope="col">Segment Title</th>
-
-                    <th scope="col">Description</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {agenda.map((item, index) => {
-                    const agendaDate = item.time ? new Date(item.time) : null;
-
-                    const formattedTime =
-                      agendaDate && !Number.isNaN(agendaDate.getTime())
-                        ? new Intl.DateTimeFormat('en-IN', {
-                            dateStyle: 'medium',
-                            timeStyle: 'short',
-                          }).format(agendaDate)
-                        : 'Time to be announced';
-
-                    return (
-                      <tr key={`${item.title ?? 'agenda'}-${index}`}>
-                        <td className="event-details-agenda-number">{index + 1}</td>
-
-                        <td>
-                          {agendaDate && !Number.isNaN(agendaDate.getTime()) ? (
-                            <time dateTime={item.time}>{formattedTime}</time>
-                          ) : (
-                            formattedTime
-                          )}
-                        </td>
-
-                        <td>{item.speaker || 'To be announced'}</td>
-
-                        <th scope="row">{item.title || 'Agenda item'}</th>
-
-                        <td className="event-details-agenda-description">
-                          {item.description || 'Details to be announced'}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <iframe
+                className="event-agenda-pdf-viewer"
+                src={`${agendaPdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                title="CIO CROWN 2026 Event Agenda"
+              />
             </div>
           </section>
         )}
@@ -484,9 +357,11 @@ export default function EventDetailsAnimated({
 
       {/* =========================================================
           DOWNLOAD FORM MODAL
+
+          This modal can only exist when agendaPdfUrl exists.
       ========================================================= */}
 
-      {showDownloadForm && (
+      {showDownloadForm && agendaPdfUrl && (
         <div
           className="event-download-modal-overlay"
           onClick={() => {
