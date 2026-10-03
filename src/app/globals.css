@@ -1073,7 +1073,7 @@ body {
 }
 
 .speakers2025-section {
-  padding: 90px 0;
+  padding: 90px 0 10px;
 }
 
 .speakers2025-container {
@@ -12676,7 +12676,7 @@ s .dialogues-badge-mark {
   position: absolute;
   left: 18px;
   bottom: -7px;
-  width: 42px;
+  width: 300px;
   height: 2px;
   background: linear-gradient(90deg, #8e0101, rgba(142, 1, 1, 0.15));
   border-radius: 10px;
@@ -12896,7 +12896,7 @@ s .dialogues-badge-mark {
   content: '';
   display: block;
 
-  width: 75px;
+  width: 575px;
   height: 4px;
 
   margin: 22px auto 0;

@@ -370,7 +370,15 @@ export default function EventsPage() {
                 <div className="speakers2025-loader"></div>
               </div>
             ) : filteredEvents?.length === 0 ? (
-              <div className="events-empty">No events available at the moment.</div>
+              <div className="events-empty">
+                <Image
+                  src="/assets/noevents.png"
+                  alt="No events available"
+                  width={500}
+                  height={350}
+                  className="events-empty-image"
+                />
+              </div>
             ) : (
               filteredEvents?.map((item, index) => {
                 const title = getEventTitle(item);
