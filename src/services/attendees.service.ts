@@ -33,6 +33,12 @@ export type RegisterAttendeeApiBody = {
   message?: string;
   suggestion?: string;
   sponsorConsent?: boolean;
+  /** Offline registration fields from on-campus QR scan */
+  isOffline?: boolean;
+  offlineKey?: string;
+  registrationSource?: string;
+  mode?: string;
+  source?: string;
 };
 
 export type AttendeeRegistrationInput = {
@@ -60,16 +66,25 @@ export type AttendeeRegistrationInput = {
   message?: string;
   suggestion?: string;
   sponsorConsent?: boolean;
+  /** Offline registration fields from on-campus QR scan */
+  isOffline?: boolean;
+  offlineKey?: string;
+  registrationSource?: string;
+  mode?: string;
+  source?: string;
 };
 
 type RegistrationResponse = {
   success?: boolean;
   message?: string;
+  status?: string;
+  passCode?: string;
+  qrCode?: string;
   data?: unknown;
 };
 
 function buildRegisterAttendeeBody(input: AttendeeRegistrationInput): RegisterAttendeeApiBody {
-  return {
+  const body: RegisterAttendeeApiBody = {
     eventId: input.eventId,
     name: input.name,
     fullName: input.fullName ?? input.name,
@@ -95,6 +110,14 @@ function buildRegisterAttendeeBody(input: AttendeeRegistrationInput): RegisterAt
     suggestion: input.suggestion ?? input.message ?? '',
     sponsorConsent: input.sponsorConsent ?? false,
   };
+
+  if (input.isOffline) body.isOffline = true;
+  if (input.offlineKey) body.offlineKey = input.offlineKey;
+  if (input.registrationSource) body.registrationSource = input.registrationSource;
+  if (input.mode) body.mode = input.mode;
+  if (input.source) body.source = input.source;
+
+  return body;
 }
 
 function assertRegistrationSaved(response: RegistrationResponse) {
