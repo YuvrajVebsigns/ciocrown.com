@@ -843,7 +843,8 @@
 
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import type { Country } from 'react-phone-number-input';
 import Link from 'next/link';
 import { City, Country as CountryData, State } from 'country-state-city';
@@ -1039,11 +1040,27 @@ const cleanLandline = (value: string) => {
   return result;
 };
 
-/* =========================================================
-   PAGE
-   ========================================================= */
+function RegistrationForm() {
+  const searchParams = useSearchParams();
 
-export default function RegistrationPage() {
+  /**
+   * Offline QR registration flow:
+   * When a user scans the on-campus QR poster the URL contains ?offlineKey=<token> (and mode=offline)
+   * We extract these to pass in the body so the backend auto-approves the registration.
+   */
+  const offlineKey =
+    searchParams.get('offlineKey') ||
+    searchParams.get('key') ||
+    searchParams.get('offline_key') ||
+    searchParams.get('token') ||
+    undefined;
+  const offlineMode = searchParams.get('mode') ?? undefined;
+  const isOffline = useMemo(
+    () => Boolean(offlineKey) || offlineMode === 'offline',
+    [offlineKey, offlineMode],
+  );
+  const paramEventId = searchParams.get('eventId') || searchParams.get('event');
+
   /* =========================================================
      EVENTS
      ========================================================= */
@@ -1069,7 +1086,7 @@ export default function RegistrationPage() {
 
   const [phone, setPhone] = useState('');
   const [landline, setLandline] = useState('');
-  const [selectedEvent, setSelectedEvent] = useState('');
+  const [selectedEvent, setSelectedEvent] = useState(paramEventId || '');
   const [message, setMessage] = useState('');
   const [sponsorConsent, setSponsorConsent] = useState(false);
 
@@ -1185,13 +1202,24 @@ export default function RegistrationPage() {
         });
 
         setEvents(formattedEvents);
+
+        if (paramEventId) {
+          const match = formattedEvents.find(
+            (e) => e._id === paramEventId || e.name.toLowerCase() === paramEventId.toLowerCase(),
+          );
+          if (match) {
+            setSelectedEvent(match._id);
+          } else {
+            setSelectedEvent(paramEventId);
+          }
+        }
       } catch {
         setEvents([]);
       }
     };
 
     loadEvents();
-  }, []);
+  }, [paramEventId]);
 
   /* =========================================================
      VALIDATION
@@ -1367,7 +1395,7 @@ export default function RegistrationPage() {
     setCountry('IN');
     setPhone('');
     setLandline('');
-    setSelectedEvent('');
+    setSelectedEvent(paramEventId || '');
     setMessage('');
     setSponsorConsent(false);
     setErrors({});
@@ -1428,10 +1456,25 @@ export default function RegistrationPage() {
         suggestion: message.trim(),
 
         sponsorConsent,
+
+        // Offline QR registration fields
+        ...(isOffline && {
+          isOffline: true,
+          offlineKey,
+          registrationSource: 'offline',
+          mode: offlineMode || 'offline',
+        }),
       });
 
       if (response) {
-        setPopupMessage('Registration submitted successfully.');
+        if (isOffline) {
+          setPopupMessage(
+            response.message ||
+              'Offline registration submitted & approved! Your event pass has been issued.',
+          );
+        } else {
+          setPopupMessage(response.message || 'Registration submitted successfully.');
+        }
 
         resetForm();
       }
@@ -1456,6 +1499,43 @@ export default function RegistrationPage() {
                 ================================================= */}
 
             <h1 className="registration-title">CIO CROWN 2026 REGISTRATION</h1>
+
+            {isOffline && (
+              <div
+                style={{
+                  marginBottom: '24px',
+                  padding: '14px 18px',
+                  borderRadius: '12px',
+                  background: 'rgba(142, 1, 1, 0.08)',
+                  border: '1px solid rgba(142, 1, 1, 0.25)',
+                  color: '#8e0101',
+                  fontSize: '13px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                }}
+              >
+                <span
+                  style={{
+                    fontWeight: 800,
+                    fontSize: '10px',
+                    letterSpacing: '0.5px',
+                    textTransform: 'uppercase',
+                    background: '#8e0101',
+                    color: '#fff',
+                    padding: '3px 8px',
+                    borderRadius: '6px',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  Campus QR
+                </span>
+                <span>
+                  <strong>Exclusive On-Campus Registration:</strong> Your event entry pass will be
+                  automatically approved upon submission.
+                </span>
+              </div>
+            )}
 
             <form className="registration-form" onSubmit={handleSubmit} noValidate>
               {/* =================================================
@@ -1704,8 +1784,34 @@ export default function RegistrationPage() {
                   ================================================= */}
 
               <label className="registration-label">
-                Select Event
-                <select value={selectedEvent} onChange={(e) => setSelectedEvent(e.target.value)}>
+                Select Event{' '}
+                {paramEventId && (
+                  <span
+                    style={{
+                      fontSize: '11px',
+                      color: '#4f46e5',
+                      fontWeight: 600,
+                      marginLeft: '6px',
+                    }}
+                  >
+                    🔒 (Locked for this event)
+                  </span>
+                )}
+                <select
+                  value={selectedEvent}
+                  onChange={(e) => setSelectedEvent(e.target.value)}
+                  disabled={Boolean(paramEventId)}
+                  style={
+                    paramEventId
+                      ? {
+                          cursor: 'not-allowed',
+                          backgroundColor: '#f3f4f6',
+                          color: '#374151',
+                          opacity: 0.85,
+                        }
+                      : undefined
+                  }
+                >
                   <option value="">Select Event</option>
 
                   {events.map((eventItem) => (
@@ -1713,6 +1819,11 @@ export default function RegistrationPage() {
                       {eventItem.name}
                     </option>
                   ))}
+
+                  {/* Fallback option if events are still loading or custom event ID passed */}
+                  {Boolean(paramEventId) && !events.some((e) => e._id === selectedEvent) && (
+                    <option value={selectedEvent}>{selectedEvent}</option>
+                  )}
                 </select>
                 {errors.selectedEvent && (
                   <span className="registration-error">{errors.selectedEvent}</span>
@@ -1835,5 +1946,26 @@ export default function RegistrationPage() {
         )}
       </section>
     </main>
+  );
+}
+
+export default function RegistrationPage() {
+  return (
+    <Suspense
+      fallback={
+        <div
+          style={{
+            minHeight: '60vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          Loading registration...
+        </div>
+      }
+    >
+      <RegistrationForm />
+    </Suspense>
   );
 }
